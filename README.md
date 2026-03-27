@@ -41,7 +41,7 @@ pnpm add @moto-nrw/design-system
 ### CI Setup (GitHub Actions)
 
 ```yaml
-- uses: actions/setup-node@v4
+- uses: actions/setup-node@v6
   with:
     registry-url: https://npm.pkg.github.com
     scope: "@moto-nrw"
