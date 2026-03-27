@@ -1,5 +1,5 @@
 {
-  "name": "@ganztagshelden/design-system",
+  "name": "@moto-nrw/design-system",
   "version": "0.1.0",
   "description": "Ganztagshelden Design System - shared components and design tokens",
   "main": "dist/index.cjs",

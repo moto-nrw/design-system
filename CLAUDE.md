@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Is
 
-`@ganztagshelden/design-system` - shared React component library and design tokens for the Ganztagshelden ecosystem. Published to GitHub Packages. Consumed by project-phoenix, comuneo, and other repos via `pnpm add @ganztagshelden/design-system`.
+`@moto-nrw/design-system` - shared React component library and design tokens for the Ganztagshelden ecosystem. Published to GitHub Packages. Consumed by project-phoenix, comuneo, and other repos via `pnpm add @moto-nrw/design-system`.
 
 ## Commands
 
@@ -67,8 +67,8 @@ Then add the export to `src/components/index.ts` and `src/index.ts`.
 
 Consumers use two entry points:
 ```tsx
-import { Button } from "@ganztagshelden/design-system";       // components
-import "@ganztagshelden/design-system/tokens";                 // CSS variables
+import { Button } from "@moto-nrw/design-system";       // components
+import "@moto-nrw/design-system/tokens";                 // CSS variables
 ```
 
 React and React-DOM are peer dependencies (not bundled).

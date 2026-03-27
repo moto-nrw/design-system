@@ -1,4 +1,4 @@
-# @ganztagshelden/design-system
+# @moto-nrw/design-system
 
 Shared component library and design tokens for the Ganztagshelden ecosystem. Published to GitHub Packages.
 
@@ -13,17 +13,17 @@ pnpm storybook    # component playground on localhost:6006
 ## Usage
 
 ```bash
-pnpm add @ganztagshelden/design-system
+pnpm add @moto-nrw/design-system
 ```
 
 `.npmrc` in consuming repo:
 ```
-@ganztagshelden:registry=https://npm.pkg.github.com
+@moto-nrw:registry=https://npm.pkg.github.com
 ```
 
 ```tsx
-import { Button } from "@ganztagshelden/design-system";
-import "@ganztagshelden/design-system/tokens";
+import { Button } from "@moto-nrw/design-system";
+import "@moto-nrw/design-system/tokens";
 ```
 
 ## Commands
