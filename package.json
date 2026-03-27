@@ -75,6 +75,6 @@
     "registry": "https://npm.pkg.github.com"
   },
   "type": "module",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": false
 }
