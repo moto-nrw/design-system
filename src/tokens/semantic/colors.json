@@ -1,29 +1,29 @@
 {
-  "_PLACEHOLDER": "REPLACE WITH YOUR BRAND SEMANTIC MAPPINGS. These are generic placeholder values.",
-  "semantic": {
-    "color": {
-      "brand": {
-        "primary": { "$type": "color", "$value": "{color.blue.600}" },
-        "primary-hover": { "$type": "color", "$value": "{color.blue.700}" }
-      },
-      "bg": {
-        "default": { "$type": "color", "$value": "{color.white}" },
-        "subtle": { "$type": "color", "$value": "{color.gray.50}" },
-        "muted": { "$type": "color", "$value": "{color.gray.100}" }
-      },
-      "text": {
-        "default": { "$type": "color", "$value": "{color.gray.900}" },
-        "muted": { "$type": "color", "$value": "{color.gray.500}" },
-        "inverse": { "$type": "color", "$value": "{color.white}" }
-      },
-      "border": {
-        "default": { "$type": "color", "$value": "{color.gray.200}" },
-        "strong": { "$type": "color", "$value": "{color.gray.300}" }
-      },
-      "feedback": {
-        "success": { "$type": "color", "$value": "{color.green.500}" },
-        "error": { "$type": "color", "$value": "{color.red.500}" }
-      }
-    }
-  }
+	"_PLACEHOLDER": "REPLACE WITH YOUR BRAND SEMANTIC MAPPINGS. These are generic placeholder values.",
+	"semantic": {
+		"color": {
+			"brand": {
+				"primary": { "$type": "color", "$value": "{color.blue.600}" },
+				"primary-hover": { "$type": "color", "$value": "{color.blue.700}" }
+			},
+			"bg": {
+				"default": { "$type": "color", "$value": "{color.white}" },
+				"subtle": { "$type": "color", "$value": "{color.gray.50}" },
+				"muted": { "$type": "color", "$value": "{color.gray.100}" }
+			},
+			"text": {
+				"default": { "$type": "color", "$value": "{color.gray.900}" },
+				"muted": { "$type": "color", "$value": "{color.gray.500}" },
+				"inverse": { "$type": "color", "$value": "{color.white}" }
+			},
+			"border": {
+				"default": { "$type": "color", "$value": "{color.gray.200}" },
+				"strong": { "$type": "color", "$value": "{color.gray.300}" }
+			},
+			"feedback": {
+				"success": { "$type": "color", "$value": "{color.green.500}" },
+				"error": { "$type": "color", "$value": "{color.red.500}" }
+			}
+		}
+	}
 }

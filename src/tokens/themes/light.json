@@ -1,15 +1,15 @@
 {
-  "_PLACEHOLDER": "REPLACE WITH YOUR LIGHT THEME VALUES. This is a minimal stub.",
-  "theme": {
-    "color": {
-      "bg": {
-        "primary": { "$type": "color", "$value": "{color.white}" },
-        "secondary": { "$type": "color", "$value": "{color.gray.50}" }
-      },
-      "text": {
-        "primary": { "$type": "color", "$value": "{color.gray.900}" },
-        "secondary": { "$type": "color", "$value": "{color.gray.600}" }
-      }
-    }
-  }
+	"_PLACEHOLDER": "REPLACE WITH YOUR LIGHT THEME VALUES. This is a minimal stub.",
+	"theme": {
+		"color": {
+			"bg": {
+				"primary": { "$type": "color", "$value": "{color.white}" },
+				"secondary": { "$type": "color", "$value": "{color.gray.50}" }
+			},
+			"text": {
+				"primary": { "$type": "color", "$value": "{color.gray.900}" },
+				"secondary": { "$type": "color", "$value": "{color.gray.600}" }
+			}
+		}
+	}
 }

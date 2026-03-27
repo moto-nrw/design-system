@@ -18,6 +18,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `pnpm storybook` | Component playground on localhost:6006 |
 | `pnpm lint` | Check with Biome |
 | `pnpm lint:fix` | Auto-fix lint + format issues |
+| `pnpm knip` | Find unused exports, files, and dependencies |
+| `pnpm changeset` | Create a changeset for the next release |
+| `pnpm version` | Bump version + generate CHANGELOG from changesets |
+| `pnpm release` | Publish to GitHub Packages |
 
 Run a single test file: `pnpm vitest run src/components/Button/Button.test.tsx`
 
@@ -76,3 +80,20 @@ React and React-DOM are peer dependencies (not bundled).
 - TypeScript 6 requires `"ignoreDeprecations": "6.0"` in tsconfig due to tsup's internal use of `baseUrl`
 - The `./tokens` export is excluded from `attw` validation (CSS-only exports can't resolve as JS modules)
 - Biome uses **tab** indentation and 100-char line width
+
+## CI/CD
+
+- **CI** (`.github/workflows/ci.yml`): Runs lint, typecheck, test, build, and knip on every PR and push to `development`
+- **Release** (`.github/workflows/release.yml`): On push to `development`, changesets/action either creates a "Version Package" PR (if changesets exist) or publishes to GitHub Packages (if version was bumped)
+
+## Release Workflow
+
+1. Make changes, then run `pnpm changeset` to describe what changed (patch/minor/major)
+2. Commit the changeset file along with your code
+3. On merge to `development`, CI creates a "Version Package" PR that bumps version + updates CHANGELOG
+4. Merging that PR triggers the actual publish to GitHub Packages
+
+## Git Hooks (Lefthook)
+
+- **pre-commit**: Biome lint + typecheck on staged files
+- **pre-push**: Full test suite + build
