@@ -12,14 +12,46 @@ pnpm storybook    # component playground on localhost:6006
 
 ## Usage
 
+### Developer Setup (one-time)
+
+GitHub Packages requires auth to install, even for public packages. Each developer needs a GitHub PAT:
+
+1. Go to https://github.com/settings/tokens/new (classic token)
+2. Select only the `read:packages` scope
+3. Add it to your global `~/.npmrc`:
+
+```bash
+echo "//npm.pkg.github.com/:_authToken=ghp_YOUR_TOKEN_HERE" >> ~/.npmrc
+```
+
+### Project Setup
+
+Add `.npmrc` to the consuming repo root:
+
+```
+@moto-nrw:registry=https://npm.pkg.github.com
+```
+
+Install:
+
 ```bash
 pnpm add @moto-nrw/design-system
 ```
 
-`.npmrc` in consuming repo:
+### CI Setup (GitHub Actions)
+
+```yaml
+- uses: actions/setup-node@v4
+  with:
+    registry-url: https://npm.pkg.github.com
+    scope: "@moto-nrw"
+
+- run: pnpm install
+  env:
+    NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
-@moto-nrw:registry=https://npm.pkg.github.com
-```
+
+### Import
 
 ```tsx
 import { Button } from "@moto-nrw/design-system";
