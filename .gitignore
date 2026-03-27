@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+storybook-static/
+src/tokens/build/
+*.tsbuildinfo
+
+# Test coverage
+coverage/
+
+# Logs
+*.log
+*storybook.log
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Package tarballs
+*.tgz
+
+# OS
+.DS_Store
+Thumbs.db

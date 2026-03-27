@@ -1,0 +1,42 @@
+{
+  "_PLACEHOLDER": "REPLACE WITH YOUR BRAND COLORS. These are generic placeholder values.",
+  "color": {
+    "white": {
+      "$type": "color",
+      "$value": "#FFFFFF"
+    },
+    "black": {
+      "$type": "color",
+      "$value": "#000000"
+    },
+    "gray": {
+      "50": { "$type": "color", "$value": "#F9FAFB" },
+      "100": { "$type": "color", "$value": "#F3F4F6" },
+      "200": { "$type": "color", "$value": "#E5E7EB" },
+      "300": { "$type": "color", "$value": "#D1D5DB" },
+      "400": { "$type": "color", "$value": "#9CA3AF" },
+      "500": { "$type": "color", "$value": "#6B7280" },
+      "600": { "$type": "color", "$value": "#4B5563" },
+      "700": { "$type": "color", "$value": "#374151" },
+      "800": { "$type": "color", "$value": "#1F2937" },
+      "900": { "$type": "color", "$value": "#111827" }
+    },
+    "blue": {
+      "50": { "$type": "color", "$value": "#EFF6FF" },
+      "100": { "$type": "color", "$value": "#DBEAFE" },
+      "500": { "$type": "color", "$value": "#3B82F6" },
+      "600": { "$type": "color", "$value": "#2563EB" },
+      "700": { "$type": "color", "$value": "#1D4ED8" }
+    },
+    "red": {
+      "50": { "$type": "color", "$value": "#FEF2F2" },
+      "500": { "$type": "color", "$value": "#EF4444" },
+      "600": { "$type": "color", "$value": "#DC2626" }
+    },
+    "green": {
+      "50": { "$type": "color", "$value": "#F0FDF4" },
+      "500": { "$type": "color", "$value": "#22C55E" },
+      "600": { "$type": "color", "$value": "#16A34A" }
+    }
+  }
+}
