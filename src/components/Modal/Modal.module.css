@@ -76,7 +76,7 @@
 	align-items: center;
 	justify-content: space-between;
 	padding: var(--spacing-4) var(--spacing-6);
-	border-bottom: 1px solid var(--semantic-color-border-default);
+	border-bottom: 1px solid var(--color-steel-100);
 }
 
 .title {
@@ -169,8 +169,8 @@
 	justify-content: flex-end;
 	gap: var(--spacing-3);
 	padding: var(--spacing-4) var(--spacing-6);
-	border-top: 1px solid var(--semantic-color-border-default);
-	background-color: var(--semantic-color-bg-subtle);
+	border-top: 1px solid var(--color-steel-100);
+	background-color: rgb(249 250 251 / 0.5);
 }
 
 /* ─── Confirmation Modal Buttons ─── */
@@ -240,7 +240,7 @@
 }
 
 .confirmPrimary {
-	background-color: var(--semantic-color-brand-primary);
+	background-color: var(--color-steel-900);
 }
 
 .confirmDanger {
