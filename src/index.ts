@@ -7,6 +7,7 @@ export type {
 	BadgeProps,
 	ButtonProps,
 	CardProps,
+	CheckboxProps,
 	ConfirmationModalProps,
 	DropdownMenuItem,
 	DropdownMenuProps,
@@ -25,6 +26,7 @@ export type {
 	StatusDotProps,
 	TabItem,
 	TabsProps,
+	TextareaProps,
 } from "./components";
 export {
 	Accordion,
@@ -34,6 +36,7 @@ export {
 	BadgeCompact,
 	Button,
 	Card,
+	Checkbox,
 	ConfirmationModal,
 	DropdownMenu,
 	FilterChips,
@@ -47,4 +50,5 @@ export {
 	Spinner,
 	StatusDot,
 	Tabs,
+	Textarea,
 } from "./components";
