@@ -18,17 +18,32 @@ export function Card({
 }: CardProps) {
 	const classNames = [
 		styles.card,
-		styles[variant],
-		padding !== "none" && styles[`padding-${padding}`],
+		!hoverable && styles[variant],
 		hoverable && styles.hoverable,
 		className,
 	]
 		.filter(Boolean)
 		.join(" ");
 
+	const contentClass = [styles.cardContent, padding !== "none" && styles[`padding-${padding}`]]
+		.filter(Boolean)
+		.join(" ");
+
+	if (hoverable) {
+		return (
+			<div className={classNames} {...props}>
+				<div className={styles.gradientOverlay} />
+				<div className={styles.innerGlow} />
+				<div className={styles.ringHighlight} />
+				<div className={contentClass}>{children}</div>
+				<div className={styles.glowBorder} />
+			</div>
+		);
+	}
+
 	return (
 		<div className={classNames} {...props}>
-			{children}
+			<div className={contentClass}>{children}</div>
 		</div>
 	);
 }
