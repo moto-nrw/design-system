@@ -1,0 +1,38 @@
+.card {
+	border-radius: var(--radius-xl);
+	background-color: var(--semantic-color-bg-default);
+}
+
+/* ─── Variants ─── */
+
+.default {
+	border: 1px solid var(--semantic-color-border-default);
+}
+
+.elevated {
+	box-shadow:
+		0 4px 6px -1px rgb(0 0 0 / 0.1),
+		0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.glass {
+	background-color: rgb(255 255 255 / 0.8);
+	box-shadow:
+		0 10px 15px -3px rgb(0 0 0 / 0.1),
+		0 4px 6px -4px rgb(0 0 0 / 0.1);
+	backdrop-filter: blur(12px);
+}
+
+/* ─── Padding ─── */
+
+.padding-sm {
+	padding: var(--spacing-4);
+}
+
+.padding-md {
+	padding: var(--spacing-6);
+}
+
+.padding-lg {
+	padding: var(--spacing-10);
+}

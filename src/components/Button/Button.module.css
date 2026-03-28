@@ -1,4 +1,3 @@
-/* PLACEHOLDER: This is a reference example. Replace or adapt for your actual components. */
 .button {
 	display: inline-flex;
 	align-items: center;
@@ -12,12 +11,13 @@
 	transition:
 		background-color 150ms ease,
 		border-color 150ms ease,
-		color 150ms ease;
+		box-shadow 150ms ease,
+		color 150ms ease,
+		transform 150ms ease;
 }
 
 .button:focus-visible {
-	outline: 2px solid var(--semantic-color-brand-primary);
-	outline-offset: 2px;
+	outline: none;
 }
 
 .button:disabled {
@@ -25,26 +25,76 @@
 	cursor: not-allowed;
 }
 
-/* Variants */
+/* ─── Variants ─── */
 
 .primary {
-	background-color: var(--semantic-color-brand-primary);
+	background-color: var(--color-steel-900);
 	color: var(--semantic-color-text-inverse);
+	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
 }
 
 .primary:hover:not(:disabled) {
-	background-color: var(--semantic-color-brand-primary-hover);
+	background-color: var(--color-steel-700);
+	box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 
 .secondary {
-	background-color: var(--semantic-color-bg-default);
-	color: var(--semantic-color-text-default);
-	border-color: var(--semantic-color-border-default);
+	background-color: var(--color-steel-200);
+	color: var(--color-steel-800);
+	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
 }
 
 .secondary:hover:not(:disabled) {
-	background-color: var(--semantic-color-bg-subtle);
+	background-color: var(--color-steel-300);
+	box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.outline {
+	background-color: transparent;
+	color: var(--color-steel-700);
 	border-color: var(--semantic-color-border-strong);
+}
+
+.outline:hover:not(:disabled) {
+	background-color: var(--semantic-color-bg-subtle);
+	border-color: var(--color-steel-400);
+}
+
+.outline_danger {
+	background-color: var(--color-red-50);
+	color: var(--color-red-600);
+	border-color: var(--color-red-400);
+}
+
+.outline_danger:hover:not(:disabled) {
+	background-color: var(--semantic-color-feedback-error-light);
+	border-color: var(--color-red-500);
+}
+
+.danger {
+	background-color: var(--color-red-600);
+	color: var(--semantic-color-text-inverse);
+	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}
+
+.danger:hover:not(:disabled) {
+	background-color: var(--color-red-500);
+	box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.success {
+	background-color: var(--semantic-color-brand-primary);
+	color: var(--semantic-color-text-inverse);
+	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}
+
+.success:hover:not(:disabled) {
+	background-color: var(--semantic-color-brand-primary-hover);
+	box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.success:active:not(:disabled) {
+	transform: scale(0.95);
 }
 
 .ghost {
@@ -56,7 +106,7 @@
 	background-color: var(--semantic-color-bg-muted);
 }
 
-/* Sizes */
+/* ─── Sizes ─── */
 
 .sm {
 	padding: var(--spacing-1) var(--spacing-3);
@@ -65,13 +115,19 @@
 }
 
 .md {
-	padding: var(--spacing-2) var(--spacing-4);
+	padding: var(--spacing-2) var(--spacing-5);
 	font-size: var(--font-size-base);
 	line-height: var(--font-line-height-normal);
 }
 
 .lg {
-	padding: var(--spacing-3) var(--spacing-6);
+	padding: var(--spacing-3) var(--spacing-5);
 	font-size: var(--font-size-lg);
+	line-height: var(--font-line-height-normal);
+}
+
+.xl {
+	padding: var(--spacing-3) var(--spacing-6);
+	font-size: var(--font-size-xl);
 	line-height: var(--font-line-height-normal);
 }

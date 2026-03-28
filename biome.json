@@ -12,7 +12,11 @@
 		"rules": {
 			"recommended": true,
 			"a11y": {
-				"recommended": true
+				"recommended": true,
+				"noSvgWithoutTitle": "off"
+			},
+			"suspicious": {
+				"noShadowRestrictedNames": "off"
 			}
 		}
 	},
