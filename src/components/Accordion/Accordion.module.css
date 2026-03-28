@@ -1,0 +1,61 @@
+.accordion {
+	border-top: 1px solid var(--semantic-color-border-default);
+}
+
+.trigger {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 20px;
+	border: none;
+	background: none;
+	font-family: var(--font-family-sans);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	color: var(--semantic-color-text-secondary);
+	cursor: pointer;
+	transition: color 150ms ease;
+}
+
+.trigger:hover {
+	color: var(--semantic-color-text-default);
+}
+
+.label {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.badge {
+	display: inline-flex;
+}
+
+.chevron {
+	flex-shrink: 0;
+	color: var(--semantic-color-text-muted);
+	transition: transform 200ms ease;
+}
+
+.chevronOpen {
+	transform: rotate(180deg);
+}
+
+/* Grid-based collapse animation (matches Phoenix) */
+.content {
+	display: grid;
+	transition: grid-template-rows 200ms ease;
+}
+
+.contentOpen {
+	grid-template-rows: 1fr;
+}
+
+.contentClosed {
+	grid-template-rows: 0fr;
+}
+
+.contentInner {
+	overflow: hidden;
+}

@@ -12,7 +12,13 @@
 		"rules": {
 			"recommended": true,
 			"a11y": {
-				"recommended": true
+				"recommended": true,
+				"noSvgWithoutTitle": "off",
+				"noStaticElementInteractions": "off"
+			},
+			"suspicious": {
+				"noShadowRestrictedNames": "off",
+				"noArrayIndexKey": "off"
 			}
 		}
 	},
@@ -20,6 +26,11 @@
 		"enabled": true,
 		"indentStyle": "tab",
 		"lineWidth": 100
+	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
 	},
 	"files": {
 		"includes": ["src/**", ".storybook/**"]

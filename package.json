@@ -16,7 +16,8 @@
         "default": "./dist/index.cjs"
       }
     },
-    "./tokens": "./dist/tokens.css"
+    "./tokens": "./dist/tokens.css",
+    "./tailwind": "./dist/tailwind.css"
   },
   "files": [
     "dist"
@@ -25,14 +26,15 @@
     "**/*.css"
   ],
   "peerDependencies": {
+    "lucide-react": ">=0.400.0",
     "react": ">=18",
     "react-dom": ">=18"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "^0.6.0",
-    "@changesets/cli": "^2.30.0",
     "@arethetypeswrong/cli": "^0.18.2",
     "@biomejs/biome": "^2.4.9",
+    "@changesets/changelog-github": "^0.6.0",
+    "@changesets/cli": "^2.30.0",
     "@storybook/addon-a11y": "^10.3.3",
     "@storybook/react": "^10.3.3",
     "@storybook/react-vite": "^10.3.3",
@@ -54,9 +56,9 @@
     "vitest": "^4.1.2"
   },
   "scripts": {
-    "tokens": "style-dictionary build --config src/tokens/style-dictionary.config.ts",
-    "build": "pnpm tokens && tsup && cp src/tokens/build/variables.css dist/tokens.css",
-    "postbuild": "attw --pack --exclude-entrypoints ./tokens && publint",
+    "tokens": "NODE_OPTIONS='--experimental-strip-types' style-dictionary build --config src/tokens/style-dictionary.config.ts",
+    "build": "pnpm tokens && tsup && cp src/tokens/build/variables.css dist/tokens.css && cp src/tailwind-theme.css dist/tailwind.css",
+    "postbuild": "attw --pack --exclude-entrypoints ./tokens ./tailwind && publint",
     "dev": "tsup --watch",
     "test": "vitest",
     "test:run": "vitest run",

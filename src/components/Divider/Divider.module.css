@@ -1,0 +1,38 @@
+.divider {
+	border: none;
+	border-top: 1px solid var(--semantic-color-border-default);
+}
+
+.labeled {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.line {
+	flex: 1;
+	border: none;
+	border-top: 1px solid var(--semantic-color-border-default);
+}
+
+.label {
+	font-family: var(--font-family-sans);
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-medium);
+	color: var(--semantic-color-text-muted);
+	white-space: nowrap;
+}
+
+/* ─── Spacing ─── */
+
+.sm {
+	margin: var(--spacing-2) 0;
+}
+
+.md {
+	margin: var(--spacing-4) 0;
+}
+
+.lg {
+	margin: var(--spacing-8) 0;
+}
