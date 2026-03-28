@@ -1,5 +1,11 @@
 # @moto-nrw/design-system
 
+## 0.2.1
+
+### Patch Changes
+
+- Switch publishing to npmjs.com (no auth tokens needed for install)
+
 ## 0.2.0
 
 ### Minor Changes
