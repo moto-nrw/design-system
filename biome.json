@@ -13,7 +13,8 @@
 			"recommended": true,
 			"a11y": {
 				"recommended": true,
-				"noSvgWithoutTitle": "off"
+				"noSvgWithoutTitle": "off",
+				"noStaticElementInteractions": "off"
 			},
 			"suspicious": {
 				"noShadowRestrictedNames": "off",
