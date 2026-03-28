@@ -53,7 +53,7 @@
 /* ─── Solid Variants ─── */
 
 .solid-red {
-	background-color: var(--color-red-500);
+	background-color: var(--color-red-450);
 	color: var(--semantic-color-text-inverse);
 }
 
