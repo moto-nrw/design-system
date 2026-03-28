@@ -2,7 +2,7 @@
   <img src="docs/logo.png" alt="Ganztagshelden Logo" width="120" />
 </p>
 
-<h1 align="center">@moto-nrw/design-system</h1>
+<h1 align="center">Ganztagshelden - Design System</h1>
 
 <p align="center">
   Shared component library and design tokens for the Ganztagshelden ecosystem.<br/>
