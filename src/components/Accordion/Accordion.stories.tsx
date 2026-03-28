@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { Card } from "../Card/Card";
 import { Pill } from "../Pill/Pill";
 import { Accordion } from "./Accordion";
 
@@ -6,6 +7,15 @@ const meta: Meta<typeof Accordion> = {
 	component: Accordion,
 	title: "Components/Accordion",
 	tags: ["autodocs"],
+	decorators: [
+		(Story) => (
+			<div style={{ maxWidth: 600 }}>
+				<Card variant="default" padding="none">
+					<Story />
+				</Card>
+			</div>
+		),
+	],
 };
 
 export default meta;
@@ -17,7 +27,9 @@ export const Default: Story = {
 		label: "Kommentare (3)",
 		children: (
 			<div style={{ padding: "0 20px 16px" }}>
-				<p style={{ fontSize: "14px", color: "#64748b" }}>Erster Kommentar hier...</p>
+				<p style={{ fontSize: "14px", color: "var(--semantic-color-text-muted)" }}>
+					Erster Kommentar hier...
+				</p>
 			</div>
 		),
 	},
@@ -29,7 +41,9 @@ export const WithBadge: Story = {
 		badge: <Pill label="4 neu" color="red" size="sm" dot={false} />,
 		children: (
 			<div style={{ padding: "0 20px 16px" }}>
-				<p style={{ fontSize: "14px", color: "#64748b" }}>Kommentare werden hier angezeigt.</p>
+				<p style={{ fontSize: "14px", color: "var(--semantic-color-text-muted)" }}>
+					Kommentare werden hier angezeigt.
+				</p>
 			</div>
 		),
 	},
@@ -41,7 +55,7 @@ export const DefaultOpen: Story = {
 		defaultOpen: true,
 		children: (
 			<div style={{ padding: "0 20px 16px" }}>
-				<p style={{ fontSize: "14px", color: "#64748b" }}>
+				<p style={{ fontSize: "14px", color: "var(--semantic-color-text-muted)" }}>
 					Dieser Bereich ist standardmäßig offen.
 				</p>
 			</div>
@@ -51,17 +65,21 @@ export const DefaultOpen: Story = {
 
 export const Multiple: Story = {
 	render: () => (
-		<div style={{ border: "1px solid #e2e8f0", borderRadius: "16px", overflow: "hidden" }}>
+		<Card variant="default" padding="none">
 			<Accordion label="Kommentare (1)">
 				<div style={{ padding: "0 20px 16px" }}>
-					<p style={{ fontSize: "14px", color: "#64748b" }}>Ein Kommentar.</p>
+					<p style={{ fontSize: "14px", color: "var(--semantic-color-text-muted)" }}>
+						Ein Kommentar.
+					</p>
 				</div>
 			</Accordion>
 			<Accordion label="Änderungsverlauf">
 				<div style={{ padding: "0 20px 16px" }}>
-					<p style={{ fontSize: "14px", color: "#64748b" }}>Keine Änderungen.</p>
+					<p style={{ fontSize: "14px", color: "var(--semantic-color-text-muted)" }}>
+						Keine Änderungen.
+					</p>
 				</div>
 			</Accordion>
-		</div>
+		</Card>
 	),
 };
