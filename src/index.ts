@@ -32,7 +32,6 @@ export type {
 	ToastProps,
 	ToastType,
 	ToggleProps,
-	TooltipProps,
 } from "./components";
 export {
 	Accordion,
@@ -61,5 +60,4 @@ export {
 	Textarea,
 	Toast,
 	Toggle,
-	Tooltip,
 } from "./components";

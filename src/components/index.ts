@@ -46,5 +46,3 @@ export type { ToastProps, ToastType } from "./Toast";
 export { Toast } from "./Toast";
 export type { ToggleProps } from "./Toggle";
 export { Toggle } from "./Toggle";
-export type { TooltipProps } from "./Tooltip";
-export { Tooltip } from "./Tooltip";
