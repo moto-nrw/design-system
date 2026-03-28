@@ -14,6 +14,7 @@ const meta: Meta<typeof Card> = {
 			control: "select",
 			options: ["none", "sm", "md", "lg"],
 		},
+		hoverable: { control: "boolean" },
 	},
 	decorators: [
 		(Story) => (
@@ -47,6 +48,47 @@ export const Glass: Story = {
 		variant: "glass",
 		children: "Glass card with backdrop blur",
 	},
+};
+
+export const Hoverable: Story = {
+	args: {
+		variant: "default",
+		hoverable: true,
+		children: "Hover me — blue glow + lift effect",
+	},
+};
+
+export const HoverableExample: Story = {
+	render: () => (
+		<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "16px" }}>
+			{["Leo Fuchs", "Anna Meier", "Tom Müller"].map((name) => (
+				<Card key={name} hoverable>
+					<div style={{ display: "flex", justifyContent: "space-between", alignItems: "start" }}>
+						<div>
+							<strong style={{ color: "#1e293b" }}>{name.split(" ")[0]}</strong>
+							<span style={{ color: "#94a3b8", margin: "0 4px" }}>›</span>
+							<div style={{ fontWeight: 700, color: "#1e293b" }}>{name.split(" ")[1]}</div>
+							<div style={{ fontSize: "12px", color: "#94a3b8", marginTop: "8px" }}>
+								Tippen für mehr Infos
+							</div>
+						</div>
+						<span
+							style={{
+								background: "#ef4444",
+								color: "white",
+								padding: "6px 12px",
+								borderRadius: "9999px",
+								fontSize: "12px",
+								fontWeight: 700,
+							}}
+						>
+							● Zuhause
+						</span>
+					</div>
+				</Card>
+			))}
+		</div>
+	),
 };
 
 export const AllVariants: Story = {
