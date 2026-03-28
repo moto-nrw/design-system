@@ -10,7 +10,6 @@ concurrency:
 
 permissions:
   contents: write
-  packages: write
   pull-requests: write
 
 jobs:
@@ -28,8 +27,7 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
-          registry-url: https://npm.pkg.github.com
-          scope: "@moto-nrw"
+          registry-url: https://registry.npmjs.org
 
       - run: pnpm install --frozen-lockfile
 
@@ -46,4 +44,4 @@ jobs:
           commit: "chore: version package"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
