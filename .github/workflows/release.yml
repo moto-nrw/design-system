@@ -39,7 +39,7 @@ jobs:
         uses: changesets/action@v1
         with:
           publish: pnpm release
-          version: pnpm version
+          version: pnpm changeset version
           title: "chore: version package"
           commit: "chore: version package"
         env:
