@@ -21,6 +21,11 @@
 		"indentStyle": "tab",
 		"lineWidth": 100
 	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
+	},
 	"files": {
 		"includes": ["src/**", ".storybook/**"]
 	}

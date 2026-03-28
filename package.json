@@ -16,7 +16,8 @@
         "default": "./dist/index.cjs"
       }
     },
-    "./tokens": "./dist/tokens.css"
+    "./tokens": "./dist/tokens.css",
+    "./tailwind": "./dist/tailwind.css"
   },
   "files": [
     "dist"
@@ -55,8 +56,8 @@
   },
   "scripts": {
     "tokens": "NODE_OPTIONS='--experimental-strip-types' style-dictionary build --config src/tokens/style-dictionary.config.ts",
-    "build": "pnpm tokens && tsup && cp src/tokens/build/variables.css dist/tokens.css",
-    "postbuild": "attw --pack --exclude-entrypoints ./tokens && publint",
+    "build": "pnpm tokens && tsup && cp src/tokens/build/variables.css dist/tokens.css && cp src/tailwind-theme.css dist/tailwind.css",
+    "postbuild": "attw --pack --exclude-entrypoints ./tokens ./tailwind && publint",
     "dev": "tsup --watch",
     "test": "vitest",
     "test:run": "vitest run",

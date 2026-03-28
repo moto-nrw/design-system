@@ -2,9 +2,9 @@
 	"semantic": {
 		"color": {
 			"brand": {
-				"primary": { "$type": "color", "$value": "{color.sage.400}" },
-				"primary-hover": { "$type": "color", "$value": "{color.sage.600}" },
-				"primary-light": { "$type": "color", "$value": "{color.sage.50}" },
+				"primary": { "$type": "color", "$value": "{color.sage.500}" },
+				"primary-hover": { "$type": "color", "$value": "{color.sage.700}" },
+				"primary-light": { "$type": "color", "$value": "{color.sage.100}" },
 				"secondary": { "$type": "color", "$value": "{color.warm.400}" },
 				"secondary-hover": { "$type": "color", "$value": "{color.warm.500}" },
 				"secondary-light": { "$type": "color", "$value": "{color.warm.50}" }
@@ -25,7 +25,7 @@
 				"strong": { "$type": "color", "$value": "{color.steel.300}" }
 			},
 			"feedback": {
-				"success": { "$type": "color", "$value": "{color.sage.400}" },
+				"success": { "$type": "color", "$value": "{color.sage.500}" },
 				"warning": { "$type": "color", "$value": "{color.warm.400}" },
 				"error": { "$type": "color", "$value": "{color.red.500}" },
 				"error-light": { "$type": "color", "$value": "{color.red.50}" }

@@ -21,16 +21,11 @@
 			"900": { "$type": "color", "$value": "#0F172A" }
 		},
 		"sage": {
-			"50": { "$type": "color", "$value": "#D4E4C8" },
-			"100": { "$type": "color", "$value": "#C2D9B1" },
-			"200": { "$type": "color", "$value": "#A3C48A" },
-			"300": { "$type": "color", "$value": "#8FB574" },
-			"400": { "$type": "color", "$value": "#7BA05B" },
-			"500": { "$type": "color", "$value": "#6A8F4E" },
-			"600": { "$type": "color", "$value": "#577B42" },
-			"700": { "$type": "color", "$value": "#496839" },
-			"800": { "$type": "color", "$value": "#3B4F2A" },
-			"900": { "$type": "color", "$value": "#2D3D20" }
+			"100": { "$type": "color", "$value": "#D4E4C8" },
+			"300": { "$type": "color", "$value": "#A3C48A" },
+			"500": { "$type": "color", "$value": "#7BA05B" },
+			"700": { "$type": "color", "$value": "#577B42" },
+			"900": { "$type": "color", "$value": "#3B4F2A" }
 		},
 		"warm": {
 			"50": { "$type": "color", "$value": "#FEF3C7" },
