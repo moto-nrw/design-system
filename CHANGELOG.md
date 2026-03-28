@@ -1,5 +1,11 @@
 # @moto-nrw/design-system
 
+## 0.2.3
+
+### Patch Changes
+
+- [#19](https://github.com/moto-nrw/design-system/pull/19) [`2152063`](https://github.com/moto-nrw/design-system/commit/2152063beb1389ba8e63ba180ca1205e528075a2) Thanks [@fl0r14n28](https://github.com/fl0r14n28)! - Add `./styles` export for component CSS so consumers can import styles via `@import "@moto-nrw/design-system/styles"` without reaching into `dist/`
+
 ## 0.2.1
 
 ### Patch Changes
