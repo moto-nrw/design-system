@@ -73,7 +73,7 @@
 }
 
 .solid-purple {
-	background-color: #8b5cf6;
+	background-color: var(--color-steel-500);
 	color: var(--semantic-color-text-inverse);
 }
 
@@ -105,8 +105,8 @@
 }
 
 .subtle-purple {
-	background-color: #f3e8ff;
-	color: #7c3aed;
+	background-color: var(--semantic-color-bg-muted);
+	color: var(--color-steel-600);
 }
 
 .subtle-gray {
