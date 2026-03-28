@@ -14,6 +14,8 @@ export type { LogoProps } from "./Logo";
 export { Logo } from "./Logo";
 export type { ConfirmationModalProps, ModalProps } from "./Modal";
 export { ConfirmationModal, Modal } from "./Modal";
+export type { PillColor, PillProps } from "./Pill";
+export { Pill } from "./Pill";
 export type { SearchBarProps } from "./SearchBar";
 export { SearchBar } from "./SearchBar";
 export type { SelectOption, SelectProps } from "./Select";

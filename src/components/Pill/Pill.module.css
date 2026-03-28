@@ -1,0 +1,115 @@
+.pill {
+	display: inline-flex;
+	align-items: center;
+	border-radius: 9999px;
+	font-family: var(--font-family-sans);
+	font-weight: var(--font-weight-bold);
+	white-space: nowrap;
+}
+
+/* ─── Sizes ─── */
+
+.sm {
+	padding: 2px 8px;
+	font-size: 11px;
+}
+
+.md {
+	padding: 6px 12px;
+	font-size: var(--font-size-xs);
+}
+
+.lg {
+	padding: 8px 16px;
+	font-size: var(--font-size-sm);
+}
+
+/* ─── Dot ─── */
+
+.dot {
+	border-radius: 9999px;
+	background-color: currentColor;
+	opacity: 0.8;
+}
+
+.dot-sm {
+	width: 4px;
+	height: 4px;
+	margin-right: 6px;
+}
+
+.dot-md {
+	width: 6px;
+	height: 6px;
+	margin-right: 8px;
+}
+
+.dot-lg {
+	width: 8px;
+	height: 8px;
+	margin-right: 10px;
+}
+
+/* ─── Solid Variants ─── */
+
+.solid-red {
+	background-color: var(--color-red-500);
+	color: var(--semantic-color-text-inverse);
+}
+
+.solid-green {
+	background-color: var(--semantic-color-brand-primary);
+	color: var(--semantic-color-text-inverse);
+}
+
+.solid-blue {
+	background-color: var(--color-steel-600);
+	color: var(--semantic-color-text-inverse);
+}
+
+.solid-orange {
+	background-color: var(--color-warm-400);
+	color: var(--semantic-color-text-inverse);
+}
+
+.solid-purple {
+	background-color: #8b5cf6;
+	color: var(--semantic-color-text-inverse);
+}
+
+.solid-gray {
+	background-color: var(--color-steel-400);
+	color: var(--semantic-color-text-inverse);
+}
+
+/* ─── Subtle Variants ─── */
+
+.subtle-red {
+	background-color: var(--semantic-color-feedback-error-light);
+	color: var(--color-red-600);
+}
+
+.subtle-green {
+	background-color: var(--semantic-color-brand-primary-light);
+	color: var(--color-sage-700);
+}
+
+.subtle-blue {
+	background-color: var(--semantic-color-bg-muted);
+	color: var(--color-steel-700);
+}
+
+.subtle-orange {
+	background-color: var(--semantic-color-brand-secondary-light);
+	color: var(--color-warm-700);
+}
+
+.subtle-purple {
+	background-color: #f3e8ff;
+	color: #7c3aed;
+}
+
+.subtle-gray {
+	background-color: var(--semantic-color-bg-muted);
+	color: var(--semantic-color-text-secondary);
+}
