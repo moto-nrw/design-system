@@ -20,6 +20,8 @@ export type { SearchBarProps } from "./SearchBar";
 export { SearchBar } from "./SearchBar";
 export type { SelectOption, SelectProps } from "./Select";
 export { Select } from "./Select";
+export type { SkeletonProps } from "./Skeleton";
+export { Skeleton } from "./Skeleton";
 export type { SpinnerProps } from "./Spinner";
 export { Spinner } from "./Spinner";
 export type { StatusDotColor, StatusDotProps } from "./StatusDot";

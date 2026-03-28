@@ -16,7 +16,8 @@
 				"noSvgWithoutTitle": "off"
 			},
 			"suspicious": {
-				"noShadowRestrictedNames": "off"
+				"noShadowRestrictedNames": "off",
+				"noArrayIndexKey": "off"
 			}
 		}
 	},

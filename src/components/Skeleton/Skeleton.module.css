@@ -1,0 +1,25 @@
+.skeleton {
+	background: linear-gradient(
+		90deg,
+		var(--semantic-color-bg-muted) 25%,
+		var(--semantic-color-bg-subtle) 50%,
+		var(--semantic-color-bg-muted) 75%
+	);
+	background-size: 200% 100%;
+	animation: wave 1.5s ease-in-out infinite;
+}
+
+.group {
+	display: flex;
+	flex-direction: column;
+}
+
+@keyframes wave {
+	0% {
+		background-position: 200% 0;
+	}
+
+	100% {
+		background-position: -200% 0;
+	}
+}
