@@ -39,11 +39,11 @@
 	--color-warm-900: #451a03;
 
 	/* ─── Red / Terracotta (Error, Destructive) ─── */
-	--color-red-50: #fdf2ee;
-	--color-red-100: #faddcd;
-	--color-red-400: #d4735a;
-	--color-red-500: #c45e3a;
-	--color-red-600: #a34b2e;
+	--color-red-50: #fdf0ee;
+	--color-red-100: #fad5cd;
+	--color-red-400: #d4654e;
+	--color-red-500: #c45040;
+	--color-red-600: #a33d30;
 
 	/* ─── Semantic Colors ─── */
 	--color-brand-primary: #7ba05b;

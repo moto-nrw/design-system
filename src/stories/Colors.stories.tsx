@@ -109,11 +109,11 @@ export const ColorPalette: Story = {
 			</PaletteSection>
 
 			<PaletteSection title="Red / Terracotta — Error, Destructive">
-				<Swatch name="red-50" value="#FDF2EE" />
-				<Swatch name="red-100" value="#FADDCD" />
-				<Swatch name="red-400" value="#D4735A" textDark={false} />
-				<Swatch name="red-500" value="#C45E3A" textDark={false} />
-				<Swatch name="red-600" value="#A34B2E" textDark={false} />
+				<Swatch name="red-50" value="#FDF0EE" />
+				<Swatch name="red-100" value="#FAD5CD" />
+				<Swatch name="red-400" value="#D4654E" textDark={false} />
+				<Swatch name="red-500" value="#C45040" textDark={false} />
+				<Swatch name="red-600" value="#A33D30" textDark={false} />
 			</PaletteSection>
 
 			<PaletteSection title="Semantic Colors">
@@ -121,7 +121,7 @@ export const ColorPalette: Story = {
 				<Swatch name="brand-secondary" value="#F59E0B" />
 				<Swatch name="feedback-success" value="#7BA05B" textDark={false} />
 				<Swatch name="feedback-warning" value="#F59E0B" />
-				<Swatch name="feedback-error" value="#C45E3A" textDark={false} />
+				<Swatch name="feedback-error" value="#C45040" textDark={false} />
 			</PaletteSection>
 		</div>
 	),
