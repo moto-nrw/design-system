@@ -10,7 +10,9 @@
 </p>
 
 <p align="center">
-  <a href="https://moto-nrw.github.io/design-system/"><strong>📖 Storybook</strong></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://github.com/moto-nrw/design-system/actions"><img src="https://github.com/moto-nrw/design-system/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
+  <a href="https://www.npmjs.com/package/@moto-nrw/design-system"><img src="https://img.shields.io/npm/v/@moto-nrw/design-system" alt="npm" /></a>&nbsp;&nbsp;
+  <a href="https://moto-nrw.github.io/design-system/"><strong>📖 Storybook</strong></a>&nbsp;&nbsp;
+  <a href="https://github.com/moto-nrw/design-system/actions"><img src="https://github.com/moto-nrw/design-system/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
 </p>
 
 ---
@@ -49,19 +51,13 @@ pnpm storybook    # localhost:6006
 
 ## Usage in Consumer Repos
 
-### 1. Setup (one-time)
-
-Add `.npmrc` to the repo root:
-
-```
-@moto-nrw:registry=https://npm.pkg.github.com
-```
-
-Install:
+### 1. Install
 
 ```bash
 pnpm add @moto-nrw/design-system lucide-react
 ```
+
+No `.npmrc` needed — the package is on npmjs.com.
 
 ### 2. Import Tokens
 
@@ -103,19 +99,6 @@ import "@moto-nrw/design-system/tokens";                          // CSS variabl
 import "@moto-nrw/design-system/tailwind";                        // Tailwind v4 theme
 ```
 
-## CI Setup (GitHub Actions)
-
-```yaml
-- uses: actions/setup-node@v6
-  with:
-    registry-url: https://npm.pkg.github.com
-    scope: "@moto-nrw"
-
-- run: pnpm install
-  env:
-    NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-```
-
 ## Development
 
 | Command | Purpose |
@@ -132,7 +115,7 @@ import "@moto-nrw/design-system/tailwind";                        // Tailwind v4
 1. Make changes + `pnpm changeset` to describe what changed
 2. Commit and push to `development`
 3. CI creates a "Version Packages" PR (bumps version + CHANGELOG)
-4. Merge that PR — CI publishes to GitHub Packages
+4. Merge that PR — CI publishes to npmjs.com
 
 Consumer repos get auto-updated via Dependabot.
 
