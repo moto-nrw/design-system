@@ -1,6 +1,6 @@
 {
   "name": "@moto-nrw/design-system",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Ganztagshelden Design System - shared components and design tokens",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
