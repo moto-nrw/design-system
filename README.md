@@ -1,4 +1,4 @@
-# @moto-nrw/design-system
+# Ganztagshelden - Design System
 
 Shared component library and design tokens for the Ganztagshelden ecosystem. Published to GitHub Packages.
 
