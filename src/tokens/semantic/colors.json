@@ -1,28 +1,34 @@
 {
-	"_PLACEHOLDER": "REPLACE WITH YOUR BRAND SEMANTIC MAPPINGS. These are generic placeholder values.",
 	"semantic": {
 		"color": {
 			"brand": {
-				"primary": { "$type": "color", "$value": "{color.blue.600}" },
-				"primary-hover": { "$type": "color", "$value": "{color.blue.700}" }
+				"primary": { "$type": "color", "$value": "{color.sage.400}" },
+				"primary-hover": { "$type": "color", "$value": "{color.sage.600}" },
+				"primary-light": { "$type": "color", "$value": "{color.sage.50}" },
+				"secondary": { "$type": "color", "$value": "{color.warm.400}" },
+				"secondary-hover": { "$type": "color", "$value": "{color.warm.500}" },
+				"secondary-light": { "$type": "color", "$value": "{color.warm.50}" }
 			},
 			"bg": {
 				"default": { "$type": "color", "$value": "{color.white}" },
-				"subtle": { "$type": "color", "$value": "{color.gray.50}" },
-				"muted": { "$type": "color", "$value": "{color.gray.100}" }
+				"subtle": { "$type": "color", "$value": "{color.steel.50}" },
+				"muted": { "$type": "color", "$value": "{color.steel.100}" }
 			},
 			"text": {
-				"default": { "$type": "color", "$value": "{color.gray.900}" },
-				"muted": { "$type": "color", "$value": "{color.gray.500}" },
+				"default": { "$type": "color", "$value": "{color.steel.900}" },
+				"secondary": { "$type": "color", "$value": "{color.steel.600}" },
+				"muted": { "$type": "color", "$value": "{color.steel.500}" },
 				"inverse": { "$type": "color", "$value": "{color.white}" }
 			},
 			"border": {
-				"default": { "$type": "color", "$value": "{color.gray.200}" },
-				"strong": { "$type": "color", "$value": "{color.gray.300}" }
+				"default": { "$type": "color", "$value": "{color.steel.200}" },
+				"strong": { "$type": "color", "$value": "{color.steel.300}" }
 			},
 			"feedback": {
-				"success": { "$type": "color", "$value": "{color.green.500}" },
-				"error": { "$type": "color", "$value": "{color.red.500}" }
+				"success": { "$type": "color", "$value": "{color.sage.400}" },
+				"warning": { "$type": "color", "$value": "{color.warm.400}" },
+				"error": { "$type": "color", "$value": "{color.red.500}" },
+				"error-light": { "$type": "color", "$value": "{color.red.50}" }
 			}
 		}
 	}

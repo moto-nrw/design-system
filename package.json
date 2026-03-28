@@ -54,7 +54,7 @@
     "vitest": "^4.1.2"
   },
   "scripts": {
-    "tokens": "style-dictionary build --config src/tokens/style-dictionary.config.ts",
+    "tokens": "NODE_OPTIONS='--experimental-strip-types' style-dictionary build --config src/tokens/style-dictionary.config.ts",
     "build": "pnpm tokens && tsup && cp src/tokens/build/variables.css dist/tokens.css",
     "postbuild": "attw --pack --exclude-entrypoints ./tokens && publint",
     "dev": "tsup --watch",
