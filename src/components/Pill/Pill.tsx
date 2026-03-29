@@ -14,18 +14,18 @@ export interface PillProps extends HTMLAttributes<HTMLSpanElement> {
 const solidStyles: Record<PillColor, string> = {
 	red: "bg-red-450 text-[var(--semantic-color-text-inverse)]",
 	green: "bg-[var(--semantic-color-brand-primary)] text-[var(--semantic-color-text-inverse)]",
-	blue: "bg-steel-600 text-[var(--semantic-color-text-inverse)]",
+	blue: "bg-blue-500 text-[var(--semantic-color-text-inverse)]",
 	orange: "bg-warm-400 text-[var(--semantic-color-text-inverse)]",
-	purple: "bg-steel-500 text-[var(--semantic-color-text-inverse)]",
+	purple: "bg-purple-500 text-[var(--semantic-color-text-inverse)]",
 	gray: "bg-steel-400 text-[var(--semantic-color-text-inverse)]",
 };
 
 const subtleStyles: Record<PillColor, string> = {
 	red: "bg-[var(--semantic-color-feedback-error-light)] text-red-600",
 	green: "bg-[var(--semantic-color-brand-primary-light)] text-sage-700",
-	blue: "bg-[var(--semantic-color-bg-muted)] text-steel-700",
+	blue: "bg-blue-50 text-blue-700",
 	orange: "bg-[var(--semantic-color-brand-secondary-light)] text-warm-700",
-	purple: "bg-[var(--semantic-color-bg-muted)] text-steel-600",
+	purple: "bg-purple-50 text-purple-700",
 	gray: "bg-[var(--semantic-color-bg-muted)] text-[var(--semantic-color-text-secondary)]",
 };
 
