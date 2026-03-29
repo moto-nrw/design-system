@@ -26,14 +26,14 @@ export function Badge({
 	return (
 		<div
 			className={cn(
-				"inline-flex items-center rounded-full border border-[var(--semantic-color-border-default)] bg-[var(--semantic-color-bg-subtle)] font-sans",
+				"inline-flex items-center rounded-[var(--badge-radius)] border border-[var(--semantic-color-border-default)] bg-[var(--semantic-color-bg-subtle)] font-sans",
 				sizeStyles[size],
 				className,
 			)}
 			{...props}
 		>
 			{icon && <span className="flex text-[var(--semantic-color-text-muted)]">{icon}</span>}
-			<span className="text-sm font-semibold text-[var(--semantic-color-text-default)]">
+			<span className="text-[length:var(--badge-font-size)] font-[number:var(--badge-font-weight)] text-[var(--semantic-color-text-default)]">
 				{count}
 			</span>
 			{showLabel && label && (
@@ -52,13 +52,13 @@ export function BadgeCompact({
 	return (
 		<div
 			className={cn(
-				"inline-flex items-center rounded-full border border-[var(--semantic-color-border-default)] bg-[var(--semantic-color-bg-subtle)] font-sans px-2 py-1.5 gap-1.5",
+				"inline-flex items-center rounded-[var(--badge-radius)] border border-[var(--semantic-color-border-default)] bg-[var(--semantic-color-bg-subtle)] font-sans px-2 py-1.5 gap-1.5",
 				className,
 			)}
 			{...props}
 		>
 			{icon && <span className="flex text-[var(--semantic-color-text-muted)]">{icon}</span>}
-			<span className="text-sm font-semibold text-[var(--semantic-color-text-default)]">
+			<span className="text-[length:var(--badge-font-size)] font-[number:var(--badge-font-weight)] text-[var(--semantic-color-text-default)]">
 				{count}
 			</span>
 		</div>

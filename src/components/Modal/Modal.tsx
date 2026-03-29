@@ -67,7 +67,7 @@ export function Modal({ isOpen, onClose, title, children, footer }: ModalProps) 
 					to { opacity: 1; transform: translateY(0); }
 				}
 			`}</style>
-			<div className="fixed inset-0 z-[9999] flex items-center justify-center">
+			<div className="fixed inset-0 z-[var(--modal-z-index)] flex items-center justify-center">
 				<button
 					type="button"
 					onClick={handleClose}
@@ -79,7 +79,7 @@ export function Modal({ isOpen, onClose, title, children, footer }: ModalProps) 
 				/>
 				<div
 					className={cn(
-						"relative w-[calc(100%-2rem)] max-w-lg max-h-[calc(100vh-4rem)] mx-4 overflow-hidden rounded-xl border border-[var(--semantic-color-border-default)] bg-[linear-gradient(135deg,rgb(255_255_255/0.95)_0%,rgb(248_250_252/0.98)_100%)] backdrop-blur-[20px] shadow-[0_25px_50px_-12px_rgb(0_0_0/0.25),0_8px_16px_-8px_rgb(0_0_0/0.1)]",
+						"relative w-[calc(100%-2rem)] max-w-[var(--modal-max-width)] max-h-[calc(100vh-4rem)] mx-4 overflow-hidden rounded-[var(--modal-radius)] border border-[var(--semantic-color-border-default)] bg-[linear-gradient(135deg,rgb(255_255_255/0.95)_0%,rgb(248_250_252/0.98)_100%)] backdrop-blur-[20px] shadow-[var(--modal-shadow)]",
 						entering
 							? "animate-[modalEnter_250ms_ease-out_both]"
 							: "animate-[modalExit_200ms_ease-in_both]",
@@ -89,7 +89,7 @@ export function Modal({ isOpen, onClose, title, children, footer }: ModalProps) 
 					aria-label={title || undefined}
 				>
 					{title ? (
-						<div className="flex items-center justify-between px-6 py-4 border-b border-steel-100">
+						<div className="flex items-center justify-between px-[var(--modal-padding-x)] py-[var(--modal-padding-y)] border-b border-steel-100">
 							<h3 className="font-sans text-lg font-semibold text-[var(--semantic-color-text-default)] m-0 pr-4">
 								{title}
 							</h3>
@@ -103,7 +103,7 @@ export function Modal({ isOpen, onClose, title, children, footer }: ModalProps) 
 
 					<div
 						className={cn(
-							"px-6 py-4 overflow-y-auto max-h-[calc(100vh-8rem)] text-[var(--semantic-color-text-default)] font-sans leading-relaxed opacity-0",
+							"px-[var(--modal-padding-x)] py-[var(--modal-padding-y)] overflow-y-auto max-h-[calc(100vh-8rem)] text-[var(--semantic-color-text-default)] font-sans leading-relaxed opacity-0",
 							entering && "animate-[contentReveal_300ms_ease-out_50ms_both]",
 						)}
 					>
@@ -111,7 +111,7 @@ export function Modal({ isOpen, onClose, title, children, footer }: ModalProps) 
 					</div>
 
 					{footer && (
-						<div className="flex justify-end gap-3 px-6 py-4 border-t border-steel-100 bg-[rgb(249_250_251/0.5)]">
+						<div className="flex justify-end gap-3 px-[var(--modal-padding-x)] py-[var(--modal-padding-y)] border-t border-steel-100 bg-[rgb(249_250_251/0.5)]">
 							{footer}
 						</div>
 					)}

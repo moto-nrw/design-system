@@ -75,6 +75,22 @@
 	--radius-xl: 16px;
 	--radius-full: 9999px;
 
+	/* ─── Shadows ─── */
+	--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+	--shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+	--shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+	/* ─── Z-Index ─── */
+	--z-dropdown: 50;
+	--z-modal: 9999;
+	--z-toast: 99999;
+
+	/* ─── Transitions ─── */
+	--duration-fast: 150ms;
+	--duration-normal: 200ms;
+	--duration-slow: 300ms;
+
 	/* ─── Typography ─── */
 	--font-family-sans: "Inter", system-ui, -apple-system, sans-serif;
 	--font-family-mono: "JetBrains Mono", "Fira Code", monospace;
@@ -96,4 +112,71 @@
 	--line-height-tight: 1.25;
 	--line-height-normal: 1.5;
 	--line-height-relaxed: 1.75;
+}
+
+/* ─── Component Tokens ───
+ *
+ * Override these in your app's :root to customize components globally.
+ * Example (PyrePortal kiosk with large touch targets):
+ *
+ *   :root {
+ *     --button-radius: var(--radius-xl);
+ *     --button-md-padding-x: var(--spacing-6);
+ *     --button-md-padding-y: var(--spacing-4);
+ *     --button-md-font-size: var(--font-size-xl);
+ *     --card-radius: 32px;
+ *     --input-font-size: var(--font-size-lg);
+ *   }
+ */
+:root {
+	/* ─── Button ─── */
+	--button-radius: var(--radius-md);
+	--button-font-weight: var(--font-weight-medium);
+	--button-disabled-opacity: 0.5;
+	--button-transition-duration: var(--duration-fast);
+	--button-sm-padding-x: var(--spacing-3);
+	--button-sm-padding-y: var(--spacing-1);
+	--button-sm-font-size: var(--font-size-sm);
+	--button-md-padding-x: var(--spacing-5);
+	--button-md-padding-y: var(--spacing-2);
+	--button-md-font-size: var(--font-size-base);
+	--button-lg-padding-x: var(--spacing-5);
+	--button-lg-padding-y: var(--spacing-3);
+	--button-lg-font-size: var(--font-size-lg);
+	--button-xl-padding-x: var(--spacing-6);
+	--button-xl-padding-y: var(--spacing-3);
+	--button-xl-font-size: var(--font-size-xl);
+
+	/* ─── Card ─── */
+	--card-radius: 24px;
+	--card-padding: var(--spacing-6);
+	--card-shadow: 0 8px 30px rgb(0 0 0 / 0.12);
+	--card-shadow-hover: 0 12px 40px rgb(0 0 0 / 0.18);
+	--card-transition-duration: var(--duration-fast);
+
+	/* ─── Input ─── */
+	--input-radius: var(--radius-md);
+	--input-padding-x: var(--spacing-4);
+	--input-padding-y: var(--spacing-3);
+	--input-font-size: var(--font-size-base);
+
+	/* ─── Modal ─── */
+	--modal-radius: var(--radius-xl);
+	--modal-max-width: 32rem;
+	--modal-padding-x: var(--spacing-6);
+	--modal-padding-y: var(--spacing-4);
+	--modal-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25), 0 8px 16px -8px rgb(0 0 0 / 0.1);
+	--modal-z-index: var(--z-modal);
+
+	/* ─── Badge ─── */
+	--badge-radius: var(--radius-full);
+	--badge-font-size: var(--font-size-sm);
+	--badge-font-weight: var(--font-weight-semibold);
+
+	/* ─── Avatar ─── */
+	--avatar-size-sm: 32px;
+	--avatar-size-md: 44px;
+	--avatar-size-lg: 64px;
+	--avatar-radius: var(--radius-full);
+	--avatar-font-weight: var(--font-weight-semibold);
 }

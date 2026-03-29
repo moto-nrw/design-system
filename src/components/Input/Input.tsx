@@ -28,7 +28,7 @@ export function Input({ label, error, id, name, type = "text", className, ...pro
 					name={name}
 					type={resolvedType}
 					className={cn(
-						"block w-full border border-[var(--semantic-color-border-default)] rounded-md bg-[var(--semantic-color-bg-default)] px-4 py-3 font-sans text-base text-[var(--semantic-color-text-default)] shadow-sm transition-[border-color,box-shadow] duration-150",
+						"block w-full border border-[var(--semantic-color-border-default)] rounded-[var(--input-radius)] bg-[var(--semantic-color-bg-default)] px-[var(--input-padding-x)] py-[var(--input-padding-y)] font-sans text-[length:var(--input-font-size)] text-[var(--semantic-color-text-default)] shadow-[var(--shadow-sm)] transition-[border-color,box-shadow] duration-[var(--duration-fast)]",
 						"placeholder:text-[var(--semantic-color-text-muted)]",
 						"focus:outline-none focus:border-[var(--semantic-color-border-strong)]",
 						"disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-[var(--semantic-color-bg-subtle)]",

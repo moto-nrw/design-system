@@ -8,9 +8,9 @@ export interface AvatarProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const sizeStyles = {
-	sm: "size-8 text-sm shadow-sm outline-2 outline-white -outline-offset-2",
-	md: "size-11 text-base shadow-md",
-	lg: "size-16 text-xl shadow-md",
+	sm: "size-[var(--avatar-size-sm)] text-sm shadow-sm outline-2 outline-white -outline-offset-2",
+	md: "size-[var(--avatar-size-md)] text-base shadow-md",
+	lg: "size-[var(--avatar-size-lg)] text-xl shadow-md",
 } as const;
 
 function getInitials(name: string): string {
@@ -26,7 +26,7 @@ export function Avatar({ name, src, size = "sm", className, ...props }: AvatarPr
 	return (
 		<div
 			className={cn(
-				"relative flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-steel-800 to-steel-500 text-[var(--semantic-color-text-inverse)] font-sans font-semibold",
+				"relative flex shrink-0 items-center justify-center overflow-hidden rounded-[var(--avatar-radius)] bg-gradient-to-br from-steel-800 to-steel-500 text-[var(--semantic-color-text-inverse)] font-sans font-[number:var(--avatar-font-weight)]",
 				sizeStyles[size],
 				className,
 			)}
