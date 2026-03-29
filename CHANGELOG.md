@@ -1,5 +1,28 @@
 # @moto-nrw/design-system
 
+## 0.3.0
+
+### Minor Changes
+
+- [#24](https://github.com/moto-nrw/design-system/pull/24) [`f13c1cc`](https://github.com/moto-nrw/design-system/commit/f13c1cc0db9fa966ff5deddd627a060d83773b47) Thanks [@fl0r14n28](https://github.com/fl0r14n28)! - Add blue and purple color palettes to the design token system
+  - Added `blue` palette (50, 100, 500, 600, 700) based on Tailwind Blue
+  - Added `purple` palette (50, 100, 500, 600, 700) based on Tailwind Violet
+  - Updated Pill component to use real blue/purple colors instead of steel grays
+  - Registered new colors in the Tailwind v4 theme
+
+### Patch Changes
+
+- [#27](https://github.com/moto-nrw/design-system/pull/27) [`148a0f2`](https://github.com/moto-nrw/design-system/commit/148a0f29d70992ca6854e4fd8d4b340bb31c89af) Thanks [@fl0r14n28](https://github.com/fl0r14n28)! - Tighten dot-to-label spacing in Pill component
+
+  Reduced margin-right on the dot indicator from 6/8/10px to 4/6/8px
+  across sm/md/lg sizes for a more balanced visual weight.
+
+- [#26](https://github.com/moto-nrw/design-system/pull/26) [`bfeed29`](https://github.com/moto-nrw/design-system/commit/bfeed29a25f7260eb92979937b6571434d9d4a40) Thanks [@fl0r14n28](https://github.com/fl0r14n28)! - Use uniform colored border on Toast instead of thick left-only accent
+
+  Replaces `border-left: 3px solid` with `border-color` matching the toast
+  type's icon color, keeping the existing 1px border thickness uniform on
+  all sides.
+
 ## 0.2.3
 
 ### Patch Changes
