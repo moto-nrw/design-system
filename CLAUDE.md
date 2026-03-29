@@ -6,8 +6,8 @@ This file gives coding agents a current map of the repository so edits stay alig
 
 `@moto-nrw/design-system` is the shared React component library and token package for the Ganztagshelden ecosystem.
 
-- Published to npmjs.com
-- Consumed by apps like project-phoenix, PyrePortal, the website, and other frontend repos
+- Published to npmjs.com as a PUBLIC package
+- Consumed by apps like project-phoenix, PyrePortal, the website, and other frontend repos in moto-nrw GitHub Organsisation
 - Built as a React component package plus CSS entrypoints for tokens and Tailwind v4 integration
 
 ## Day-To-Day Commands
@@ -154,6 +154,9 @@ Notes:
 - Public exports must be added to both `src/components/index.ts` and `src/index.ts`
 
 ## Working Conventions
+- no hardcoded variables or values
+- rg to check everything is clean
+- it should be deployable and usable easily for our consumers
 
 ### Styling rules
 
