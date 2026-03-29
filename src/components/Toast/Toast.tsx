@@ -103,49 +103,37 @@ export function Toast({ type = "info", message, duration = 4000, onClose }: Toas
 	}, [duration, dismiss]);
 
 	const content = (
-		<>
-			<style>{`
-				@keyframes toastSlideIn {
-					from { opacity: 0; transform: translateX(100%); }
-					to { opacity: 1; transform: translateX(0); }
-				}
-				@keyframes toastSlideOut {
-					from { opacity: 1; transform: translateX(0); }
-					to { opacity: 0; transform: translateX(100%); }
-				}
-			`}</style>
-			<div className="fixed top-6 right-6 z-[99999] pointer-events-none">
-				<div
-					className={cn(
-						"flex items-center gap-2.5 px-4 py-3 rounded-lg bg-[var(--semantic-color-bg-default)] border border-[var(--semantic-color-border-default)] shadow-[0_10px_25px_-5px_rgb(0_0_0/0.15)] font-sans text-sm text-[var(--semantic-color-text-default)] pointer-events-auto max-w-[400px]",
-						typeStyles[type],
-						isVisible && !isExiting
-							? "animate-[toastSlideIn_200ms_ease-out_both]"
-							: "animate-[toastSlideOut_200ms_ease-in_both]",
-					)}
+		<div className="fixed top-6 right-6 z-[99999] pointer-events-none">
+			<div
+				className={cn(
+					"flex items-center gap-2.5 px-4 py-3 rounded-lg bg-[var(--semantic-color-bg-default)] border border-[var(--semantic-color-border-default)] shadow-[0_10px_25px_-5px_rgb(0_0_0/0.15)] font-sans text-sm text-[var(--semantic-color-text-default)] pointer-events-auto max-w-[400px]",
+					typeStyles[type],
+					isVisible && !isExiting
+						? "animate-[toastSlideIn_200ms_ease-out_both]"
+						: "animate-[toastSlideOut_200ms_ease-in_both]",
+				)}
+			>
+				<span className={cn("flex shrink-0", iconColors[type])}>{icons[type]}</span>
+				<span className="flex-1 leading-[1.4]">{message}</span>
+				<button
+					type="button"
+					onClick={dismiss}
+					className="flex shrink-0 p-0.5 border-none rounded-sm bg-transparent text-[var(--semantic-color-text-muted)] cursor-pointer transition-colors duration-150 hover:text-[var(--semantic-color-text-default)]"
+					aria-label="Schließen"
 				>
-					<span className={cn("flex shrink-0", iconColors[type])}>{icons[type]}</span>
-					<span className="flex-1 leading-[1.4]">{message}</span>
-					<button
-						type="button"
-						onClick={dismiss}
-						className="flex shrink-0 p-0.5 border-none rounded-sm bg-transparent text-[var(--semantic-color-text-muted)] cursor-pointer transition-colors duration-150 hover:text-[var(--semantic-color-text-default)]"
-						aria-label="Schließen"
+					<svg
+						width="14"
+						height="14"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+						strokeWidth={2}
 					>
-						<svg
-							width="14"
-							height="14"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-							strokeWidth={2}
-						>
-							<path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-						</svg>
-					</button>
-				</div>
+						<path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+					</svg>
+				</button>
 			</div>
-		</>
+		</div>
 	);
 
 	if (typeof document !== "undefined") {

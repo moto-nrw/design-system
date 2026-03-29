@@ -39,32 +39,22 @@ export function Skeleton({
 		...style,
 	};
 
-	const keyframes = (
-		<style>{`@keyframes wave{0%{background-position:200% 0}100%{background-position:-200% 0}}`}</style>
-	);
-
 	if (count === 1) {
 		return (
-			<>
-				{keyframes}
-				<div
-					className={cn(skeletonClass, className)}
-					style={itemStyle}
-					aria-hidden="true"
-					{...props}
-				/>
-			</>
+			<div
+				className={cn(skeletonClass, className)}
+				style={itemStyle}
+				aria-hidden="true"
+				{...props}
+			/>
 		);
 	}
 
 	return (
-		<>
-			{keyframes}
-			<div className="flex flex-col" style={{ gap }} aria-hidden="true" {...props}>
-				{Array.from({ length: count }, (_, i) => (
-					<div key={`skeleton-${i}`} className={cn(skeletonClass, className)} style={itemStyle} />
-				))}
-			</div>
-		</>
+		<div className="flex flex-col" style={{ gap }} aria-hidden="true" {...props}>
+			{Array.from({ length: count }, (_, i) => (
+				<div key={`skeleton-${i}`} className={cn(skeletonClass, className)} style={itemStyle} />
+			))}
+		</div>
 	);
 }

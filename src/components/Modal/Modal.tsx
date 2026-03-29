@@ -52,72 +52,56 @@ export function Modal({ isOpen, onClose, title, children, footer }: ModalProps) 
 	const entering = isAnimating && !isExiting;
 
 	const modalContent = (
-		<>
-			<style>{`
-				@keyframes modalEnter {
-					from { opacity: 0; transform: scale(0.95) translateY(8px); }
-					to { opacity: 1; transform: scale(1) translateY(0); }
-				}
-				@keyframes modalExit {
-					from { opacity: 1; transform: scale(1) translateY(0); }
-					to { opacity: 0; transform: scale(0.95) translateY(8px); }
-				}
-				@keyframes contentReveal {
-					from { opacity: 0; transform: translateY(4px); }
-					to { opacity: 1; transform: translateY(0); }
-				}
-			`}</style>
-			<div className="fixed inset-0 z-[var(--modal-z-index)] flex items-center justify-center">
-				<button
-					type="button"
-					onClick={handleClose}
-					className={cn(
-						"absolute inset-0 border-none p-0 cursor-default transition-colors duration-150",
-						entering ? "bg-black/40" : "bg-transparent",
-					)}
-					aria-label="Hintergrund - Klicken zum Schließen"
-				/>
+		<div className="fixed inset-0 z-[var(--modal-z-index)] flex items-center justify-center">
+			<button
+				type="button"
+				onClick={handleClose}
+				className={cn(
+					"absolute inset-0 border-none p-0 cursor-default transition-colors duration-150",
+					entering ? "bg-black/40" : "bg-transparent",
+				)}
+				aria-label="Hintergrund - Klicken zum Schließen"
+			/>
+			<div
+				className={cn(
+					"relative w-[calc(100%-2rem)] max-w-[var(--modal-max-width)] max-h-[calc(100vh-4rem)] mx-4 overflow-hidden rounded-[var(--modal-radius)] border border-[var(--semantic-color-border-default)] bg-[linear-gradient(135deg,rgb(255_255_255/0.95)_0%,rgb(248_250_252/0.98)_100%)] backdrop-blur-[20px] shadow-[var(--modal-shadow)]",
+					entering
+						? "animate-[modalEnter_250ms_ease-out_both]"
+						: "animate-[modalExit_200ms_ease-in_both]",
+				)}
+				role="dialog"
+				aria-modal="true"
+				aria-label={title || undefined}
+			>
+				{title ? (
+					<div className="flex items-center justify-between px-[var(--modal-padding-x)] py-[var(--modal-padding-y)] border-b border-steel-100">
+						<h3 className="font-sans text-lg font-semibold text-[var(--semantic-color-text-default)] m-0 pr-4">
+							{title}
+						</h3>
+						<CloseButton onClick={handleClose} />
+					</div>
+				) : (
+					<div className="absolute top-4 right-4 z-10">
+						<CloseButton onClick={handleClose} />
+					</div>
+				)}
+
 				<div
 					className={cn(
-						"relative w-[calc(100%-2rem)] max-w-[var(--modal-max-width)] max-h-[calc(100vh-4rem)] mx-4 overflow-hidden rounded-[var(--modal-radius)] border border-[var(--semantic-color-border-default)] bg-[linear-gradient(135deg,rgb(255_255_255/0.95)_0%,rgb(248_250_252/0.98)_100%)] backdrop-blur-[20px] shadow-[var(--modal-shadow)]",
-						entering
-							? "animate-[modalEnter_250ms_ease-out_both]"
-							: "animate-[modalExit_200ms_ease-in_both]",
+						"px-[var(--modal-padding-x)] py-[var(--modal-padding-y)] overflow-y-auto max-h-[calc(100vh-8rem)] text-[var(--semantic-color-text-default)] font-sans leading-relaxed opacity-0",
+						entering && "animate-[contentReveal_300ms_ease-out_50ms_both]",
 					)}
-					role="dialog"
-					aria-modal="true"
-					aria-label={title || undefined}
 				>
-					{title ? (
-						<div className="flex items-center justify-between px-[var(--modal-padding-x)] py-[var(--modal-padding-y)] border-b border-steel-100">
-							<h3 className="font-sans text-lg font-semibold text-[var(--semantic-color-text-default)] m-0 pr-4">
-								{title}
-							</h3>
-							<CloseButton onClick={handleClose} />
-						</div>
-					) : (
-						<div className="absolute top-4 right-4 z-10">
-							<CloseButton onClick={handleClose} />
-						</div>
-					)}
-
-					<div
-						className={cn(
-							"px-[var(--modal-padding-x)] py-[var(--modal-padding-y)] overflow-y-auto max-h-[calc(100vh-8rem)] text-[var(--semantic-color-text-default)] font-sans leading-relaxed opacity-0",
-							entering && "animate-[contentReveal_300ms_ease-out_50ms_both]",
-						)}
-					>
-						{children}
-					</div>
-
-					{footer && (
-						<div className="flex justify-end gap-3 px-[var(--modal-padding-x)] py-[var(--modal-padding-y)] border-t border-steel-100 bg-[rgb(249_250_251/0.5)]">
-							{footer}
-						</div>
-					)}
+					{children}
 				</div>
+
+				{footer && (
+					<div className="flex justify-end gap-3 px-[var(--modal-padding-x)] py-[var(--modal-padding-y)] border-t border-steel-100 bg-[rgb(249_250_251/0.5)]">
+						{footer}
+					</div>
+				)}
 			</div>
-		</>
+		</div>
 	);
 
 	if (typeof document !== "undefined") {
