@@ -83,7 +83,7 @@
 /* ─── Types ─── */
 
 .success {
-	border-left: 3px solid var(--semantic-color-brand-primary);
+	border-color: var(--semantic-color-brand-primary);
 }
 
 .success .icon {
@@ -91,7 +91,7 @@
 }
 
 .error {
-	border-left: 3px solid var(--color-red-500);
+	border-color: var(--color-red-500);
 }
 
 .error .icon {
@@ -99,7 +99,7 @@
 }
 
 .warning {
-	border-left: 3px solid var(--color-warm-400);
+	border-color: var(--color-warm-400);
 }
 
 .warning .icon {
@@ -107,7 +107,7 @@
 }
 
 .info {
-	border-left: 3px solid var(--color-steel-400);
+	border-color: var(--color-steel-400);
 }
 
 .info .icon {
