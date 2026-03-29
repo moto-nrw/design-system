@@ -25,7 +25,7 @@ export function Skeleton({
 	...props
 }: SkeletonProps) {
 	const resolvedRadius = circle
-		? "9999px"
+		? "var(--radius-full)"
 		: borderRadius != null
 			? typeof borderRadius === "number"
 				? `${borderRadius}px`

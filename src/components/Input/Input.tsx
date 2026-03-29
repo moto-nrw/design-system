@@ -33,7 +33,7 @@ export function Input({ label, error, id, name, type = "text", className, ...pro
 						"focus:outline-none focus:border-[var(--semantic-color-border-strong)]",
 						"disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-[var(--semantic-color-bg-subtle)]",
 						isPassword && "pr-10",
-						error && "border-red-500",
+						error && "border-[var(--semantic-color-feedback-error)]",
 						className,
 					)}
 					aria-invalid={error ? "true" : undefined}
@@ -77,7 +77,10 @@ export function Input({ label, error, id, name, type = "text", className, ...pro
 				)}
 			</div>
 			{error && (
-				<p id={`${inputId}-error`} className="font-sans text-xs text-red-600 m-0">
+				<p
+					id={`${inputId}-error`}
+					className="font-sans text-xs text-[var(--semantic-color-feedback-error-text)] m-0"
+				>
 					{error}
 				</p>
 			)}

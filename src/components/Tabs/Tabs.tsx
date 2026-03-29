@@ -98,7 +98,7 @@ export function Tabs({ items, activeTab, onTabChange, className }: TabsProps) {
 
 			<div className={cn("relative", showMobileDropdown && "hidden md:block")}>
 				{canScrollLeft && (
-					<div className="absolute top-0 bottom-0 left-0 z-10 w-6 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+					<div className="absolute top-0 bottom-0 left-0 z-10 w-6 bg-gradient-to-r from-[var(--semantic-color-bg-default)] to-transparent pointer-events-none" />
 				)}
 
 				<div
@@ -117,7 +117,7 @@ export function Tabs({ items, activeTab, onTabChange, className }: TabsProps) {
 								"relative pb-3 border-none bg-transparent font-sans text-sm font-medium cursor-pointer transition-colors duration-150 whitespace-nowrap",
 								activeTab === tab.id
 									? "text-[var(--semantic-color-text-default)] font-semibold"
-									: "text-[var(--semantic-color-text-muted)] hover:text-steel-700",
+									: "text-[var(--semantic-color-text-muted)] hover:text-[var(--semantic-color-text-tertiary)]",
 							)}
 						>
 							<span className="whitespace-nowrap">{tab.label}</span>
@@ -125,7 +125,7 @@ export function Tabs({ items, activeTab, onTabChange, className }: TabsProps) {
 					))}
 
 					<div
-						className="absolute bottom-0 h-[var(--tabs-indicator-height)] rounded-full bg-steel-900 transition-[left,width] duration-300 ease-out"
+						className="absolute bottom-0 h-[var(--tabs-indicator-height)] rounded-full bg-[var(--semantic-color-text-default)] transition-[left,width] duration-300 ease-out"
 						style={{
 							left: `${indicatorStyle.left}px`,
 							width: `${indicatorStyle.width}px`,
@@ -134,7 +134,7 @@ export function Tabs({ items, activeTab, onTabChange, className }: TabsProps) {
 				</div>
 
 				{canScrollRight && (
-					<div className="absolute top-0 right-0 bottom-0 z-10 w-6 bg-gradient-to-l from-white to-transparent pointer-events-none" />
+					<div className="absolute top-0 right-0 bottom-0 z-10 w-6 bg-gradient-to-l from-[var(--semantic-color-bg-default)] to-transparent pointer-events-none" />
 				)}
 			</div>
 		</div>

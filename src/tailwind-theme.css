@@ -167,6 +167,8 @@
 	--card-shadow: 0 8px 30px rgb(0 0 0 / 0.12);
 	--card-shadow-hover: 0 12px 40px rgb(0 0 0 / 0.18);
 	--card-transition-duration: var(--duration-fast);
+	--card-glass-border: rgb(255 255 255 / 0.2);
+	--card-glass-border-hover: rgb(148 163 184 / 0.4);
 
 	/* ─── Input ─── */
 	--input-radius: var(--radius-md);
@@ -181,6 +183,8 @@
 	--modal-padding-y: var(--spacing-4);
 	--modal-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25), 0 8px 16px -8px rgb(0 0 0 / 0.1);
 	--modal-z-index: var(--z-modal);
+	--modal-bg: linear-gradient(135deg, rgb(255 255 255 / 0.95) 0%, rgb(248 250 252 / 0.98) 100%);
+	--modal-footer-bg: rgb(249 250 251 / 0.5);
 
 	/* ─── Badge ─── */
 	--badge-radius: var(--radius-full);

@@ -38,7 +38,7 @@ export function Toggle({ label, size = "md", id, name, className, ...props }: To
 			/>
 			<div
 				className={cn(
-					"relative rounded-full bg-steel-300 transition-colors duration-150 peer-checked:bg-[var(--semantic-color-brand-primary)] peer-disabled:opacity-50 peer-disabled:cursor-not-allowed",
+					"relative rounded-full bg-[var(--semantic-color-border-strong)] transition-colors duration-150 peer-checked:bg-[var(--semantic-color-brand-primary)] peer-disabled:opacity-50 peer-disabled:cursor-not-allowed",
 					trackSizes[size],
 					thumbTranslate[size],
 				)}

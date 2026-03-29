@@ -11,10 +11,10 @@ export interface StatusDotProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const colorStyles: Record<StatusDotColor, string> = {
-	green: "bg-[var(--semantic-color-brand-primary)]",
-	yellow: "bg-warm-400",
-	red: "bg-red-500",
-	gray: "bg-steel-400",
+	green: "bg-[var(--semantic-color-feedback-success)]",
+	yellow: "bg-[var(--semantic-color-feedback-warning)]",
+	red: "bg-[var(--semantic-color-feedback-error)]",
+	gray: "bg-[var(--semantic-color-border-muted)]",
 };
 
 const sizeStyles = {

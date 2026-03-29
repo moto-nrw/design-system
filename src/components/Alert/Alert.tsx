@@ -9,10 +9,13 @@ export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const typeStyles: Record<AlertType, string> = {
-	error: "bg-[var(--semantic-color-feedback-error-light)] text-red-600 border-red-400",
-	success: "bg-[var(--semantic-color-brand-primary-light)] text-sage-700 border-sage-300",
-	warning: "bg-[var(--semantic-color-brand-secondary-light)] text-warm-700 border-warm-300",
-	info: "bg-[var(--semantic-color-bg-muted)] text-steel-700 border-steel-300",
+	error:
+		"bg-[var(--semantic-color-feedback-error-light)] text-[var(--semantic-color-feedback-error-text)] border-[var(--semantic-color-feedback-error-border)]",
+	success:
+		"bg-[var(--semantic-color-feedback-success-light)] text-[var(--semantic-color-feedback-success-text)] border-[var(--semantic-color-feedback-success-border)]",
+	warning:
+		"bg-[var(--semantic-color-feedback-warning-light)] text-[var(--semantic-color-feedback-warning-text)] border-[var(--semantic-color-feedback-warning-border)]",
+	info: "bg-[var(--semantic-color-bg-muted)] text-[var(--semantic-color-text-tertiary)] border-[var(--semantic-color-border-strong)]",
 };
 
 const icons: Record<AlertType, ReactNode> = {

@@ -13,17 +13,19 @@ export interface ToastProps {
 
 const typeStyles: Record<ToastType, string> = {
 	success:
-		"border-l-[length:var(--toast-border-width)] border-l-[var(--semantic-color-brand-primary)]",
-	error: "border-l-[length:var(--toast-border-width)] border-l-red-500",
-	warning: "border-l-[length:var(--toast-border-width)] border-l-warm-400",
-	info: "border-l-[length:var(--toast-border-width)] border-l-steel-400",
+		"border-l-[length:var(--toast-border-width)] border-l-[var(--semantic-color-feedback-success)]",
+	error:
+		"border-l-[length:var(--toast-border-width)] border-l-[var(--semantic-color-feedback-error)]",
+	warning:
+		"border-l-[length:var(--toast-border-width)] border-l-[var(--semantic-color-feedback-warning)]",
+	info: "border-l-[length:var(--toast-border-width)] border-l-[var(--semantic-color-border-muted)]",
 };
 
 const iconColors: Record<ToastType, string> = {
-	success: "text-[var(--semantic-color-brand-primary)]",
-	error: "text-red-500",
-	warning: "text-warm-400",
-	info: "text-steel-400",
+	success: "text-[var(--semantic-color-feedback-success)]",
+	error: "text-[var(--semantic-color-feedback-error)]",
+	warning: "text-[var(--semantic-color-feedback-warning)]",
+	info: "text-[var(--semantic-color-border-muted)]",
 };
 
 const icons: Record<ToastType, ReactNode> = {

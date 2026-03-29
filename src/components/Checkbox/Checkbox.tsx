@@ -20,7 +20,7 @@ export function Checkbox({ label, id, name, className, ...props }: CheckboxProps
 				type="checkbox"
 				id={inputId}
 				name={name}
-				className="size-[var(--checkbox-size)] rounded-sm border border-[var(--semantic-color-border-strong)] accent-steel-900 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+				className="size-[var(--checkbox-size)] rounded-sm border border-[var(--semantic-color-border-strong)] accent-[var(--semantic-color-text-default)] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
 				{...props}
 			/>
 			<span className="font-sans text-sm text-[var(--semantic-color-text-default)] select-none">

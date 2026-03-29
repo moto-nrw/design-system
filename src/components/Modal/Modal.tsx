@@ -64,7 +64,7 @@ export function Modal({ isOpen, onClose, title, children, footer }: ModalProps) 
 			/>
 			<div
 				className={cn(
-					"relative w-[calc(100%-2rem)] max-w-[var(--modal-max-width)] max-h-[calc(100vh-4rem)] mx-4 overflow-hidden rounded-[var(--modal-radius)] border border-[var(--semantic-color-border-default)] bg-[linear-gradient(135deg,rgb(255_255_255/0.95)_0%,rgb(248_250_252/0.98)_100%)] backdrop-blur-[20px] shadow-[var(--modal-shadow)]",
+					"relative w-[calc(100%-2rem)] max-w-[var(--modal-max-width)] max-h-[calc(100vh-4rem)] mx-4 overflow-hidden rounded-[var(--modal-radius)] border border-[var(--semantic-color-border-default)] bg-[image:var(--modal-bg)] backdrop-blur-[20px] shadow-[var(--modal-shadow)]",
 					entering
 						? "animate-[modalEnter_250ms_ease-out_both]"
 						: "animate-[modalExit_200ms_ease-in_both]",
@@ -74,7 +74,7 @@ export function Modal({ isOpen, onClose, title, children, footer }: ModalProps) 
 				aria-label={title || undefined}
 			>
 				{title ? (
-					<div className="flex items-center justify-between px-[var(--modal-padding-x)] py-[var(--modal-padding-y)] border-b border-steel-100">
+					<div className="flex items-center justify-between px-[var(--modal-padding-x)] py-[var(--modal-padding-y)] border-b border-[var(--semantic-color-border-subtle)]">
 						<h3 className="font-sans text-lg font-semibold text-[var(--semantic-color-text-default)] m-0 pr-4">
 							{title}
 						</h3>
@@ -96,7 +96,7 @@ export function Modal({ isOpen, onClose, title, children, footer }: ModalProps) 
 				</div>
 
 				{footer && (
-					<div className="flex justify-end gap-3 px-[var(--modal-padding-x)] py-[var(--modal-padding-y)] border-t border-steel-100 bg-[rgb(249_250_251/0.5)]">
+					<div className="flex justify-end gap-3 px-[var(--modal-padding-x)] py-[var(--modal-padding-y)] border-t border-[var(--semantic-color-border-subtle)] bg-[var(--modal-footer-bg)]">
 						{footer}
 					</div>
 				)}
@@ -141,7 +141,7 @@ export function ConfirmationModal({
 			<button
 				type="button"
 				onClick={onClose}
-				className="flex-1 px-4 py-2 border border-[var(--semantic-color-border-strong)] rounded-md bg-transparent font-sans text-sm font-medium text-steel-700 whitespace-nowrap cursor-pointer transition-all duration-150 hover:bg-[var(--semantic-color-bg-subtle)] hover:border-steel-400 hover:scale-105 hover:shadow-md active:scale-100"
+				className="flex-1 px-4 py-2 border border-[var(--semantic-color-border-strong)] rounded-md bg-transparent font-sans text-sm font-medium text-[var(--semantic-color-text-tertiary)] whitespace-nowrap cursor-pointer transition-all duration-150 hover:bg-[var(--semantic-color-bg-subtle)] hover:border-[var(--semantic-color-border-muted)] hover:scale-105 hover:shadow-md active:scale-100"
 			>
 				{cancelText}
 			</button>
@@ -151,7 +151,9 @@ export function ConfirmationModal({
 				disabled={isConfirmLoading || isConfirmDisabled}
 				className={cn(
 					"flex-1 px-4 py-2 border-none rounded-md font-sans text-sm font-medium text-[var(--semantic-color-text-inverse)] whitespace-nowrap cursor-pointer transition-all duration-150 hover:enabled:scale-105 hover:enabled:shadow-lg active:enabled:scale-100 disabled:opacity-50 disabled:cursor-not-allowed",
-					variant === "danger" ? "bg-red-600" : "bg-steel-900",
+					variant === "danger"
+						? "bg-[var(--semantic-color-feedback-error-text)]"
+						: "bg-[var(--semantic-color-bg-inverse)]",
 				)}
 			>
 				{isConfirmLoading ? (

@@ -28,7 +28,7 @@ export function Textarea({ label, error, id, name, rows = 4, className, ...props
 					"placeholder:text-[var(--semantic-color-text-muted)]",
 					"focus:outline-none focus:border-[var(--semantic-color-border-strong)]",
 					"disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-[var(--semantic-color-bg-subtle)]",
-					error && "border-red-500",
+					error && "border-[var(--semantic-color-feedback-error)]",
 					className,
 				)}
 				aria-invalid={error ? "true" : undefined}
@@ -36,7 +36,10 @@ export function Textarea({ label, error, id, name, rows = 4, className, ...props
 				{...props}
 			/>
 			{error && (
-				<p id={`${textareaId}-error`} className="font-sans text-xs text-red-600 m-0">
+				<p
+					id={`${textareaId}-error`}
+					className="font-sans text-xs text-[var(--semantic-color-feedback-error-text)] m-0"
+				>
 					{error}
 				</p>
 			)}

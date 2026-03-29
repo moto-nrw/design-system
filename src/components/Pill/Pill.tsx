@@ -12,25 +12,28 @@ export interface PillProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 const solidStyles: Record<PillColor, string> = {
-	red: "bg-red-450 text-[var(--semantic-color-text-inverse)]",
+	red: "bg-[var(--semantic-color-feedback-error-strong)] text-[var(--semantic-color-text-inverse)]",
 	green: "bg-[var(--semantic-color-brand-primary)] text-[var(--semantic-color-text-inverse)]",
-	blue: "bg-blue-500 text-[var(--semantic-color-text-inverse)]",
-	orange: "bg-warm-400 text-[var(--semantic-color-text-inverse)]",
-	purple: "bg-purple-500 text-[var(--semantic-color-text-inverse)]",
-	gray: "bg-steel-400 text-[var(--semantic-color-text-inverse)]",
+	blue: "bg-[var(--semantic-color-feedback-info)] text-[var(--semantic-color-text-inverse)]",
+	orange: "bg-[var(--semantic-color-feedback-warning)] text-[var(--semantic-color-text-inverse)]",
+	purple: "bg-[var(--semantic-color-feedback-accent)] text-[var(--semantic-color-text-inverse)]",
+	gray: "bg-[var(--semantic-color-border-muted)] text-[var(--semantic-color-text-inverse)]",
 };
 
 const subtleStyles: Record<PillColor, string> = {
-	red: "bg-[var(--semantic-color-feedback-error-light)] text-red-600",
-	green: "bg-[var(--semantic-color-brand-primary-light)] text-sage-700",
-	blue: "bg-blue-50 text-blue-700",
-	orange: "bg-[var(--semantic-color-brand-secondary-light)] text-warm-700",
-	purple: "bg-purple-50 text-purple-700",
+	red: "bg-[var(--semantic-color-feedback-error-light)] text-[var(--semantic-color-feedback-error-text)]",
+	green:
+		"bg-[var(--semantic-color-feedback-success-light)] text-[var(--semantic-color-feedback-success-text)]",
+	blue: "bg-[var(--semantic-color-feedback-info-light)] text-[var(--semantic-color-feedback-info-text)]",
+	orange:
+		"bg-[var(--semantic-color-brand-secondary-light)] text-[var(--semantic-color-feedback-warning-text)]",
+	purple:
+		"bg-[var(--semantic-color-feedback-accent-light)] text-[var(--semantic-color-feedback-accent-text)]",
 	gray: "bg-[var(--semantic-color-bg-muted)] text-[var(--semantic-color-text-secondary)]",
 };
 
 const sizeStyles = {
-	sm: "px-2 py-0.5 text-[11px]",
+	sm: "px-2 py-0.5 text-[length:var(--font-size-xs)]",
 	md: "px-3 py-1.5 text-xs",
 	lg: "px-4 py-2 text-sm",
 } as const;

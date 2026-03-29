@@ -11,15 +11,15 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles = {
 	primary:
-		"bg-steel-900 text-[var(--semantic-color-text-inverse)] shadow-[var(--shadow-sm)] hover:enabled:bg-steel-700 hover:enabled:shadow-[var(--shadow-md)]",
+		"bg-[var(--semantic-color-bg-inverse)] text-[var(--semantic-color-text-inverse)] shadow-[var(--shadow-sm)] hover:enabled:bg-[var(--semantic-color-bg-inverse-hover)] hover:enabled:shadow-[var(--shadow-md)]",
 	secondary:
-		"bg-steel-200 text-steel-800 shadow-[var(--shadow-sm)] hover:enabled:bg-steel-300 hover:enabled:shadow-[var(--shadow-md)]",
+		"bg-[var(--semantic-color-bg-emphasis)] text-[var(--semantic-color-text-strong)] shadow-[var(--shadow-sm)] hover:enabled:bg-[var(--semantic-color-bg-emphasis-hover)] hover:enabled:shadow-[var(--shadow-md)]",
 	outline:
-		"bg-transparent text-steel-700 border-[var(--semantic-color-border-strong)] hover:enabled:bg-[var(--semantic-color-bg-subtle)] hover:enabled:border-steel-400",
+		"bg-transparent text-[var(--semantic-color-text-tertiary)] border-[var(--semantic-color-border-strong)] hover:enabled:bg-[var(--semantic-color-bg-subtle)] hover:enabled:border-[var(--semantic-color-border-muted)]",
 	outline_danger:
-		"bg-red-50 text-red-600 border-red-400 hover:enabled:bg-[var(--semantic-color-feedback-error-light)] hover:enabled:border-red-500",
+		"bg-[var(--semantic-color-feedback-error-light)] text-[var(--semantic-color-feedback-error-text)] border-[var(--semantic-color-feedback-error-border)] hover:enabled:bg-[var(--semantic-color-feedback-error-light)] hover:enabled:border-[var(--semantic-color-feedback-error)]",
 	danger:
-		"bg-red-600 text-[var(--semantic-color-text-inverse)] shadow-[var(--shadow-sm)] hover:enabled:bg-red-500 hover:enabled:shadow-[var(--shadow-md)]",
+		"bg-[var(--semantic-color-feedback-error-text)] text-[var(--semantic-color-text-inverse)] shadow-[var(--shadow-sm)] hover:enabled:bg-[var(--semantic-color-feedback-error)] hover:enabled:shadow-[var(--shadow-md)]",
 	success:
 		"bg-[var(--semantic-color-brand-primary)] text-[var(--semantic-color-text-inverse)] shadow-[var(--shadow-sm)] hover:enabled:bg-[var(--semantic-color-brand-primary-hover)] hover:enabled:shadow-[var(--shadow-md)] active:enabled:scale-95",
 	ghost:

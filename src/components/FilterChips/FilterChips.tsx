@@ -21,13 +21,13 @@ export function FilterChips({ filters, onClearAll, className, ...props }: Filter
 				{filters.map((filter) => (
 					<span
 						key={filter.id}
-						className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[var(--semantic-color-brand-primary-light)] font-sans text-xs font-medium text-sage-900"
+						className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[var(--semantic-color-brand-primary-light)] font-sans text-xs font-medium text-[var(--semantic-color-brand-primary-dark)]"
 					>
 						{filter.label}
 						<button
 							type="button"
 							onClick={filter.onRemove}
-							className="flex p-0 border-none bg-transparent text-inherit cursor-pointer transition-colors duration-150 hover:text-sage-700"
+							className="flex p-0 border-none bg-transparent text-inherit cursor-pointer transition-colors duration-150 hover:text-[var(--semantic-color-brand-primary-hover)]"
 						>
 							<svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 								<path
