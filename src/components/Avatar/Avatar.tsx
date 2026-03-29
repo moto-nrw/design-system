@@ -1,11 +1,17 @@
 import type { HTMLAttributes } from "react";
-import styles from "./Avatar.module.css";
+import { cn } from "../../lib/cn";
 
 export interface AvatarProps extends HTMLAttributes<HTMLDivElement> {
 	name: string;
 	src?: string | null;
 	size?: "sm" | "md" | "lg";
 }
+
+const sizeStyles = {
+	sm: "size-8 text-sm shadow-sm outline-2 outline-white -outline-offset-2",
+	md: "size-11 text-base shadow-md",
+	lg: "size-16 text-xl shadow-md",
+} as const;
 
 function getInitials(name: string): string {
 	const parts = name.split(" ").filter(Boolean);
@@ -19,14 +25,18 @@ export function Avatar({ name, src, size = "sm", className, ...props }: AvatarPr
 
 	return (
 		<div
-			className={[styles.avatar, styles[size], className].filter(Boolean).join(" ")}
+			className={cn(
+				"relative flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-steel-800 to-steel-500 text-[var(--semantic-color-text-inverse)] font-sans font-semibold",
+				sizeStyles[size],
+				className,
+			)}
 			title={name}
 			{...props}
 		>
 			{src ? (
-				<img src={src} alt={name} className={styles.image} />
+				<img src={src} alt={name} className="size-full object-cover" />
 			) : (
-				<span className={styles.initials}>{initials}</span>
+				<span className="select-none">{initials}</span>
 			)}
 		</div>
 	);

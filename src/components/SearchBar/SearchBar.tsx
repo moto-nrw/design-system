@@ -1,5 +1,5 @@
 import type { InputHTMLAttributes } from "react";
-import styles from "./SearchBar.module.css";
+import { cn } from "../../lib/cn";
 
 export interface SearchBarProps
 	extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange" | "size"> {
@@ -8,6 +8,18 @@ export interface SearchBarProps
 	onClear?: () => void;
 	size?: "sm" | "md" | "lg";
 }
+
+const sizeStyles = {
+	sm: "py-2 pl-9 pr-3 text-sm",
+	md: "py-2.5 pl-9 pr-10 text-sm",
+	lg: "py-3 px-10 text-base",
+} as const;
+
+const iconSizes = {
+	sm: "size-4",
+	md: "size-4",
+	lg: "size-5",
+} as const;
 
 export function SearchBar({
 	value,
@@ -19,9 +31,12 @@ export function SearchBar({
 	...props
 }: SearchBarProps) {
 	return (
-		<div className={[styles.wrapper, className].filter(Boolean).join(" ")}>
+		<div className={cn("relative", className)}>
 			<svg
-				className={[styles.searchIcon, styles[`icon-${size}`]].join(" ")}
+				className={cn(
+					"absolute top-1/2 left-3 -translate-y-1/2 text-[var(--semantic-color-text-muted)]",
+					iconSizes[size],
+				)}
 				fill="none"
 				viewBox="0 0 24 24"
 				stroke="currentColor"
@@ -39,7 +54,12 @@ export function SearchBar({
 				placeholder={placeholder}
 				value={value}
 				onChange={(e) => onChange(e.target.value)}
-				className={[styles.input, styles[size]].join(" ")}
+				className={cn(
+					"w-full border border-[var(--semantic-color-border-default)] rounded-[16px] bg-[var(--semantic-color-bg-default)] text-[var(--semantic-color-text-default)] font-sans transition-[border-color] duration-150",
+					"placeholder:text-[var(--semantic-color-text-muted)]",
+					"focus:outline-none focus:border-[var(--semantic-color-border-strong)]",
+					sizeStyles[size],
+				)}
 				{...props}
 			/>
 
@@ -50,10 +70,10 @@ export function SearchBar({
 						onChange("");
 						onClear?.();
 					}}
-					className={styles.clearButton}
+					className="absolute top-1/2 right-2 -translate-y-1/2 flex items-center justify-center p-1 border-none rounded-full bg-transparent cursor-pointer transition-colors duration-150 hover:bg-[var(--semantic-color-bg-muted)]"
 				>
 					<svg
-						className={[styles.clearIcon, styles[`icon-${size}`]].join(" ")}
+						className={cn("text-[var(--semantic-color-text-muted)]", iconSizes[size])}
 						fill="none"
 						viewBox="0 0 24 24"
 						stroke="currentColor"

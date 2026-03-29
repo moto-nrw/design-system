@@ -1,6 +1,6 @@
 import { type ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import styles from "./DropdownMenu.module.css";
+import { cn } from "../../lib/cn";
 
 export interface DropdownMenuItem {
 	id: string;
@@ -65,7 +65,7 @@ export function DropdownMenu({ items, trigger, className }: DropdownMenuProps) {
 	const menu = isOpen && typeof document !== "undefined" && (
 		<div
 			ref={menuRef}
-			className={styles.menu}
+			className="fixed z-[9999] w-36 p-1 border border-[var(--semantic-color-border-default)] rounded-md bg-[var(--semantic-color-bg-default)] shadow-lg"
 			style={{ top: position.top, right: position.right }}
 			role="menu"
 		>
@@ -78,9 +78,12 @@ export function DropdownMenu({ items, trigger, className }: DropdownMenuProps) {
 						close();
 						item.onClick();
 					}}
-					className={[styles.menuItem, item.variant === "danger" && styles.menuItemDanger]
-						.filter(Boolean)
-						.join(" ")}
+					className={cn(
+						"flex w-full items-center px-3 py-1.5 border-none rounded-sm bg-transparent font-sans text-sm text-left cursor-pointer transition-colors duration-150",
+						item.variant === "danger"
+							? "text-red-600 hover:bg-[var(--semantic-color-feedback-error-light)]"
+							: "text-steel-700 hover:bg-[var(--semantic-color-bg-muted)]",
+					)}
 				>
 					{item.label}
 				</button>
@@ -94,13 +97,16 @@ export function DropdownMenu({ items, trigger, className }: DropdownMenuProps) {
 				ref={buttonRef}
 				type="button"
 				onClick={handleToggle}
-				className={[styles.trigger, className].filter(Boolean).join(" ")}
+				className={cn(
+					"flex items-center justify-center p-1 border-none rounded-md bg-transparent text-[var(--semantic-color-text-muted)] cursor-pointer transition-all duration-150 hover:bg-[var(--semantic-color-bg-muted)] hover:text-[var(--semantic-color-text-secondary)]",
+					className,
+				)}
 				aria-label="Aktionen"
 				aria-expanded={isOpen}
 				aria-haspopup="menu"
 			>
 				{trigger || (
-					<svg className={styles.dotsIcon} fill="currentColor" viewBox="0 0 20 20">
+					<svg className="size-5" fill="currentColor" viewBox="0 0 20 20">
 						<path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
 					</svg>
 				)}

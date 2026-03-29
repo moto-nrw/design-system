@@ -1,5 +1,5 @@
 import { type ReactNode, useState } from "react";
-import styles from "./Accordion.module.css";
+import { cn } from "../../lib/cn";
 
 export interface AccordionProps {
 	label: string;
@@ -19,14 +19,21 @@ export function Accordion({
 	const [isOpen, setIsOpen] = useState(defaultOpen);
 
 	return (
-		<div className={[styles.accordion, className].filter(Boolean).join(" ")}>
-			<button type="button" onClick={() => setIsOpen((prev) => !prev)} className={styles.trigger}>
-				<span className={styles.label}>
+		<div className={cn("border-t border-[var(--semantic-color-border-default)]", className)}>
+			<button
+				type="button"
+				onClick={() => setIsOpen((prev) => !prev)}
+				className="flex w-full items-center justify-between px-5 py-3 border-none bg-transparent font-sans text-sm font-medium text-[var(--semantic-color-text-secondary)] cursor-pointer transition-colors duration-150 hover:text-[var(--semantic-color-text-default)]"
+			>
+				<span className="flex items-center gap-2">
 					{label}
-					{badge && <span className={styles.badge}>{badge}</span>}
+					{badge && <span className="inline-flex">{badge}</span>}
 				</span>
 				<svg
-					className={[styles.chevron, isOpen && styles.chevronOpen].filter(Boolean).join(" ")}
+					className={cn(
+						"shrink-0 text-[var(--semantic-color-text-muted)] transition-transform duration-200",
+						isOpen && "rotate-180",
+					)}
 					width="16"
 					height="16"
 					fill="none"
@@ -38,9 +45,12 @@ export function Accordion({
 			</button>
 
 			<div
-				className={[styles.content, isOpen ? styles.contentOpen : styles.contentClosed].join(" ")}
+				className={cn(
+					"grid transition-[grid-template-rows] duration-200",
+					isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+				)}
 			>
-				<div className={styles.contentInner}>{children}</div>
+				<div className="overflow-hidden">{children}</div>
 			</div>
 		</div>
 	);

@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+import tailwindcss from "@tailwindcss/vite";
 
 const config: StorybookConfig = {
 	stories: ["../src/**/*.stories.@(ts|tsx|mdx)"],
@@ -9,6 +10,10 @@ const config: StorybookConfig = {
 	},
 	typescript: {
 		reactDocgen: "react-docgen",
+	},
+	viteFinal(config) {
+		config.plugins = [...(config.plugins || []), tailwindcss()];
+		return config;
 	},
 };
 

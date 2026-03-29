@@ -1,5 +1,5 @@
 import type { HTMLAttributes, ReactNode } from "react";
-import styles from "./Badge.module.css";
+import { cn } from "../../lib/cn";
 
 export interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
 	count: number | string;
@@ -8,6 +8,11 @@ export interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
 	showLabel?: boolean;
 	size?: "sm" | "md";
 }
+
+const sizeStyles = {
+	sm: "px-2 py-1.5 gap-1.5",
+	md: "px-3 py-1.5 gap-2",
+} as const;
 
 export function Badge({
 	count,
@@ -19,10 +24,21 @@ export function Badge({
 	...props
 }: BadgeProps) {
 	return (
-		<div className={[styles.badge, styles[size], className].filter(Boolean).join(" ")} {...props}>
-			{icon && <span className={styles.icon}>{icon}</span>}
-			<span className={styles.count}>{count}</span>
-			{showLabel && label && <span className={styles.label}>{label}</span>}
+		<div
+			className={cn(
+				"inline-flex items-center rounded-full border border-[var(--semantic-color-border-default)] bg-[var(--semantic-color-bg-subtle)] font-sans",
+				sizeStyles[size],
+				className,
+			)}
+			{...props}
+		>
+			{icon && <span className="flex text-[var(--semantic-color-text-muted)]">{icon}</span>}
+			<span className="text-sm font-semibold text-[var(--semantic-color-text-default)]">
+				{count}
+			</span>
+			{showLabel && label && (
+				<span className="text-xs text-[var(--semantic-color-text-muted)]">{label}</span>
+			)}
 		</div>
 	);
 }
@@ -34,9 +50,17 @@ export function BadgeCompact({
 	...props
 }: Omit<BadgeProps, "label" | "showLabel">) {
 	return (
-		<div className={[styles.badge, styles.sm, className].filter(Boolean).join(" ")} {...props}>
-			{icon && <span className={styles.icon}>{icon}</span>}
-			<span className={styles.count}>{count}</span>
+		<div
+			className={cn(
+				"inline-flex items-center rounded-full border border-[var(--semantic-color-border-default)] bg-[var(--semantic-color-bg-subtle)] font-sans px-2 py-1.5 gap-1.5",
+				className,
+			)}
+			{...props}
+		>
+			{icon && <span className="flex text-[var(--semantic-color-text-muted)]">{icon}</span>}
+			<span className="text-sm font-semibold text-[var(--semantic-color-text-default)]">
+				{count}
+			</span>
 		</div>
 	);
 }

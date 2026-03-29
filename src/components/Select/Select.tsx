@@ -1,5 +1,5 @@
 import type { SelectHTMLAttributes } from "react";
-import styles from "./Select.module.css";
+import { cn } from "../../lib/cn";
 
 export interface SelectOption {
 	value: string;
@@ -17,16 +17,24 @@ export function Select({ label, placeholder, options, id, className, ...props }:
 	const selectId = id || (label ? label.toLowerCase().replace(/\s+/g, "-") : undefined);
 
 	return (
-		<div className={styles.wrapper}>
+		<div className="flex flex-col gap-1">
 			{label && (
-				<label htmlFor={selectId} className={styles.label}>
+				<label
+					htmlFor={selectId}
+					className="font-sans text-sm font-medium text-[var(--semantic-color-text-default)]"
+				>
 					{label}
 				</label>
 			)}
-			<div className={styles.container}>
+			<div className="relative">
 				<select
 					id={selectId}
-					className={[styles.select, className].filter(Boolean).join(" ")}
+					className={cn(
+						"w-full appearance-none border border-[var(--semantic-color-border-default)] rounded-md bg-[var(--semantic-color-bg-default)] py-2 pl-3 pr-10 font-sans text-base text-[var(--semantic-color-text-default)] cursor-pointer transition-[border-color,box-shadow] duration-150",
+						"focus:outline-none focus:border-[var(--semantic-color-border-strong)]",
+						"disabled:opacity-50 disabled:cursor-not-allowed",
+						className,
+					)}
 					{...props}
 				>
 					{placeholder && (
@@ -40,7 +48,10 @@ export function Select({ label, placeholder, options, id, className, ...props }:
 						</option>
 					))}
 				</select>
-				<div className={styles.chevron} aria-hidden="true">
+				<div
+					className="absolute top-0 right-0 bottom-0 flex items-center pr-3 text-[var(--semantic-color-text-muted)] pointer-events-none"
+					aria-hidden="true"
+				>
 					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
 						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
 					</svg>
