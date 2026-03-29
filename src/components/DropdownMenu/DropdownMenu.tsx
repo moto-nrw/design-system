@@ -65,7 +65,7 @@ export function DropdownMenu({ items, trigger, className }: DropdownMenuProps) {
 	const menu = isOpen && typeof document !== "undefined" && (
 		<div
 			ref={menuRef}
-			className="fixed z-[9999] w-36 p-1 border border-[var(--semantic-color-border-default)] rounded-md bg-[var(--semantic-color-bg-default)] shadow-lg"
+			className="fixed z-[var(--dropdown-z-index)] w-[var(--dropdown-width)] p-[var(--dropdown-padding)] border border-[var(--semantic-color-border-default)] rounded-[var(--dropdown-radius)] bg-[var(--semantic-color-bg-default)] shadow-[var(--dropdown-shadow)]"
 			style={{ top: position.top, right: position.right }}
 			role="menu"
 		>
@@ -79,7 +79,7 @@ export function DropdownMenu({ items, trigger, className }: DropdownMenuProps) {
 						item.onClick();
 					}}
 					className={cn(
-						"flex w-full items-center px-3 py-1.5 border-none rounded-sm bg-transparent font-sans text-sm text-left cursor-pointer transition-colors duration-150",
+						"flex w-full items-center px-[var(--dropdown-item-padding-x)] py-[var(--dropdown-item-padding-y)] border-none rounded-[var(--dropdown-item-radius)] bg-transparent font-sans text-[length:var(--dropdown-item-font-size)] text-left cursor-pointer transition-colors duration-150",
 						item.variant === "danger"
 							? "text-red-600 hover:bg-[var(--semantic-color-feedback-error-light)]"
 							: "text-steel-700 hover:bg-[var(--semantic-color-bg-muted)]",

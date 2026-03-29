@@ -12,10 +12,11 @@ export interface ToastProps {
 }
 
 const typeStyles: Record<ToastType, string> = {
-	success: "border-l-[3px] border-l-[var(--semantic-color-brand-primary)]",
-	error: "border-l-[3px] border-l-red-500",
-	warning: "border-l-[3px] border-l-warm-400",
-	info: "border-l-[3px] border-l-steel-400",
+	success:
+		"border-l-[length:var(--toast-border-width)] border-l-[var(--semantic-color-brand-primary)]",
+	error: "border-l-[length:var(--toast-border-width)] border-l-red-500",
+	warning: "border-l-[length:var(--toast-border-width)] border-l-warm-400",
+	info: "border-l-[length:var(--toast-border-width)] border-l-steel-400",
 };
 
 const iconColors: Record<ToastType, string> = {
@@ -103,10 +104,10 @@ export function Toast({ type = "info", message, duration = 4000, onClose }: Toas
 	}, [duration, dismiss]);
 
 	const content = (
-		<div className="fixed top-6 right-6 z-[99999] pointer-events-none">
+		<div className="fixed top-[var(--toast-position-top)] right-[var(--toast-position-right)] z-[var(--toast-z-index)] pointer-events-none">
 			<div
 				className={cn(
-					"flex items-center gap-2.5 px-4 py-3 rounded-lg bg-[var(--semantic-color-bg-default)] border border-[var(--semantic-color-border-default)] shadow-[0_10px_25px_-5px_rgb(0_0_0/0.15)] font-sans text-sm text-[var(--semantic-color-text-default)] pointer-events-auto max-w-[400px]",
+					"flex items-center gap-2.5 px-[var(--toast-padding-x)] py-[var(--toast-padding-y)] rounded-[var(--toast-radius)] bg-[var(--semantic-color-bg-default)] border border-[var(--semantic-color-border-default)] shadow-[var(--toast-shadow)] font-sans text-[length:var(--toast-font-size)] text-[var(--semantic-color-text-default)] pointer-events-auto max-w-[var(--toast-max-width)]",
 					typeStyles[type],
 					isVisible && !isExiting
 						? "animate-[toastSlideIn_200ms_ease-out_both]"

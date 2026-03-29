@@ -55,7 +55,7 @@ export function SearchBar({
 				value={value}
 				onChange={(e) => onChange(e.target.value)}
 				className={cn(
-					"w-full border border-[var(--semantic-color-border-default)] rounded-[16px] bg-[var(--semantic-color-bg-default)] text-[var(--semantic-color-text-default)] font-sans transition-[border-color] duration-150",
+					"w-full border border-[var(--semantic-color-border-default)] rounded-xl bg-[var(--semantic-color-bg-default)] text-[var(--semantic-color-text-default)] font-sans transition-[border-color] duration-150",
 					"placeholder:text-[var(--semantic-color-text-muted)]",
 					"focus:outline-none focus:border-[var(--semantic-color-border-strong)]",
 					sizeStyles[size],

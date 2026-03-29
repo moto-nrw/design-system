@@ -179,4 +179,63 @@
 	--avatar-size-lg: 64px;
 	--avatar-radius: var(--radius-full);
 	--avatar-font-weight: var(--font-weight-semibold);
+
+	/* ─── Toast ─── */
+	--toast-z-index: var(--z-toast);
+	--toast-position-top: var(--spacing-6);
+	--toast-position-right: var(--spacing-6);
+	--toast-max-width: 400px;
+	--toast-radius: var(--radius-lg);
+	--toast-padding-x: var(--spacing-4);
+	--toast-padding-y: var(--spacing-3);
+	--toast-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.15);
+	--toast-border-width: 3px;
+	--toast-font-size: var(--font-size-sm);
+
+	/* ─── DropdownMenu ─── */
+	--dropdown-z-index: var(--z-modal);
+	--dropdown-width: 9rem;
+	--dropdown-radius: var(--radius-md);
+	--dropdown-shadow: var(--shadow-lg);
+	--dropdown-padding: var(--spacing-1);
+	--dropdown-item-padding-x: var(--spacing-3);
+	--dropdown-item-padding-y: 6px;
+	--dropdown-item-radius: var(--radius-sm);
+	--dropdown-item-font-size: var(--font-size-sm);
+
+	/* ─── Toggle ─── */
+	/* Note: thumb-translate must equal track-width - thumb-size - 2*inset(2px) */
+	--toggle-sm-track-width: 36px;
+	--toggle-sm-track-height: 20px;
+	--toggle-sm-thumb-size: 16px;
+	--toggle-sm-thumb-translate: 16px;
+	--toggle-md-track-width: 44px;
+	--toggle-md-track-height: 24px;
+	--toggle-md-thumb-size: 20px;
+	--toggle-md-thumb-translate: 20px;
+
+	/* ─── Tabs ─── */
+	--tabs-gap: var(--spacing-8);
+	--tabs-indicator-height: 2px;
+	--tabs-mobile-z-index: var(--z-dropdown);
+
+	/* ─── Select ─── */
+	--select-radius: var(--input-radius);
+	--select-padding-y: var(--spacing-2);
+	--select-padding-left: var(--spacing-3);
+	--select-font-size: var(--input-font-size);
+
+	/* ─── Textarea ─── */
+	--textarea-radius: var(--input-radius);
+	--textarea-padding-x: var(--spacing-3);
+	--textarea-padding-y: var(--spacing-2);
+	--textarea-font-size: var(--font-size-sm);
+
+	/* ─── Checkbox ─── */
+	--checkbox-size: 16px;
+	--checkbox-gap: var(--spacing-3);
+
+	/* ─── Radio ─── */
+	--radio-size: 16px;
+	--radio-gap: 10px;
 }

@@ -7,18 +7,18 @@ export interface ToggleProps extends Omit<InputHTMLAttributes<HTMLInputElement>,
 }
 
 const trackSizes = {
-	sm: "w-9 h-5",
-	md: "w-11 h-6",
+	sm: "w-[var(--toggle-sm-track-width)] h-[var(--toggle-sm-track-height)]",
+	md: "w-[var(--toggle-md-track-width)] h-[var(--toggle-md-track-height)]",
 } as const;
 
 const thumbSizes = {
-	sm: "size-4",
-	md: "size-5",
+	sm: "size-[var(--toggle-sm-thumb-size)]",
+	md: "size-[var(--toggle-md-thumb-size)]",
 } as const;
 
 const thumbTranslate = {
-	sm: "peer-checked:translate-x-4",
-	md: "peer-checked:translate-x-5",
+	sm: "peer-checked:translate-x-[var(--toggle-sm-thumb-translate)]",
+	md: "peer-checked:translate-x-[var(--toggle-md-thumb-translate)]",
 } as const;
 
 export function Toggle({ label, size = "md", id, name, className, ...props }: ToggleProps) {

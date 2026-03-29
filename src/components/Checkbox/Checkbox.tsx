@@ -12,7 +12,7 @@ export function Checkbox({ label, id, name, className, ...props }: CheckboxProps
 		<label
 			htmlFor={inputId}
 			className={cn(
-				"flex items-center gap-3 px-2 py-1.5 rounded-md cursor-pointer transition-colors duration-150 hover:bg-[var(--semantic-color-bg-subtle)]",
+				"flex items-center gap-[var(--checkbox-gap)] px-2 py-1.5 rounded-md cursor-pointer transition-colors duration-150 hover:bg-[var(--semantic-color-bg-subtle)]",
 				className,
 			)}
 		>
@@ -20,7 +20,7 @@ export function Checkbox({ label, id, name, className, ...props }: CheckboxProps
 				type="checkbox"
 				id={inputId}
 				name={name}
-				className="size-4 rounded-sm border border-[var(--semantic-color-border-strong)] accent-steel-900 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+				className="size-[var(--checkbox-size)] rounded-sm border border-[var(--semantic-color-border-strong)] accent-steel-900 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
 				{...props}
 			/>
 			<span className="font-sans text-sm text-[var(--semantic-color-text-default)] select-none">

@@ -103,7 +103,7 @@ export function Tabs({ items, activeTab, onTabChange, className }: TabsProps) {
 
 				<div
 					ref={scrollRef}
-					className="relative flex gap-8 overflow-x-auto scrollbar-none [&::-webkit-scrollbar]:hidden"
+					className="relative flex gap-[var(--tabs-gap)] overflow-x-auto scrollbar-none [&::-webkit-scrollbar]:hidden"
 				>
 					{items.map((tab, index) => (
 						<button
@@ -125,7 +125,7 @@ export function Tabs({ items, activeTab, onTabChange, className }: TabsProps) {
 					))}
 
 					<div
-						className="absolute bottom-0 h-0.5 rounded-full bg-steel-900 transition-[left,width] duration-300 ease-out"
+						className="absolute bottom-0 h-[var(--tabs-indicator-height)] rounded-full bg-steel-900 transition-[left,width] duration-300 ease-out"
 						style={{
 							left: `${indicatorStyle.left}px`,
 							width: `${indicatorStyle.width}px`,
@@ -192,7 +192,7 @@ function MobileTabDropdown({
 			</button>
 
 			{isOpen && (
-				<div className="absolute top-full left-0 z-50 mt-1 min-w-48 border border-[var(--semantic-color-border-default)] rounded-lg bg-[var(--semantic-color-bg-default)] py-1 shadow-lg">
+				<div className="absolute top-full left-0 z-[var(--tabs-mobile-z-index)] mt-1 min-w-48 border border-[var(--semantic-color-border-default)] rounded-lg bg-[var(--semantic-color-bg-default)] py-1 shadow-lg">
 					{items.map((item) => (
 						<button
 							key={item.id}
