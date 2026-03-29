@@ -17,8 +17,8 @@ const thumbSizes = {
 } as const;
 
 const thumbTranslate = {
-	sm: "peer-checked:translate-x-[var(--toggle-sm-thumb-translate)]",
-	md: "peer-checked:translate-x-[var(--toggle-md-thumb-translate)]",
+	sm: "peer-checked:[&>div]:translate-x-[var(--toggle-sm-thumb-translate)]",
+	md: "peer-checked:[&>div]:translate-x-[var(--toggle-md-thumb-translate)]",
 } as const;
 
 export function Toggle({ label, size = "md", id, name, className, ...props }: ToggleProps) {
@@ -40,13 +40,13 @@ export function Toggle({ label, size = "md", id, name, className, ...props }: To
 				className={cn(
 					"relative rounded-full bg-steel-300 transition-colors duration-150 peer-checked:bg-[var(--semantic-color-brand-primary)] peer-disabled:opacity-50 peer-disabled:cursor-not-allowed",
 					trackSizes[size],
+					thumbTranslate[size],
 				)}
 			>
 				<div
 					className={cn(
 						"absolute top-0.5 left-0.5 rounded-full bg-[var(--semantic-color-bg-default)] shadow-sm transition-transform duration-150",
 						thumbSizes[size],
-						thumbTranslate[size],
 					)}
 				/>
 			</div>

@@ -61,7 +61,7 @@
   },
   "scripts": {
     "tokens": "NODE_OPTIONS='--experimental-strip-types' style-dictionary build --config src/tokens/style-dictionary.config.ts",
-    "build": "pnpm tokens && tsup && tailwindcss -i src/styles.css -o dist/styles.css --minify && cp src/tokens/build/variables.css dist/tokens.css && cp src/tailwind-theme.css dist/tailwind.css",
+    "build": "pnpm tokens && tsup && tailwindcss -i src/tailwind.css -o dist/tailwind.css --minify && tailwindcss -i src/styles.css -o dist/styles.css --minify && cp src/tokens/build/variables.css dist/tokens.css",
     "postbuild": "attw --pack --exclude-entrypoints ./tokens ./tailwind ./styles && publint",
     "dev": "tsup --watch",
     "test": "vitest",

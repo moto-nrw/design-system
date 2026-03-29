@@ -103,7 +103,7 @@ export function Tabs({ items, activeTab, onTabChange, className }: TabsProps) {
 
 				<div
 					ref={scrollRef}
-					className="relative flex gap-[var(--tabs-gap)] overflow-x-auto scrollbar-none [&::-webkit-scrollbar]:hidden"
+					className="relative flex gap-[var(--tabs-gap)] overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
 				>
 					{items.map((tab, index) => (
 						<button
