@@ -63,7 +63,7 @@
 }
 
 .solid-blue {
-	background-color: var(--color-steel-600);
+	background-color: var(--color-blue-500);
 	color: var(--semantic-color-text-inverse);
 }
 
@@ -73,7 +73,7 @@
 }
 
 .solid-purple {
-	background-color: var(--color-steel-500);
+	background-color: var(--color-purple-500);
 	color: var(--semantic-color-text-inverse);
 }
 
@@ -95,8 +95,8 @@
 }
 
 .subtle-blue {
-	background-color: var(--semantic-color-bg-muted);
-	color: var(--color-steel-700);
+	background-color: var(--color-blue-50);
+	color: var(--color-blue-700);
 }
 
 .subtle-orange {
@@ -105,8 +105,8 @@
 }
 
 .subtle-purple {
-	background-color: var(--semantic-color-bg-muted);
-	color: var(--color-steel-600);
+	background-color: var(--color-purple-50);
+	color: var(--color-purple-700);
 }
 
 .subtle-gray {
