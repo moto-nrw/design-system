@@ -10,6 +10,9 @@ export interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
 	gap?: number;
 }
 
+const skeletonClass =
+	"animate-[wave_1.5s_ease-in-out_infinite] bg-[length:200%_100%] bg-[linear-gradient(90deg,var(--semantic-color-bg-muted)_25%,var(--semantic-color-bg-subtle)_50%,var(--semantic-color-bg-muted)_75%)]";
+
 export function Skeleton({
 	width,
 	height = 16,
@@ -36,32 +39,32 @@ export function Skeleton({
 		...style,
 	};
 
+	const keyframes = (
+		<style>{`@keyframes wave{0%{background-position:200% 0}100%{background-position:-200% 0}}`}</style>
+	);
+
 	if (count === 1) {
 		return (
-			<div
-				className={cn(
-					"animate-[wave_1.5s_ease-in-out_infinite] bg-[length:200%_100%] bg-[linear-gradient(90deg,var(--semantic-color-bg-muted)_25%,var(--semantic-color-bg-subtle)_50%,var(--semantic-color-bg-muted)_75%)]",
-					className,
-				)}
-				style={itemStyle}
-				aria-hidden="true"
-				{...props}
-			/>
+			<>
+				{keyframes}
+				<div
+					className={cn(skeletonClass, className)}
+					style={itemStyle}
+					aria-hidden="true"
+					{...props}
+				/>
+			</>
 		);
 	}
 
 	return (
-		<div className="flex flex-col" style={{ gap }} aria-hidden="true" {...props}>
-			{Array.from({ length: count }, (_, i) => (
-				<div
-					key={`skeleton-${i}`}
-					className={cn(
-						"animate-[wave_1.5s_ease-in-out_infinite] bg-[length:200%_100%] bg-[linear-gradient(90deg,var(--semantic-color-bg-muted)_25%,var(--semantic-color-bg-subtle)_50%,var(--semantic-color-bg-muted)_75%)]",
-						className,
-					)}
-					style={itemStyle}
-				/>
-			))}
-		</div>
+		<>
+			{keyframes}
+			<div className="flex flex-col" style={{ gap }} aria-hidden="true" {...props}>
+				{Array.from({ length: count }, (_, i) => (
+					<div key={`skeleton-${i}`} className={cn(skeletonClass, className)} style={itemStyle} />
+				))}
+			</div>
+		</>
 	);
 }

@@ -1,0 +1,18 @@
+/*
+ * Prebuilt component CSS — contains all Tailwind utilities used by
+ * design-system components plus custom keyframes.
+ *
+ * Consumer usage:
+ *   @import "@moto-nrw/design-system/styles";
+ *
+ * Alternative for Tailwind v4 consumers (no prebuilt CSS needed):
+ *   @import "tailwindcss";
+ *   @import "@moto-nrw/design-system/tailwind";
+ *   @source "../node_modules/@moto-nrw/design-system/dist";
+ */
+
+@import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/utilities" layer(utilities);
+@import "./tailwind-theme.css";
+@source "./components";
+@source "./lib";
