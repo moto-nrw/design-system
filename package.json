@@ -2,19 +2,12 @@
   "name": "@moto-nrw/design-system",
   "version": "0.2.3",
   "description": "Ganztagshelden Design System - shared components and design tokens",
-  "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      }
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
     },
     "./styles": "./dist/index.css",
     "./tokens": "./dist/tokens.css",
@@ -52,15 +45,16 @@
     "react-dom": "^19.2.4",
     "storybook": "^10.3.3",
     "style-dictionary": "^5.4.0",
-    "tsup": "^8.5.1",
     "typescript": "^6.0.2",
+    "vite": "^8.0.3",
+    "vite-plugin-dts": "^4.5.4",
     "vitest": "^4.1.2"
   },
   "scripts": {
     "tokens": "NODE_OPTIONS='--experimental-strip-types' style-dictionary build --config src/tokens/style-dictionary.config.ts",
-    "build": "pnpm tokens && tsup && cp src/tokens/build/variables.css dist/tokens.css && cp src/tailwind-theme.css dist/tailwind.css",
-    "postbuild": "attw --pack --exclude-entrypoints ./tokens ./tailwind ./styles && publint",
-    "dev": "tsup --watch",
+    "build": "pnpm tokens && vite build && cp src/tokens/build/variables.css dist/tokens.css && cp src/tailwind-theme.css dist/tailwind.css",
+    "postbuild": "attw --pack --exclude-entrypoints ./tokens ./tailwind ./styles --ignore-rules cjs-resolves-to-esm && publint",
+    "dev": "vite build --watch",
     "test": "vitest",
     "test:run": "vitest run",
     "storybook": "storybook dev -p 6006",
