@@ -1,5 +1,28 @@
 # @moto-nrw/design-system
 
+## 0.4.0
+
+### Minor Changes
+
+- Add `selected` prop to Card component
+
+  When `selected` is true, the Card displays a brand-primary border and a subtle success-light background, useful for selection states in lists and tenant switchers.
+
+- Replace tsup with Vite library mode for correct CSS Modules support
+
+  tsup/esbuild cannot compile CSS Modules - all component style mappings were empty objects `{}`, causing components to render without CSS classes. Vite has native CSS Modules support and resolves this completely.
+  - Switched build tool from tsup to Vite library mode
+  - Dropped CJS output (no CJS consumers found, ESM-only)
+  - Bundled type declarations into single `index.d.ts` via `rollupTypes`
+  - Removed post-build CSS Modules patch workaround
+  - Smaller bundle: 37KB JS + 25KB CSS (was 50KB + 34KB)
+
+### Patch Changes
+
+- Fix modal flicker on open by adding idle state
+
+  The modal briefly showed the exit animation (10ms flash) before the enter animation started. Added an idle state that keeps the modal invisible until the enter animation triggers.
+
 ## 0.3.1
 
 ### Patch Changes
