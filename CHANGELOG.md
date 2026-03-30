@@ -1,5 +1,11 @@
 # @moto-nrw/design-system
 
+## 0.5.1
+
+### Patch Changes
+
+- Fix missing ListItem export from main entry point
+
 ## 0.5.0
 
 ### Minor Changes
