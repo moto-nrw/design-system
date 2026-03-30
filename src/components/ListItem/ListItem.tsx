@@ -21,7 +21,7 @@ export function ListItem({
 			className={cn(
 				"flex w-full cursor-pointer items-center gap-3 rounded-xl px-3 py-3 text-left transition-all",
 				active
-					? "border border-[var(--semantic-color-border-default)] bg-[var(--semantic-color-brand-primary-light)]"
+					? "border border-[var(--semantic-color-border-default)] bg-[var(--semantic-color-bg-subtle)]"
 					: "border border-transparent hover:bg-[var(--semantic-color-bg-subtle)]",
 				className,
 			)}
