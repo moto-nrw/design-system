@@ -53,6 +53,7 @@
 				"info": { "$type": "color", "$value": "{color.blue.500}" },
 				"info-light": { "$type": "color", "$value": "{color.blue.50}" },
 				"info-text": { "$type": "color", "$value": "{color.blue.700}" },
+				"info-border": { "$type": "color", "$value": "{color.blue.500}" },
 
 				"accent": { "$type": "color", "$value": "{color.purple.500}" },
 				"accent-light": { "$type": "color", "$value": "{color.purple.50}" },

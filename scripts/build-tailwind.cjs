@@ -16,16 +16,12 @@ const parts = [
 	fs.readFileSync(path.join(root, "src/tailwind-theme.css"), "utf8"),
 ];
 
-// Extract keyframes from src/tailwind.css (everything that isn't an @import)
+// Extract @keyframes blocks from src/tailwind.css
 const tailwindSrc = fs.readFileSync(path.join(root, "src/tailwind.css"), "utf8");
-const keyframes = tailwindSrc
-	.split("\n")
-	.filter((line) => !line.startsWith("@import") && !line.startsWith(" *") && !line.startsWith("/*") && !line.startsWith(" */"))
-	.join("\n")
-	.trim();
+const keyframeBlocks = tailwindSrc.match(/@keyframes\s+\S+\s*\{[^}]*(?:\{[^}]*\}[^}]*)*\}/g);
 
-if (keyframes) {
-	parts.push(keyframes);
+if (keyframeBlocks) {
+	parts.push(keyframeBlocks.join("\n\n"));
 }
 
 fs.writeFileSync(path.join(root, "dist/tailwind.css"), parts.join("\n"));

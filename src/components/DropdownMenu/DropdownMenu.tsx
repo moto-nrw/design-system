@@ -79,7 +79,7 @@ export function DropdownMenu({ items, trigger, className }: DropdownMenuProps) {
 						item.onClick();
 					}}
 					className={cn(
-						"flex w-full items-center px-[var(--dropdown-item-padding-x)] py-[var(--dropdown-item-padding-y)] border-none rounded-[var(--dropdown-item-radius)] bg-transparent font-sans text-[length:var(--dropdown-item-font-size)] text-left cursor-pointer transition-colors duration-150",
+						"flex w-full items-center px-[var(--dropdown-item-padding-x)] py-[var(--dropdown-item-padding-y)] border-none rounded-[var(--dropdown-item-radius)] bg-transparent font-sans text-[length:var(--dropdown-item-font-size)] text-left cursor-pointer transition-colors duration-[var(--duration-fast)]",
 						item.variant === "danger"
 							? "text-[var(--semantic-color-feedback-error-text)] hover:bg-[var(--semantic-color-feedback-error-light)]"
 							: "text-[var(--semantic-color-text-tertiary)] hover:bg-[var(--semantic-color-bg-muted)]",
@@ -98,7 +98,7 @@ export function DropdownMenu({ items, trigger, className }: DropdownMenuProps) {
 				type="button"
 				onClick={handleToggle}
 				className={cn(
-					"flex items-center justify-center p-1 border-none rounded-md bg-transparent text-[var(--semantic-color-text-muted)] cursor-pointer transition-all duration-150 hover:bg-[var(--semantic-color-bg-muted)] hover:text-[var(--semantic-color-text-secondary)]",
+					"flex items-center justify-center p-1 border-none rounded-md bg-transparent text-[var(--semantic-color-text-muted)] cursor-pointer transition-all duration-[var(--duration-fast)] hover:bg-[var(--semantic-color-bg-muted)] hover:text-[var(--semantic-color-text-secondary)]",
 					className,
 				)}
 				aria-label="Aktionen"

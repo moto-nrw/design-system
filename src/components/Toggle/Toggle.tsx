@@ -38,14 +38,14 @@ export function Toggle({ label, size = "md", id, name, className, ...props }: To
 			/>
 			<div
 				className={cn(
-					"relative rounded-full bg-[var(--semantic-color-border-strong)] transition-colors duration-150 peer-checked:bg-[var(--semantic-color-brand-primary)] peer-disabled:opacity-50 peer-disabled:cursor-not-allowed",
+					"relative rounded-full bg-[var(--semantic-color-border-strong)] transition-colors duration-[var(--duration-fast)] peer-checked:bg-[var(--semantic-color-brand-primary)] peer-disabled:opacity-[var(--disabled-opacity)] peer-disabled:cursor-not-allowed",
 					trackSizes[size],
 					thumbTranslate[size],
 				)}
 			>
 				<div
 					className={cn(
-						"absolute top-0.5 left-0.5 rounded-full bg-[var(--semantic-color-bg-default)] shadow-sm transition-transform duration-150",
+						"absolute top-0.5 left-0.5 rounded-full bg-[var(--semantic-color-bg-default)] shadow-sm transition-transform duration-[var(--duration-fast)]",
 						thumbSizes[size],
 					)}
 				/>

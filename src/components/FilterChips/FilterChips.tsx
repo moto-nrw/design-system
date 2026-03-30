@@ -27,7 +27,7 @@ export function FilterChips({ filters, onClearAll, className, ...props }: Filter
 						<button
 							type="button"
 							onClick={filter.onRemove}
-							className="flex p-0 border-none bg-transparent text-inherit cursor-pointer transition-colors duration-150 hover:text-[var(--semantic-color-brand-primary-hover)]"
+							className="flex p-0 border-none bg-transparent text-inherit cursor-pointer transition-colors duration-[var(--duration-fast)] hover:text-[var(--semantic-color-brand-primary-hover)]"
 						>
 							<svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 								<path
@@ -46,7 +46,7 @@ export function FilterChips({ filters, onClearAll, className, ...props }: Filter
 				<button
 					type="button"
 					onClick={onClearAll}
-					className="p-0 border-none bg-transparent font-sans text-xs font-medium text-[var(--semantic-color-brand-primary)] cursor-pointer whitespace-nowrap transition-colors duration-150 hover:text-[var(--semantic-color-brand-primary-hover)]"
+					className="p-0 border-none bg-transparent font-sans text-xs font-medium text-[var(--semantic-color-brand-primary)] cursor-pointer whitespace-nowrap transition-colors duration-[var(--duration-fast)] hover:text-[var(--semantic-color-brand-primary-hover)]"
 				>
 					Alle löschen
 				</button>

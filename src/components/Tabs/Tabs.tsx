@@ -114,7 +114,7 @@ export function Tabs({ items, activeTab, onTabChange, className }: TabsProps) {
 							type="button"
 							onClick={() => onTabChange(tab.id)}
 							className={cn(
-								"relative pb-3 border-none bg-transparent font-sans text-sm font-medium cursor-pointer transition-colors duration-150 whitespace-nowrap",
+								"relative pb-3 border-none bg-transparent font-sans text-sm font-medium cursor-pointer transition-colors duration-[var(--duration-fast)] whitespace-nowrap",
 								activeTab === tab.id
 									? "text-[var(--semantic-color-text-default)] font-semibold"
 									: "text-[var(--semantic-color-text-muted)] hover:text-[var(--semantic-color-text-tertiary)]",
@@ -125,7 +125,7 @@ export function Tabs({ items, activeTab, onTabChange, className }: TabsProps) {
 					))}
 
 					<div
-						className="absolute bottom-0 h-[var(--tabs-indicator-height)] rounded-full bg-[var(--semantic-color-text-default)] transition-[left,width] duration-300 ease-out"
+						className="absolute bottom-0 h-[var(--tabs-indicator-height)] rounded-full bg-[var(--semantic-color-text-default)] transition-[left,width] duration-[var(--duration-slow)] ease-out"
 						style={{
 							left: `${indicatorStyle.left}px`,
 							width: `${indicatorStyle.width}px`,
@@ -171,14 +171,14 @@ function MobileTabDropdown({
 				type="button"
 				onClick={() => setIsOpen(!isOpen)}
 				className={cn(
-					"flex items-center gap-2 px-4 py-2.5 border-none rounded-lg bg-[var(--semantic-color-bg-default)] font-sans text-base font-semibold text-[var(--semantic-color-text-default)] shadow-sm cursor-pointer transition-colors duration-150",
+					"flex items-center gap-2 px-4 py-2.5 border-none rounded-lg bg-[var(--semantic-color-bg-default)] font-sans text-base font-semibold text-[var(--semantic-color-text-default)] shadow-sm cursor-pointer transition-colors duration-[var(--duration-fast)]",
 					isOpen && "bg-[var(--semantic-color-bg-subtle)]",
 				)}
 			>
 				<span>{activeLabel}</span>
 				<svg
 					className={cn(
-						"shrink-0 text-[var(--semantic-color-text-muted)] transition-transform duration-150",
+						"shrink-0 text-[var(--semantic-color-text-muted)] transition-transform duration-[var(--duration-fast)]",
 						isOpen && "rotate-180",
 					)}
 					width="20"
@@ -202,7 +202,7 @@ function MobileTabDropdown({
 								setIsOpen(false);
 							}}
 							className={cn(
-								"block w-full text-left px-4 py-2.5 border-none bg-transparent font-sans text-base text-[var(--semantic-color-text-secondary)] cursor-pointer transition-colors duration-150 hover:bg-[var(--semantic-color-bg-subtle)]",
+								"block w-full text-left px-4 py-2.5 border-none bg-transparent font-sans text-base text-[var(--semantic-color-text-secondary)] cursor-pointer transition-colors duration-[var(--duration-fast)] hover:bg-[var(--semantic-color-bg-subtle)]",
 								item.id === activeTab &&
 									"bg-[var(--semantic-color-bg-subtle)] font-semibold text-[var(--semantic-color-text-default)]",
 							)}

@@ -31,7 +31,7 @@ export function Input({ label, error, id, name, type = "text", className, ...pro
 						"block w-full border border-[var(--semantic-color-border-default)] rounded-[var(--input-radius)] bg-[var(--semantic-color-bg-default)] px-[var(--input-padding-x)] py-[var(--input-padding-y)] font-sans text-[length:var(--input-font-size)] text-[var(--semantic-color-text-default)] shadow-[var(--shadow-sm)] transition-[border-color,box-shadow] duration-[var(--duration-fast)]",
 						"placeholder:text-[var(--semantic-color-text-muted)]",
 						"focus:outline-none focus:border-[var(--semantic-color-border-strong)]",
-						"disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-[var(--semantic-color-bg-subtle)]",
+						"disabled:opacity-[var(--disabled-opacity)] disabled:cursor-not-allowed disabled:bg-[var(--semantic-color-bg-subtle)]",
 						isPassword && "pr-10",
 						error && "border-[var(--semantic-color-feedback-error)]",
 						className,
@@ -44,7 +44,7 @@ export function Input({ label, error, id, name, type = "text", className, ...pro
 					<button
 						type="button"
 						onClick={() => setShowPassword((prev) => !prev)}
-						className="absolute top-1/2 right-3 -translate-y-1/2 flex items-center justify-center p-0 border-none bg-transparent text-[var(--semantic-color-text-muted)] cursor-pointer transition-colors duration-150 hover:text-[var(--semantic-color-text-default)]"
+						className="absolute top-1/2 right-3 -translate-y-1/2 flex items-center justify-center p-0 border-none bg-transparent text-[var(--semantic-color-text-muted)] cursor-pointer transition-colors duration-[var(--duration-fast)] hover:text-[var(--semantic-color-text-default)]"
 						aria-label={showPassword ? "Passwort verbergen" : "Passwort anzeigen"}
 						tabIndex={-1}
 					>

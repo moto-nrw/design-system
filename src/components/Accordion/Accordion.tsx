@@ -23,7 +23,7 @@ export function Accordion({
 			<button
 				type="button"
 				onClick={() => setIsOpen((prev) => !prev)}
-				className="flex w-full items-center justify-between px-5 py-3 border-none bg-transparent font-sans text-sm font-medium text-[var(--semantic-color-text-secondary)] cursor-pointer transition-colors duration-150 hover:text-[var(--semantic-color-text-default)]"
+				className="flex w-full items-center justify-between px-5 py-3 border-none bg-transparent font-sans text-sm font-medium text-[var(--semantic-color-text-secondary)] cursor-pointer transition-colors duration-[var(--duration-fast)] hover:text-[var(--semantic-color-text-default)]"
 			>
 				<span className="flex items-center gap-2">
 					{label}
@@ -31,7 +31,7 @@ export function Accordion({
 				</span>
 				<svg
 					className={cn(
-						"shrink-0 text-[var(--semantic-color-text-muted)] transition-transform duration-200",
+						"shrink-0 text-[var(--semantic-color-text-muted)] transition-transform duration-[var(--duration-normal)]",
 						isOpen && "rotate-180",
 					)}
 					width="16"
@@ -46,7 +46,7 @@ export function Accordion({
 
 			<div
 				className={cn(
-					"grid transition-[grid-template-rows] duration-200",
+					"grid transition-[grid-template-rows] duration-[var(--duration-normal)]",
 					isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
 				)}
 			>

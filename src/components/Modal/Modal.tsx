@@ -57,14 +57,14 @@ export function Modal({ isOpen, onClose, title, children, footer }: ModalProps) 
 				type="button"
 				onClick={handleClose}
 				className={cn(
-					"absolute inset-0 border-none p-0 cursor-default transition-colors duration-150",
+					"absolute inset-0 border-none p-0 cursor-default transition-colors duration-[var(--duration-fast)]",
 					entering ? "bg-black/40" : "bg-transparent",
 				)}
 				aria-label="Hintergrund - Klicken zum Schließen"
 			/>
 			<div
 				className={cn(
-					"relative w-[calc(100%-2rem)] max-w-[var(--modal-max-width)] max-h-[calc(100vh-4rem)] mx-4 overflow-hidden rounded-[var(--modal-radius)] border border-[var(--semantic-color-border-default)] bg-[image:var(--modal-bg)] backdrop-blur-[20px] shadow-[var(--modal-shadow)]",
+					"relative w-[calc(100%-2rem)] max-w-[var(--modal-max-width)] max-h-[calc(100vh-4rem)] mx-4 overflow-hidden rounded-[var(--modal-radius)] border border-[var(--semantic-color-border-default)] bg-[image:var(--modal-bg)] backdrop-blur-[var(--modal-backdrop-blur)] shadow-[var(--modal-shadow)]",
 					entering
 						? "animate-[modalEnter_250ms_ease-out_both]"
 						: "animate-[modalExit_200ms_ease-in_both]",
@@ -141,7 +141,7 @@ export function ConfirmationModal({
 			<button
 				type="button"
 				onClick={onClose}
-				className="flex-1 px-4 py-2 border border-[var(--semantic-color-border-strong)] rounded-md bg-transparent font-sans text-sm font-medium text-[var(--semantic-color-text-tertiary)] whitespace-nowrap cursor-pointer transition-all duration-150 hover:bg-[var(--semantic-color-bg-subtle)] hover:border-[var(--semantic-color-border-muted)] hover:scale-105 hover:shadow-md active:scale-100"
+				className="flex-1 px-4 py-2 border border-[var(--semantic-color-border-strong)] rounded-md bg-transparent font-sans text-sm font-medium text-[var(--semantic-color-text-tertiary)] whitespace-nowrap cursor-pointer transition-all duration-[var(--duration-fast)] hover:bg-[var(--semantic-color-bg-subtle)] hover:border-[var(--semantic-color-border-muted)] hover:scale-105 hover:shadow-md active:scale-100"
 			>
 				{cancelText}
 			</button>
@@ -150,7 +150,7 @@ export function ConfirmationModal({
 				onClick={onConfirm}
 				disabled={isConfirmLoading || isConfirmDisabled}
 				className={cn(
-					"flex-1 px-4 py-2 border-none rounded-md font-sans text-sm font-medium text-[var(--semantic-color-text-inverse)] whitespace-nowrap cursor-pointer transition-all duration-150 hover:enabled:scale-105 hover:enabled:shadow-lg active:enabled:scale-100 disabled:opacity-50 disabled:cursor-not-allowed",
+					"flex-1 px-4 py-2 border-none rounded-md font-sans text-sm font-medium text-[var(--semantic-color-text-inverse)] whitespace-nowrap cursor-pointer transition-all duration-[var(--duration-fast)] hover:enabled:scale-105 hover:enabled:shadow-lg active:enabled:scale-100 disabled:opacity-[var(--disabled-opacity)] disabled:cursor-not-allowed",
 					variant === "danger"
 						? "bg-[var(--semantic-color-feedback-error-text)]"
 						: "bg-[var(--semantic-color-bg-inverse)]",
@@ -159,7 +159,7 @@ export function ConfirmationModal({
 				{isConfirmLoading ? (
 					<span className="flex items-center justify-center gap-2">
 						<svg
-							className="size-4 animate-[spin_0.7s_linear_infinite]"
+							className="size-4 animate-[ds-spin_0.7s_linear_infinite]"
 							fill="none"
 							viewBox="0 0 24 24"
 						>
@@ -191,11 +191,11 @@ function CloseButton({ onClick }: { onClick: () => void }) {
 		<button
 			type="button"
 			onClick={onClick}
-			className="group flex items-center justify-center shrink-0 size-9 p-0 border-none rounded-lg bg-transparent text-[var(--semantic-color-text-muted)] cursor-pointer transition-all duration-150 hover:bg-[var(--semantic-color-bg-muted)] hover:text-[var(--semantic-color-text-default)] hover:scale-105 active:scale-95"
+			className="group flex items-center justify-center shrink-0 size-[var(--modal-close-size)] p-0 border-none rounded-lg bg-transparent text-[var(--semantic-color-text-muted)] cursor-pointer transition-all duration-[var(--duration-fast)] hover:bg-[var(--semantic-color-bg-muted)] hover:text-[var(--semantic-color-text-default)] hover:scale-105 active:scale-95"
 			aria-label="Modal schließen"
 		>
 			<svg
-				className="transition-transform duration-150 group-hover:rotate-90"
+				className="transition-transform duration-[var(--duration-fast)] group-hover:rotate-90"
 				width="20"
 				height="20"
 				fill="none"

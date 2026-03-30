@@ -55,7 +55,7 @@ export function SearchBar({
 				value={value}
 				onChange={(e) => onChange(e.target.value)}
 				className={cn(
-					"w-full border border-[var(--semantic-color-border-default)] rounded-[var(--input-radius)] bg-[var(--semantic-color-bg-default)] text-[var(--semantic-color-text-default)] font-sans transition-[border-color] duration-150",
+					"w-full border border-[var(--semantic-color-border-default)] rounded-[var(--input-radius)] bg-[var(--semantic-color-bg-default)] text-[var(--semantic-color-text-default)] font-sans transition-[border-color] duration-[var(--duration-fast)]",
 					"placeholder:text-[var(--semantic-color-text-muted)]",
 					"focus:outline-none focus:border-[var(--semantic-color-border-strong)]",
 					sizeStyles[size],
@@ -70,7 +70,7 @@ export function SearchBar({
 						onChange("");
 						onClear?.();
 					}}
-					className="absolute top-1/2 right-2 -translate-y-1/2 flex items-center justify-center p-1 border-none rounded-full bg-transparent cursor-pointer transition-colors duration-150 hover:bg-[var(--semantic-color-bg-muted)]"
+					className="absolute top-1/2 right-2 -translate-y-1/2 flex items-center justify-center p-1 border-none rounded-full bg-transparent cursor-pointer transition-colors duration-[var(--duration-fast)] hover:bg-[var(--semantic-color-bg-muted)]"
 				>
 					<svg
 						className={cn("text-[var(--semantic-color-text-muted)]", iconSizes[size])}

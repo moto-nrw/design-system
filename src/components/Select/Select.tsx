@@ -30,9 +30,9 @@ export function Select({ label, placeholder, options, id, className, ...props }:
 				<select
 					id={selectId}
 					className={cn(
-						"w-full appearance-none border border-[var(--semantic-color-border-default)] rounded-[var(--select-radius)] bg-[var(--semantic-color-bg-default)] py-[var(--select-padding-y)] pl-[var(--select-padding-left)] pr-10 font-sans text-[length:var(--select-font-size)] text-[var(--semantic-color-text-default)] cursor-pointer transition-[border-color,box-shadow] duration-150",
+						"w-full appearance-none border border-[var(--semantic-color-border-default)] rounded-[var(--select-radius)] bg-[var(--semantic-color-bg-default)] py-[var(--select-padding-y)] pl-[var(--select-padding-left)] pr-10 font-sans text-[length:var(--select-font-size)] text-[var(--semantic-color-text-default)] cursor-pointer transition-[border-color,box-shadow] duration-[var(--duration-fast)]",
 						"focus:outline-none focus:border-[var(--semantic-color-border-strong)]",
-						"disabled:opacity-50 disabled:cursor-not-allowed",
+						"disabled:opacity-[var(--disabled-opacity)] disabled:cursor-not-allowed",
 						className,
 					)}
 					{...props}

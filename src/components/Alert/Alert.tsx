@@ -15,7 +15,7 @@ const typeStyles: Record<AlertType, string> = {
 		"bg-[var(--semantic-color-feedback-success-light)] text-[var(--semantic-color-feedback-success-text)] border-[var(--semantic-color-feedback-success-border)]",
 	warning:
 		"bg-[var(--semantic-color-feedback-warning-light)] text-[var(--semantic-color-feedback-warning-text)] border-[var(--semantic-color-feedback-warning-border)]",
-	info: "bg-[var(--semantic-color-bg-muted)] text-[var(--semantic-color-text-tertiary)] border-[var(--semantic-color-border-strong)]",
+	info: "bg-[var(--semantic-color-feedback-info-light)] text-[var(--semantic-color-feedback-info-text)] border-[var(--semantic-color-feedback-info-border)]",
 };
 
 const icons: Record<AlertType, ReactNode> = {

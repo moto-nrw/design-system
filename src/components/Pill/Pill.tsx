@@ -33,7 +33,7 @@ const subtleStyles: Record<PillColor, string> = {
 };
 
 const sizeStyles = {
-	sm: "px-2 py-0.5 text-[length:var(--font-size-xs)]",
+	sm: "px-2 py-0.5 text-xs",
 	md: "px-3 py-1.5 text-xs",
 	lg: "px-4 py-2 text-sm",
 } as const;

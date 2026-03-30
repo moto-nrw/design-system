@@ -87,6 +87,7 @@
 	--radius-md: 8px;
 	--radius-lg: 12px;
 	--radius-xl: 16px;
+	--radius-2xl: 24px;
 	--radius-full: 9999px;
 
 	/* ─── Shadows ─── */
@@ -106,26 +107,26 @@
 	--duration-slow: 300ms;
 
 	/* ─── Typography ─── */
-	--font-family-sans: "Inter", system-ui, -apple-system, sans-serif;
-	--font-family-mono: "JetBrains Mono", "Fira Code", monospace;
+	--font-sans: "Inter", system-ui, -apple-system, sans-serif;
+	--font-mono: "JetBrains Mono", "Fira Code", monospace;
 
-	--font-size-xs: 0.75rem;
-	--font-size-sm: 0.875rem;
-	--font-size-base: 1rem;
-	--font-size-lg: 1.125rem;
-	--font-size-xl: 1.25rem;
-	--font-size-2xl: 1.5rem;
-	--font-size-3xl: 1.875rem;
-	--font-size-4xl: 2.25rem;
+	--text-xs: 0.75rem;
+	--text-sm: 0.875rem;
+	--text-base: 1rem;
+	--text-lg: 1.125rem;
+	--text-xl: 1.25rem;
+	--text-2xl: 1.5rem;
+	--text-3xl: 1.875rem;
+	--text-4xl: 2.25rem;
 
 	--font-weight-regular: 400;
 	--font-weight-medium: 500;
 	--font-weight-semibold: 600;
 	--font-weight-bold: 700;
 
-	--line-height-tight: 1.25;
-	--line-height-normal: 1.5;
-	--line-height-relaxed: 1.75;
+	--leading-tight: 1.25;
+	--leading-normal: 1.5;
+	--leading-relaxed: 1.75;
 }
 
 /* ─── Component Tokens ───
@@ -137,44 +138,51 @@
  *     --button-radius: var(--radius-xl);
  *     --button-md-padding-x: var(--spacing-6);
  *     --button-md-padding-y: var(--spacing-4);
- *     --button-md-font-size: var(--font-size-xl);
+ *     --button-md-font-size: var(--text-xl);
  *     --card-radius: 32px;
- *     --input-font-size: var(--font-size-lg);
+ *     --input-font-size: var(--text-lg);
  *   }
  */
 :root {
+	/* ─── General ─── */
+	--disabled-opacity: 0.5;
+
 	/* ─── Button ─── */
 	--button-radius: var(--radius-md);
 	--button-font-weight: var(--font-weight-medium);
-	--button-disabled-opacity: 0.5;
 	--button-transition-duration: var(--duration-fast);
 	--button-sm-padding-x: var(--spacing-3);
 	--button-sm-padding-y: var(--spacing-1);
-	--button-sm-font-size: var(--font-size-sm);
+	--button-sm-font-size: var(--text-sm);
 	--button-md-padding-x: var(--spacing-5);
 	--button-md-padding-y: var(--spacing-2);
-	--button-md-font-size: var(--font-size-base);
+	--button-md-font-size: var(--text-base);
 	--button-lg-padding-x: var(--spacing-5);
 	--button-lg-padding-y: var(--spacing-3);
-	--button-lg-font-size: var(--font-size-lg);
+	--button-lg-font-size: var(--text-lg);
 	--button-xl-padding-x: var(--spacing-6);
 	--button-xl-padding-y: var(--spacing-3);
-	--button-xl-font-size: var(--font-size-xl);
+	--button-xl-font-size: var(--text-xl);
 
 	/* ─── Card ─── */
-	--card-radius: 24px;
+	--card-radius: var(--radius-2xl);
 	--card-padding: var(--spacing-6);
 	--card-shadow: 0 8px 30px rgb(0 0 0 / 0.12);
 	--card-shadow-hover: 0 12px 40px rgb(0 0 0 / 0.18);
 	--card-transition-duration: var(--duration-fast);
 	--card-glass-border: rgb(255 255 255 / 0.2);
 	--card-glass-border-hover: rgb(148 163 184 / 0.4);
+	--card-padding-sm: var(--spacing-4);
+	--card-padding-lg: var(--spacing-10);
+	--card-backdrop-blur: 12px;
+	--card-hover-lift: -2px;
+	--card-active-scale: 0.98;
 
 	/* ─── Input ─── */
 	--input-radius: var(--radius-md);
 	--input-padding-x: var(--spacing-4);
 	--input-padding-y: var(--spacing-3);
-	--input-font-size: var(--font-size-base);
+	--input-font-size: var(--text-base);
 
 	/* ─── Modal ─── */
 	--modal-radius: var(--radius-xl);
@@ -185,10 +193,12 @@
 	--modal-z-index: var(--z-modal);
 	--modal-bg: linear-gradient(135deg, rgb(255 255 255 / 0.95) 0%, rgb(248 250 252 / 0.98) 100%);
 	--modal-footer-bg: rgb(249 250 251 / 0.5);
+	--modal-backdrop-blur: 20px;
+	--modal-close-size: 2.25rem;
 
 	/* ─── Badge ─── */
 	--badge-radius: var(--radius-full);
-	--badge-font-size: var(--font-size-sm);
+	--badge-font-size: var(--text-sm);
 	--badge-font-weight: var(--font-weight-semibold);
 
 	/* ─── Avatar ─── */
@@ -208,7 +218,7 @@
 	--toast-padding-y: var(--spacing-3);
 	--toast-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.15);
 	--toast-border-width: 3px;
-	--toast-font-size: var(--font-size-sm);
+	--toast-font-size: var(--text-sm);
 
 	/* ─── DropdownMenu ─── */
 	--dropdown-z-index: var(--z-modal);
@@ -219,7 +229,7 @@
 	--dropdown-item-padding-x: var(--spacing-3);
 	--dropdown-item-padding-y: 6px;
 	--dropdown-item-radius: var(--radius-sm);
-	--dropdown-item-font-size: var(--font-size-sm);
+	--dropdown-item-font-size: var(--text-sm);
 
 	/* ─── Toggle ─── */
 	/* Note: thumb-translate must equal track-width - thumb-size - 2*inset(2px) */
@@ -247,7 +257,7 @@
 	--textarea-radius: var(--input-radius);
 	--textarea-padding-x: var(--spacing-3);
 	--textarea-padding-y: var(--spacing-2);
-	--textarea-font-size: var(--font-size-sm);
+	--textarea-font-size: var(--text-sm);
 
 	/* ─── Checkbox ─── */
 	--checkbox-size: 16px;
@@ -255,5 +265,5 @@
 
 	/* ─── Radio ─── */
 	--radio-size: 16px;
-	--radio-gap: 10px;
+	--radio-gap: var(--spacing-3);
 }

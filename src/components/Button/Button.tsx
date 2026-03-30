@@ -48,7 +48,7 @@ export function Button({
 		<button
 			type={type}
 			className={cn(
-				"inline-flex items-center justify-center gap-2 border border-transparent rounded-[var(--button-radius)] font-sans font-[number:var(--button-font-weight)] cursor-pointer transition-all duration-[var(--button-transition-duration)] focus-visible:outline-none disabled:opacity-[var(--button-disabled-opacity)] disabled:cursor-not-allowed",
+				"inline-flex items-center justify-center gap-2 border border-transparent rounded-[var(--button-radius)] font-sans font-[number:var(--button-font-weight)] cursor-pointer transition-all duration-[var(--button-transition-duration)] focus-visible:outline-none disabled:opacity-[var(--disabled-opacity)] disabled:cursor-not-allowed",
 				variantStyles[variant],
 				sizeStyles[size],
 				className,

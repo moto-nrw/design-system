@@ -11,15 +11,16 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
 const variantStyles = {
 	default: "border border-[var(--semantic-color-border-default)]",
 	elevated:
-		"border border-black/5 bg-[var(--semantic-color-bg-default)]/90 shadow-[var(--card-shadow)] backdrop-blur-[12px]",
-	glass: "bg-[var(--semantic-color-bg-default)]/80 shadow-lg backdrop-blur-[12px]",
+		"border border-black/5 bg-[var(--semantic-color-bg-default)]/90 shadow-[var(--card-shadow)] backdrop-blur-[var(--card-backdrop-blur)]",
+	glass:
+		"bg-[var(--semantic-color-bg-default)]/80 shadow-lg backdrop-blur-[var(--card-backdrop-blur)]",
 } as const;
 
 const paddingStyles = {
 	none: "",
-	sm: "p-4",
+	sm: "p-[var(--card-padding-sm)]",
 	md: "p-[var(--card-padding)]",
-	lg: "p-10",
+	lg: "p-[var(--card-padding-lg)]",
 } as const;
 
 export function Card({
@@ -34,10 +35,10 @@ export function Card({
 		return (
 			<div
 				className={cn(
-					"group relative overflow-hidden rounded-[var(--card-radius)] bg-[var(--semantic-color-bg-default)] transition-all duration-[var(--card-transition-duration)]",
-					"cursor-pointer border border-black/5 bg-[var(--semantic-color-bg-default)]/90 shadow-[var(--card-shadow)] backdrop-blur-[12px]",
-					"hover:translate-y-[-2px] hover:border-[var(--semantic-color-border-muted)]/50 hover:bg-[var(--semantic-color-bg-default)] hover:shadow-[var(--card-shadow-hover)]",
-					"active:scale-[0.98]",
+					"group relative overflow-hidden rounded-[var(--card-radius)] transition-all duration-[var(--card-transition-duration)]",
+					"cursor-pointer border border-black/5 bg-[var(--semantic-color-bg-default)]/90 shadow-[var(--card-shadow)] backdrop-blur-[var(--card-backdrop-blur)]",
+					"hover:translate-y-[var(--card-hover-lift)] hover:border-[var(--semantic-color-border-muted)]/50 hover:bg-[var(--semantic-color-bg-default)] hover:shadow-[var(--card-shadow-hover)]",
+					"active:scale-[var(--card-active-scale)]",
 					className,
 				)}
 				{...props}

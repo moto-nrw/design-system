@@ -18,14 +18,14 @@ const typeStyles: Record<ToastType, string> = {
 		"border-l-[length:var(--toast-border-width)] border-l-[var(--semantic-color-feedback-error)]",
 	warning:
 		"border-l-[length:var(--toast-border-width)] border-l-[var(--semantic-color-feedback-warning)]",
-	info: "border-l-[length:var(--toast-border-width)] border-l-[var(--semantic-color-border-muted)]",
+	info: "border-l-[length:var(--toast-border-width)] border-l-[var(--semantic-color-feedback-info)]",
 };
 
 const iconColors: Record<ToastType, string> = {
 	success: "text-[var(--semantic-color-feedback-success)]",
 	error: "text-[var(--semantic-color-feedback-error)]",
 	warning: "text-[var(--semantic-color-feedback-warning)]",
-	info: "text-[var(--semantic-color-border-muted)]",
+	info: "text-[var(--semantic-color-feedback-info)]",
 };
 
 const icons: Record<ToastType, ReactNode> = {
@@ -121,7 +121,7 @@ export function Toast({ type = "info", message, duration = 4000, onClose }: Toas
 				<button
 					type="button"
 					onClick={dismiss}
-					className="flex shrink-0 p-0.5 border-none rounded-sm bg-transparent text-[var(--semantic-color-text-muted)] cursor-pointer transition-colors duration-150 hover:text-[var(--semantic-color-text-default)]"
+					className="flex shrink-0 p-0.5 border-none rounded-sm bg-transparent text-[var(--semantic-color-text-muted)] cursor-pointer transition-colors duration-[var(--duration-fast)] hover:text-[var(--semantic-color-text-default)]"
 					aria-label="Schließen"
 				>
 					<svg
