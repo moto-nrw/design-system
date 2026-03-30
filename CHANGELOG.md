@@ -1,5 +1,13 @@
 # @moto-nrw/design-system
 
+## 0.3.1
+
+### Patch Changes
+
+- [#34](https://github.com/moto-nrw/design-system/pull/34) [`20dfb5d`](https://github.com/moto-nrw/design-system/commit/20dfb5da67c8ff35b6e3a0c947f10301db052446) Thanks [@fl0r14n28](https://github.com/fl0r14n28)! - Fix broken @keyframes in published tailwind.css
+
+  The build script's regex for extracting @keyframes blocks from source CSS truncated multi-stop keyframes at the first inner closing brace. All 7 keyframes (wave, ds-spin, modalEnter, modalExit, contentReveal, toastSlideIn, toastSlideOut) were missing their closing braces and secondary stops, causing CssSyntaxError in consumer Tailwind v4 builds.
+
 ## 0.3.0
 
 ### Minor Changes
