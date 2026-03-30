@@ -61,3 +61,4 @@ export {
 	Toast,
 	Toggle,
 } from "./components";
+export { cn } from "./lib/cn";

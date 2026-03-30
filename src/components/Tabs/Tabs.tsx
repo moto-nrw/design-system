@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import styles from "./Tabs.module.css";
+import { cn } from "../../lib/cn";
 
 export interface TabItem {
 	id: string;
@@ -86,7 +86,7 @@ export function Tabs({ items, activeTab, onTabChange, className }: TabsProps) {
 	}, [updateScrollState, updateIndicator]);
 
 	return (
-		<div className={[styles.wrapper, className].filter(Boolean).join(" ")}>
+		<div className={cn("relative", className)}>
 			{showMobileDropdown && (
 				<MobileTabDropdown
 					items={items}
@@ -96,14 +96,15 @@ export function Tabs({ items, activeTab, onTabChange, className }: TabsProps) {
 				/>
 			)}
 
-			<div
-				className={[styles.tabsContainer, showMobileDropdown && styles.hiddenMobile]
-					.filter(Boolean)
-					.join(" ")}
-			>
-				{canScrollLeft && <div className={styles.fadeLeft} />}
+			<div className={cn("relative", showMobileDropdown && "hidden md:block")}>
+				{canScrollLeft && (
+					<div className="absolute top-0 bottom-0 left-0 z-10 w-6 bg-gradient-to-r from-[var(--semantic-color-bg-default)] to-transparent pointer-events-none" />
+				)}
 
-				<div ref={scrollRef} className={styles.scrollable}>
+				<div
+					ref={scrollRef}
+					className="relative flex gap-[var(--tabs-gap)] overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+				>
 					{items.map((tab, index) => (
 						<button
 							key={tab.id}
@@ -112,17 +113,19 @@ export function Tabs({ items, activeTab, onTabChange, className }: TabsProps) {
 							}}
 							type="button"
 							onClick={() => onTabChange(tab.id)}
-							className={[
-								styles.tab,
-								activeTab === tab.id ? styles.tabActive : styles.tabInactive,
-							].join(" ")}
+							className={cn(
+								"relative pb-3 border-none bg-transparent font-sans text-sm font-medium cursor-pointer transition-colors duration-[var(--duration-fast)] whitespace-nowrap",
+								activeTab === tab.id
+									? "text-[var(--semantic-color-text-default)] font-semibold"
+									: "text-[var(--semantic-color-text-muted)] hover:text-[var(--semantic-color-text-tertiary)]",
+							)}
 						>
-							<span className={styles.tabLabel}>{tab.label}</span>
+							<span className="whitespace-nowrap">{tab.label}</span>
 						</button>
 					))}
 
 					<div
-						className={styles.indicator}
+						className="absolute bottom-0 h-[var(--tabs-indicator-height)] rounded-full bg-[var(--semantic-color-text-default)] transition-[left,width] duration-[var(--duration-slow)] ease-out"
 						style={{
 							left: `${indicatorStyle.left}px`,
 							width: `${indicatorStyle.width}px`,
@@ -130,7 +133,9 @@ export function Tabs({ items, activeTab, onTabChange, className }: TabsProps) {
 					/>
 				</div>
 
-				{canScrollRight && <div className={styles.fadeRight} />}
+				{canScrollRight && (
+					<div className="absolute top-0 right-0 bottom-0 z-10 w-6 bg-gradient-to-l from-[var(--semantic-color-bg-default)] to-transparent pointer-events-none" />
+				)}
 			</div>
 		</div>
 	);
@@ -161,19 +166,21 @@ function MobileTabDropdown({
 	}, []);
 
 	return (
-		<div className={styles.mobileDropdown} ref={dropdownRef}>
+		<div className="relative md:hidden" ref={dropdownRef}>
 			<button
 				type="button"
 				onClick={() => setIsOpen(!isOpen)}
-				className={[styles.mobileToggle, isOpen && styles.mobileToggleOpen]
-					.filter(Boolean)
-					.join(" ")}
+				className={cn(
+					"flex items-center gap-2 px-4 py-2.5 border-none rounded-lg bg-[var(--semantic-color-bg-default)] font-sans text-base font-semibold text-[var(--semantic-color-text-default)] shadow-sm cursor-pointer transition-colors duration-[var(--duration-fast)]",
+					isOpen && "bg-[var(--semantic-color-bg-subtle)]",
+				)}
 			>
 				<span>{activeLabel}</span>
 				<svg
-					className={[styles.mobileChevron, isOpen && styles.mobileChevronOpen]
-						.filter(Boolean)
-						.join(" ")}
+					className={cn(
+						"shrink-0 text-[var(--semantic-color-text-muted)] transition-transform duration-[var(--duration-fast)]",
+						isOpen && "rotate-180",
+					)}
 					width="20"
 					height="20"
 					fill="none"
@@ -185,7 +192,7 @@ function MobileTabDropdown({
 			</button>
 
 			{isOpen && (
-				<div className={styles.mobileMenu}>
+				<div className="absolute top-full left-0 z-[var(--tabs-mobile-z-index)] mt-1 min-w-48 border border-[var(--semantic-color-border-default)] rounded-lg bg-[var(--semantic-color-bg-default)] py-1 shadow-lg">
 					{items.map((item) => (
 						<button
 							key={item.id}
@@ -194,12 +201,11 @@ function MobileTabDropdown({
 								onTabChange(item.id);
 								setIsOpen(false);
 							}}
-							className={[
-								styles.mobileMenuItem,
-								item.id === activeTab && styles.mobileMenuItemActive,
-							]
-								.filter(Boolean)
-								.join(" ")}
+							className={cn(
+								"block w-full text-left px-4 py-2.5 border-none bg-transparent font-sans text-base text-[var(--semantic-color-text-secondary)] cursor-pointer transition-colors duration-[var(--duration-fast)] hover:bg-[var(--semantic-color-bg-subtle)]",
+								item.id === activeTab &&
+									"bg-[var(--semantic-color-bg-subtle)] font-semibold text-[var(--semantic-color-text-default)]",
+							)}
 						>
 							{item.label}
 						</button>

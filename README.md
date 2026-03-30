@@ -59,7 +59,7 @@ pnpm add @moto-nrw/design-system lucide-react
 
 No `.npmrc` needed — the package is on npmjs.com.
 
-### 2. Import Tokens
+### 2. Import Styles
 
 For **Tailwind v4** consumers (recommended):
 
@@ -67,6 +67,13 @@ For **Tailwind v4** consumers (recommended):
 /* globals.css */
 @import "tailwindcss";
 @import "@moto-nrw/design-system/tailwind";
+@source "../node_modules/@moto-nrw/design-system/dist";
+```
+
+For apps that want the prebuilt stylesheet instead:
+
+```css
+@import "@moto-nrw/design-system/styles";
 ```
 
 Or import CSS variables directly:
@@ -95,8 +102,9 @@ function Example() {
 
 ```tsx
 import { Button, Card, ... } from "@moto-nrw/design-system";     // components
+import "@moto-nrw/design-system/styles";                          // prebuilt component CSS
 import "@moto-nrw/design-system/tokens";                          // CSS variables
-import "@moto-nrw/design-system/tailwind";                        // Tailwind v4 theme
+import "@moto-nrw/design-system/tailwind";                        // Tailwind v4 theme + tokens + keyframes
 ```
 
 ## Development

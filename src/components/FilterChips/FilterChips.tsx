@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from "react";
-import styles from "./FilterChips.module.css";
+import { cn } from "../../lib/cn";
 
 export interface ActiveFilter {
 	id: string;
@@ -16,12 +16,19 @@ export function FilterChips({ filters, onClearAll, className, ...props }: Filter
 	if (filters.length === 0) return null;
 
 	return (
-		<div className={[styles.wrapper, className].filter(Boolean).join(" ")} {...props}>
-			<div className={styles.chips}>
+		<div className={cn("flex items-center justify-between", className)} {...props}>
+			<div className="flex flex-wrap gap-2">
 				{filters.map((filter) => (
-					<span key={filter.id} className={styles.chip}>
+					<span
+						key={filter.id}
+						className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[var(--semantic-color-brand-primary-light)] font-sans text-xs font-medium text-[var(--semantic-color-brand-primary-dark)]"
+					>
 						{filter.label}
-						<button type="button" onClick={filter.onRemove} className={styles.removeButton}>
+						<button
+							type="button"
+							onClick={filter.onRemove}
+							className="flex p-0 border-none bg-transparent text-inherit cursor-pointer transition-colors duration-[var(--duration-fast)] hover:text-[var(--semantic-color-brand-primary-hover)]"
+						>
 							<svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 								<path
 									strokeLinecap="round"
@@ -36,7 +43,11 @@ export function FilterChips({ filters, onClearAll, className, ...props }: Filter
 			</div>
 
 			{onClearAll && filters.length > 1 && (
-				<button type="button" onClick={onClearAll} className={styles.clearAll}>
+				<button
+					type="button"
+					onClick={onClearAll}
+					className="p-0 border-none bg-transparent font-sans text-xs font-medium text-[var(--semantic-color-brand-primary)] cursor-pointer whitespace-nowrap transition-colors duration-[var(--duration-fast)] hover:text-[var(--semantic-color-brand-primary-hover)]"
+				>
 					Alle löschen
 				</button>
 			)}

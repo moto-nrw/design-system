@@ -1,0 +1,86 @@
+/*
+ * Ganztagshelden Design System — Tailwind v4 integration CSS
+ *
+ * Includes:
+ * - generated token variables
+ * - Tailwind theme values and component variables
+ * - custom keyframes used by component animation utilities
+ *
+ * Usage in consumer repos:
+ *   @import "tailwindcss";
+ *   @import "@moto-nrw/design-system/tailwind";
+ *   @source "../node_modules/@moto-nrw/design-system/dist";
+ */
+
+@import "./tokens/build/variables.css";
+@import "./tailwind-theme.css";
+
+@keyframes wave {
+	0% {
+		background-position: 200% 0;
+	}
+	100% {
+		background-position: -200% 0;
+	}
+}
+
+@keyframes ds-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes modalEnter {
+	from {
+		opacity: 0;
+		transform: scale(0.95) translateY(8px);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1) translateY(0);
+	}
+}
+
+@keyframes modalExit {
+	from {
+		opacity: 1;
+		transform: scale(1) translateY(0);
+	}
+	to {
+		opacity: 0;
+		transform: scale(0.95) translateY(8px);
+	}
+}
+
+@keyframes contentReveal {
+	from {
+		opacity: 0;
+		transform: translateY(4px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes toastSlideIn {
+	from {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes toastSlideOut {
+	from {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	to {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+}

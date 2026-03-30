@@ -1,5 +1,5 @@
 import { type InputHTMLAttributes, useState } from "react";
-import styles from "./Input.module.css";
+import { cn } from "../../lib/cn";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	label?: string;
@@ -13,25 +13,29 @@ export function Input({ label, error, id, name, type = "text", className, ...pro
 	const resolvedType = isPassword && showPassword ? "text" : type;
 
 	return (
-		<div className={styles.wrapper}>
+		<div className="flex flex-col gap-2">
 			{label && (
-				<label htmlFor={inputId} className={styles.label}>
+				<label
+					htmlFor={inputId}
+					className="font-sans text-sm font-medium text-[var(--semantic-color-text-default)]"
+				>
 					{label}
 				</label>
 			)}
-			<div className={styles.container}>
+			<div className="relative">
 				<input
 					id={inputId}
 					name={name}
 					type={resolvedType}
-					className={[
-						styles.input,
-						isPassword && styles.hasToggle,
-						error && styles.error,
+					className={cn(
+						"block w-full border border-[var(--semantic-color-border-default)] rounded-[var(--input-radius)] bg-[var(--semantic-color-bg-default)] px-[var(--input-padding-x)] py-[var(--input-padding-y)] font-sans text-[length:var(--input-font-size)] text-[var(--semantic-color-text-default)] shadow-[var(--shadow-sm)] transition-[border-color,box-shadow] duration-[var(--duration-fast)]",
+						"placeholder:text-[var(--semantic-color-text-muted)]",
+						"focus:outline-none focus:border-[var(--semantic-color-border-strong)]",
+						"disabled:opacity-[var(--disabled-opacity)] disabled:cursor-not-allowed disabled:bg-[var(--semantic-color-bg-subtle)]",
+						isPassword && "pr-10",
+						error && "border-[var(--semantic-color-feedback-error)]",
 						className,
-					]
-						.filter(Boolean)
-						.join(" ")}
+					)}
 					aria-invalid={error ? "true" : undefined}
 					aria-describedby={error ? `${inputId}-error` : undefined}
 					{...props}
@@ -40,7 +44,7 @@ export function Input({ label, error, id, name, type = "text", className, ...pro
 					<button
 						type="button"
 						onClick={() => setShowPassword((prev) => !prev)}
-						className={styles.toggle}
+						className="absolute top-1/2 right-3 -translate-y-1/2 flex items-center justify-center p-0 border-none bg-transparent text-[var(--semantic-color-text-muted)] cursor-pointer transition-colors duration-[var(--duration-fast)] hover:text-[var(--semantic-color-text-default)]"
 						aria-label={showPassword ? "Passwort verbergen" : "Passwort anzeigen"}
 						tabIndex={-1}
 					>
@@ -73,7 +77,10 @@ export function Input({ label, error, id, name, type = "text", className, ...pro
 				)}
 			</div>
 			{error && (
-				<p id={`${inputId}-error`} className={styles.errorText}>
+				<p
+					id={`${inputId}-error`}
+					className="font-sans text-xs text-[var(--semantic-color-feedback-error-text)] m-0"
+				>
 					{error}
 				</p>
 			)}

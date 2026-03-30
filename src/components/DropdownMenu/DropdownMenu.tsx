@@ -1,6 +1,6 @@
 import { type ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import styles from "./DropdownMenu.module.css";
+import { cn } from "../../lib/cn";
 
 export interface DropdownMenuItem {
 	id: string;
@@ -65,7 +65,7 @@ export function DropdownMenu({ items, trigger, className }: DropdownMenuProps) {
 	const menu = isOpen && typeof document !== "undefined" && (
 		<div
 			ref={menuRef}
-			className={styles.menu}
+			className="fixed z-[var(--dropdown-z-index)] w-[var(--dropdown-width)] p-[var(--dropdown-padding)] border border-[var(--semantic-color-border-default)] rounded-[var(--dropdown-radius)] bg-[var(--semantic-color-bg-default)] shadow-[var(--dropdown-shadow)]"
 			style={{ top: position.top, right: position.right }}
 			role="menu"
 		>
@@ -78,9 +78,12 @@ export function DropdownMenu({ items, trigger, className }: DropdownMenuProps) {
 						close();
 						item.onClick();
 					}}
-					className={[styles.menuItem, item.variant === "danger" && styles.menuItemDanger]
-						.filter(Boolean)
-						.join(" ")}
+					className={cn(
+						"flex w-full items-center px-[var(--dropdown-item-padding-x)] py-[var(--dropdown-item-padding-y)] border-none rounded-[var(--dropdown-item-radius)] bg-transparent font-sans text-[length:var(--dropdown-item-font-size)] text-left cursor-pointer transition-colors duration-[var(--duration-fast)]",
+						item.variant === "danger"
+							? "text-[var(--semantic-color-feedback-error-text)] hover:bg-[var(--semantic-color-feedback-error-light)]"
+							: "text-[var(--semantic-color-text-tertiary)] hover:bg-[var(--semantic-color-bg-muted)]",
+					)}
 				>
 					{item.label}
 				</button>
@@ -94,13 +97,16 @@ export function DropdownMenu({ items, trigger, className }: DropdownMenuProps) {
 				ref={buttonRef}
 				type="button"
 				onClick={handleToggle}
-				className={[styles.trigger, className].filter(Boolean).join(" ")}
+				className={cn(
+					"flex items-center justify-center p-1 border-none rounded-md bg-transparent text-[var(--semantic-color-text-muted)] cursor-pointer transition-all duration-[var(--duration-fast)] hover:bg-[var(--semantic-color-bg-muted)] hover:text-[var(--semantic-color-text-secondary)]",
+					className,
+				)}
 				aria-label="Aktionen"
 				aria-expanded={isOpen}
 				aria-haspopup="menu"
 			>
 				{trigger || (
-					<svg className={styles.dotsIcon} fill="currentColor" viewBox="0 0 20 20">
+					<svg className="size-5" fill="currentColor" viewBox="0 0 20 20">
 						<path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
 					</svg>
 				)}

@@ -16,7 +16,7 @@
         "default": "./dist/index.cjs"
       }
     },
-    "./styles": "./dist/index.css",
+    "./styles": "./dist/styles.css",
     "./tokens": "./dist/tokens.css",
     "./tailwind": "./dist/tailwind.css"
   },
@@ -39,6 +39,8 @@
     "@storybook/addon-a11y": "^10.3.3",
     "@storybook/react": "^10.3.3",
     "@storybook/react-vite": "^10.3.3",
+    "@tailwindcss/cli": "^4.2.2",
+    "@tailwindcss/vite": "^4.2.2",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
@@ -52,13 +54,15 @@
     "react-dom": "^19.2.4",
     "storybook": "^10.3.3",
     "style-dictionary": "^5.4.0",
+    "tailwindcss": "^4.2.2",
     "tsup": "^8.5.1",
     "typescript": "^6.0.2",
     "vitest": "^4.1.2"
   },
   "scripts": {
     "tokens": "NODE_OPTIONS='--experimental-strip-types' style-dictionary build --config src/tokens/style-dictionary.config.ts",
-    "build": "pnpm tokens && tsup && cp src/tokens/build/variables.css dist/tokens.css && cp src/tailwind-theme.css dist/tailwind.css",
+    "build": "pnpm tokens && tsup && pnpm build:tailwind && tailwindcss -i src/styles.css -o dist/styles.css --minify && cp src/tokens/build/variables.css dist/tokens.css",
+    "build:tailwind": "node scripts/build-tailwind.cjs",
     "postbuild": "attw --pack --exclude-entrypoints ./tokens ./tailwind ./styles && publint",
     "dev": "tsup --watch",
     "test": "vitest",
@@ -79,5 +83,9 @@
   },
   "type": "module",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.5.0"
+  }
 }

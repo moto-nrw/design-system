@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from "react";
-import styles from "./StatusDot.module.css";
+import { cn } from "../../lib/cn";
 
 export type StatusDotColor = "green" | "yellow" | "red" | "gray";
 
@@ -9,6 +9,18 @@ export interface StatusDotProps extends HTMLAttributes<HTMLDivElement> {
 	size?: "sm" | "md";
 	pulse?: boolean;
 }
+
+const colorStyles: Record<StatusDotColor, string> = {
+	green: "bg-[var(--semantic-color-feedback-success)]",
+	yellow: "bg-[var(--semantic-color-feedback-warning)]",
+	red: "bg-[var(--semantic-color-feedback-error)]",
+	gray: "bg-[var(--semantic-color-border-muted)]",
+};
+
+const sizeStyles = {
+	sm: "size-2.5",
+	md: "size-3",
+} as const;
 
 export function StatusDot({
 	color,
@@ -22,9 +34,13 @@ export function StatusDot({
 
 	return (
 		<div
-			className={[styles.dot, styles[color], styles[size], shouldPulse && styles.pulse, className]
-				.filter(Boolean)
-				.join(" ")}
+			className={cn(
+				"shrink-0 rounded-full",
+				colorStyles[color],
+				sizeStyles[size],
+				shouldPulse && "animate-pulse",
+				className,
+			)}
 			title={tooltip}
 			{...props}
 		/>

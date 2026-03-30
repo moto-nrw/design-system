@@ -1,0 +1,10 @@
+{
+	"duration": {
+		"fast": { "$type": "string", "$value": "150ms" },
+		"normal": { "$type": "string", "$value": "200ms" },
+		"slow": { "$type": "string", "$value": "300ms" }
+	},
+	"easing": {
+		"default": { "$type": "string", "$value": "ease" }
+	}
+}

@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from "react";
-import styles from "./Spinner.module.css";
+import { cn } from "../../lib/cn";
 
 export interface SpinnerProps extends HTMLAttributes<HTMLDivElement> {
 	size?: "sm" | "md" | "lg";
@@ -16,9 +16,13 @@ export function Spinner({ size = "md", label, className, ...props }: SpinnerProp
 	const circumference = 2 * Math.PI * r;
 
 	return (
-		<div className={[styles.wrapper, className].filter(Boolean).join(" ")} role="status" {...props}>
-			<svg width={s} height={s} viewBox={`0 0 ${s} ${s}`} className={styles.svg}>
-				{/* Track */}
+		<div className={cn("flex flex-col items-center gap-3", className)} role="status" {...props}>
+			<svg
+				width={s}
+				height={s}
+				viewBox={`0 0 ${s} ${s}`}
+				className="animate-[ds-spin_0.8s_cubic-bezier(0.4,0,0.2,1)_infinite]"
+			>
 				<circle
 					cx={s / 2}
 					cy={s / 2}
@@ -27,7 +31,6 @@ export function Spinner({ size = "md", label, className, ...props }: SpinnerProp
 					stroke="var(--semantic-color-border-default)"
 					strokeWidth={stroke}
 				/>
-				{/* Arc */}
 				<circle
 					cx={s / 2}
 					cy={s / 2}
@@ -39,8 +42,10 @@ export function Spinner({ size = "md", label, className, ...props }: SpinnerProp
 					strokeDasharray={`${circumference * 0.3} ${circumference * 0.7}`}
 				/>
 			</svg>
-			{label && <p className={styles.label}>{label}</p>}
-			<span className={styles.srOnly}>Laden...</span>
+			{label && (
+				<p className="m-0 font-sans text-sm text-[var(--semantic-color-text-muted)]">{label}</p>
+			)}
+			<span className="sr-only">Laden...</span>
 		</div>
 	);
 }

@@ -1,0 +1,7 @@
+{
+	"z-index": {
+		"dropdown": { "$type": "string", "$value": "50" },
+		"modal": { "$type": "string", "$value": "9999" },
+		"toast": { "$type": "string", "$value": "99999" }
+	}
+}

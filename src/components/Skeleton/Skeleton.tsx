@@ -1,5 +1,5 @@
 import type { CSSProperties, HTMLAttributes } from "react";
-import styles from "./Skeleton.module.css";
+import { cn } from "../../lib/cn";
 
 export interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
 	width?: number | string;
@@ -9,6 +9,9 @@ export interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
 	count?: number;
 	gap?: number;
 }
+
+const skeletonClass =
+	"animate-[wave_1.5s_ease-in-out_infinite] bg-[length:200%_100%] bg-[linear-gradient(90deg,var(--semantic-color-bg-muted)_25%,var(--semantic-color-bg-subtle)_50%,var(--semantic-color-bg-muted)_75%)]";
 
 export function Skeleton({
 	width,
@@ -22,7 +25,7 @@ export function Skeleton({
 	...props
 }: SkeletonProps) {
 	const resolvedRadius = circle
-		? "9999px"
+		? "var(--radius-full)"
 		: borderRadius != null
 			? typeof borderRadius === "number"
 				? `${borderRadius}px`
@@ -39,7 +42,7 @@ export function Skeleton({
 	if (count === 1) {
 		return (
 			<div
-				className={[styles.skeleton, className].filter(Boolean).join(" ")}
+				className={cn(skeletonClass, className)}
 				style={itemStyle}
 				aria-hidden="true"
 				{...props}
@@ -48,13 +51,9 @@ export function Skeleton({
 	}
 
 	return (
-		<div className={styles.group} style={{ gap }} aria-hidden="true" {...props}>
+		<div className="flex flex-col" style={{ gap }} aria-hidden="true" {...props}>
 			{Array.from({ length: count }, (_, i) => (
-				<div
-					key={`skeleton-${i}`}
-					className={[styles.skeleton, className].filter(Boolean).join(" ")}
-					style={itemStyle}
-				/>
+				<div key={`skeleton-${i}`} className={cn(skeletonClass, className)} style={itemStyle} />
 			))}
 		</div>
 	);

@@ -1,125 +1,227 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file gives coding agents a current map of the repository so edits stay aligned with how the package is actually built, tested, and published.
 
-## What This Is
+## What This Repo Is
 
-`@moto-nrw/design-system` - shared React component library and design tokens for the Ganztagshelden ecosystem. Published to GitHub Packages. Consumed by project-phoenix, PyrePortal, website, and other repos via `pnpm add @moto-nrw/design-system`.
+`@moto-nrw/design-system` is the shared React component library and token package for the Ganztagshelden ecosystem.
 
-## Commands
+- Published to npmjs.com as a PUBLIC package
+- Consumed by apps like project-phoenix, PyrePortal, the website, and other frontend repos in moto-nrw GitHub Organsisation
+- Built as a React component package plus CSS entrypoints for tokens and Tailwind v4 integration
+
+## Day-To-Day Commands
 
 | Command | Purpose |
 |---------|---------|
-| `pnpm build` | Full production build (tokens + tsup + validation) |
-| `pnpm tokens` | Generate CSS vars + TS constants from token JSONs |
-| `pnpm dev` | Watch mode for component development |
-| `pnpm test:run` | Single test run |
-| `pnpm test` | Tests in watch mode |
-| `pnpm storybook` | Component playground on localhost:6006 |
-| `pnpm lint` | Check with Biome |
-| `pnpm lint:fix` | Auto-fix lint + format issues |
-| `pnpm knip` | Find unused exports, files, and dependencies |
-| `pnpm changeset` | Create a changeset for the next release |
-| `pnpm version` | Bump version + generate CHANGELOG from changesets |
-| `pnpm release` | Publish to GitHub Packages |
+| `pnpm build` | Full production build: tokens, JS bundles, CSS entrypoints, and package validation |
+| `pnpm tokens` | Regenerate token artifacts in `src/tokens/build/` |
+| `pnpm dev` | Watch JS/TS bundle output via `tsup --watch` |
+| `pnpm test` | Vitest in watch mode |
+| `pnpm test:run` | Run the full test suite once |
+| `pnpm storybook` | Local Storybook at `localhost:6006` |
+| `pnpm build-storybook` | Production Storybook build for broad render sanity checks |
+| `pnpm lint` | Run Biome checks |
+| `pnpm lint:fix` | Apply Biome fixes |
+| `pnpm format` | Format files with Biome |
+| `pnpm knip` | Detect unused exports, files, and dependencies |
+| `pnpm changeset` | Create a release note for the next package version |
+| `pnpm version` | Apply pending changesets and update `CHANGELOG.md` |
+| `pnpm release` | Publish the package via Changesets |
 
-Run a single test file: `pnpm vitest run src/components/Button/Button.test.tsx`
+Useful one-off commands:
+
+- Run a single test file: `pnpm vitest run src/components/Button/Button.test.tsx`
+- Typecheck locally the same way CI does: `pnpm tsc --noEmit`
 
 ## Build Pipeline
 
-`pnpm build` runs four steps sequentially:
+`pnpm build` currently does the following:
 
-1. **`pnpm tokens`** - Style Dictionary compiles `src/tokens/{base,semantic}/**/*.json` into `src/tokens/build/variables.css` and `src/tokens/build/tokens.ts`
-2. **`tsup`** - Bundles `src/index.ts` into ESM (`dist/index.js`) + CJS (`dist/index.cjs`) + type declarations
-3. **`cp`** - Copies generated token CSS to `dist/tokens.css` and Tailwind theme to `dist/tailwind.css`
+1. `pnpm tokens`
+   Style Dictionary compiles `src/tokens/{base,semantic}/**/*.json` into:
+   - `src/tokens/build/variables.css`
+   - `src/tokens/build/tokens.ts`
+2. `tsup`
+   Bundles `src/index.ts` into:
+   - `dist/index.js` (ESM)
+   - `dist/index.cjs` (CJS)
+   - `dist/index.d.ts` and `dist/index.d.cts`
+3. Tailwind CLI builds `src/tailwind.css` into `dist/tailwind.css`
+4. Tailwind CLI builds `src/styles.css` into `dist/styles.css`
+5. The generated token CSS is copied to `dist/tokens.css`
 
-Then `postbuild` validates: `attw` checks export resolution across all module systems, `publint` checks package.json correctness.
+After that, `postbuild` runs:
 
-## Architecture
+- `attw --pack --exclude-entrypoints ./tokens ./tailwind ./styles`
+- `publint`
 
-### Brand Color System
+If packaging behavior changes, update both `README.md` and this file in the same PR.
 
-"Steel Logo + Olive Sage Accent" — colors derived from the Ganztagshelden brand palette:
+## Package Entry Points
 
-- **Steel** (10 steps, 50–900): Logo, text, borders, backgrounds. Matches Tailwind Slate.
-- **Sage** (5 steps: 100/300/500/700/900): Primary accent — buttons, CTAs, links, success states. Only the 5 brand-defined values; no interpolated shades.
-- **Warm** (10 steps, 50–900): Secondary accent — warnings, highlights, badges. Matches Tailwind Amber.
-- **Red** (4 values: 50/400/500/600): Error and destructive states.
+The package exposes four main public surfaces:
 
-Primary interactive color: `sage.500` (`#7BA05B`). Dark mode background: `steel.900` (`#0F172A`).
-
-### Two-Tier Token System
-
-Components never use raw values. The token system has two layers:
-
-- **Base tokens** (`src/tokens/base/`) - raw primitives: `color.sage.500: "#7BA05B"`
-- **Semantic tokens** (`src/tokens/semantic/`) - design decisions referencing base tokens: `semantic.color.brand.primary: "{color.sage.500}"`
-
-Style Dictionary generates CSS custom properties with `outputReferences: true`, so semantic vars reference base vars (e.g., `--semantic-color-brand-primary: var(--color-sage-500)`).
-
-Theme files exist in `src/tokens/themes/` (light/dark) but are not yet wired into the build.
-
-### Component Pattern
-
-Every component follows this structure:
-
-```
-src/components/ComponentName/
-├── ComponentName.tsx           # Component with typed props extending HTML attributes
-├── ComponentName.module.css    # CSS Modules using token CSS variables (no hardcoded values)
-├── ComponentName.test.tsx      # Vitest + React Testing Library
-├── ComponentName.stories.tsx   # Storybook with tags: ["autodocs"]
-└── index.ts                    # Barrel re-export
-```
-
-Then add the export to `src/components/index.ts` and `src/index.ts`.
-
-### Package Exports
-
-Consumers use three entry points:
 ```tsx
-import { Button, Logo } from "@moto-nrw/design-system";     // components
-import "@moto-nrw/design-system/tokens";                     // CSS variables
-import "@moto-nrw/design-system/tailwind";                   // Tailwind v4 theme
+import { Button, Logo } from "@moto-nrw/design-system";     // React components
+import "@moto-nrw/design-system/styles";                     // prebuilt component CSS
+import "@moto-nrw/design-system/tokens";                     // CSS variables only
+import "@moto-nrw/design-system/tailwind";                   // Tailwind v4 theme + tokens + keyframes
 ```
 
-For Tailwind v4 consumers (project-phoenix, PyrePortal, website), add to the main CSS:
+### Tailwind v4 consumption
+
+For apps that want utilities generated in the consumer build:
+
 ```css
 @import "tailwindcss";
 @import "@moto-nrw/design-system/tailwind";
+@source "../node_modules/@moto-nrw/design-system/dist";
 ```
 
-This registers all brand colors, spacing, radii, and typography as Tailwind utilities (e.g., `bg-steel-800`, `text-sage-500`, `rounded-md`).
+Important details:
 
-React and React-DOM are peer dependencies (not bundled).
+- `@moto-nrw/design-system/tailwind` is expected to be self-contained for tokens, theme values, component variables, and custom keyframes
+- `@source` is required so the consumer’s Tailwind build sees utility classes inside the published component bundle
 
-### Logo
+### Prebuilt CSS consumption
 
-The SVG logo lives in `src/assets/logo.svg` and is exported as a `<Logo>` React component. SVG fills use CSS variables (`var(--color-steel-800)`) with hardcoded fallbacks, so the logo works both with and without token CSS loaded.
+For apps that want the library’s compiled CSS directly:
 
-## Key Constraints
+```css
+@import "@moto-nrw/design-system/styles";
+```
 
-- All component styles must use semantic token CSS variables, never base tokens or hardcoded values
-- Sage palette is intentionally limited to 5 steps (100/300/500/700/900) to constrain design choices
-- `src/tokens/build/` is gitignored (generated output) - run `pnpm tokens` after cloning
-- `src/tailwind-theme.css` is the source for the Tailwind v4 `@theme` — values must stay in sync with token JSONs
-- TypeScript 6 requires `"ignoreDeprecations": "6.0"` in tsconfig due to tsup's internal use of `baseUrl`
-- The `./tokens` and `./tailwind` exports are excluded from `attw` validation (CSS-only exports can't resolve as JS modules)
-- Biome uses **tab** indentation and 100-char line width
+`./styles` is expected to include:
 
-## CI/CD
+- semantic token variables
+- component-level CSS variables
+- all utility rules referenced by shipped components
+- custom keyframes used by component animation classes
 
-- **CI** (`.github/workflows/ci.yml`): Runs lint, typecheck, test, build, and knip on every PR and push to `development`
-- **Release** (`.github/workflows/release.yml`): On push to `development`, changesets/action either creates a "Version Package" PR (if changesets exist) or publishes to GitHub Packages (if version was bumped)
+## Styling Architecture
 
-## Release Workflow
+This repo no longer uses component-level CSS Modules for component styling.
 
-1. Make changes, then run `pnpm changeset` to describe what changed (patch/minor/major)
-2. Commit the changeset file along with your code
-3. On merge to `development`, CI creates a "Version Package" PR that bumps version + updates CHANGELOG
-4. Merging that PR triggers the actual publish to GitHub Packages
+Components now render:
 
-## Git Hooks (Lefthook)
+- Tailwind utility classes directly in TSX
+- semantic CSS custom properties for colors and design decisions
+- component-scoped custom properties for sizing, spacing, and behavior knobs
 
-- **pre-commit**: Biome lint + typecheck on staged files
-- **pre-push**: Full test suite + build
+Current styling source files:
+
+- `src/tailwind-theme.css`
+  Tailwind v4 `@theme` definitions and component variable defaults
+- `src/tailwind.css`
+  Tailwind integration source that imports generated token variables, theme definitions, and custom keyframes
+- `src/styles.css`
+  Prebuilt stylesheet source that layers Tailwind theme/utilities over the package’s Tailwind integration
+
+### Token model
+
+The token system has two layers:
+
+- Base tokens in `src/tokens/base/`
+- Semantic tokens in `src/tokens/semantic/`
+
+Generated outputs in `src/tokens/build/` are artifacts, not hand-maintained source.
+
+The semantic layer should remain the default interface for components:
+
+- Use `var(--semantic-color-...)` in components
+- Avoid hardcoding raw brand values inside component code
+- Keep `tailwind-theme.css` aligned with the token system so Tailwind utilities and CSS variables do not drift apart
+
+Theme files exist in `src/tokens/themes/`, but they are not wired into the published build yet.
+
+## Component Structure
+
+Most components follow this folder pattern:
+
+```text
+src/components/ComponentName/
+├── ComponentName.tsx
+├── ComponentName.stories.tsx
+├── ComponentName.test.tsx      # optional but preferred for non-trivial behavior
+└── index.ts
+```
+
+Notes:
+
+- Tests are present for some components, not every component yet
+- Storybook stories exist broadly and are useful for package-level manual QA
+- Public exports must be added to both `src/components/index.ts` and `src/index.ts`
+
+## Working Conventions
+- no hardcoded variables or values
+- rg to check everything is clean
+- it should be deployable and usable easily for our consumers
+
+### Styling rules
+
+- Prefer semantic CSS variables over base token values in component code
+- Keep the sage palette constrained to the intended brand steps: `100/300/500/700/900`
+- If you add Tailwind utilities that depend on custom keyframes, make sure the relevant entrypoint still ships those keyframes
+- If you add utilities used by published components, verify they are available in either:
+  - the prebuilt `./styles` bundle, and
+  - the documented Tailwind + `@source` integration path
+
+### Generated files
+
+- `src/tokens/build/` is gitignored and regenerated
+- Do not hand-edit generated token files unless you are debugging the generator itself
+- Biome excludes `src/tokens/build` because those files are generated by Style Dictionary
+
+### TypeScript and tooling
+
+- Biome uses tabs and a 100-character line width
+- `vitest` runs in `jsdom`
+- Storybook uses the Vite builder
+- React and `react-dom` are peer dependencies and are not bundled into the package
+
+## QA Expectations
+
+For component or styling work, the usual confidence ladder is:
+
+1. `pnpm lint`
+2. `pnpm test:run`
+3. `pnpm build`
+4. `pnpm build-storybook` for broad render/package sanity when changes affect styling, packaging, or many components
+
+When touching packaging or CSS entrypoints, also verify the built outputs in `dist/` if something looks suspicious.
+
+Good spot checks after build:
+
+- `dist/tailwind.css` includes tokens and custom keyframes
+- `dist/styles.css` includes the utility rules used by components
+- README examples still match the real published entrypoints
+
+## CI And Release
+
+### CI
+
+`.github/workflows/ci.yml` currently runs on pushes and PRs targeting `development` and executes:
+
+- `pnpm lint`
+- `pnpm tsc --noEmit`
+- `pnpm test:run`
+- `pnpm build`
+- `pnpm knip`
+
+### Release
+
+`.github/workflows/release.yml` runs on pushes to `development` and uses Changesets to either:
+
+- open a version PR, or
+- publish to npmjs.com using `NPM_TOKEN`
+
+This repo is no longer documented as publishing to GitHub Packages.
+
+## Constraints To Keep In Mind
+
+- Keep published entrypoints coherent: `./styles`, `./tokens`, and `./tailwind` should each do exactly what the docs say they do
+- Tailwind integration changes are package API changes, not just internal refactors
+- Storybook is a major QA surface here, so don’t leave stories broken after component changes
+- The logo source of truth is `src/assets/logo.svg`, surfaced through the `Logo` component
+- If you change export structure, build scripts, release behavior, or consumption docs, update this file too

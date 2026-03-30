@@ -1,5 +1,5 @@
 import type { HTMLAttributes, ReactNode } from "react";
-import styles from "./Alert.module.css";
+import { cn } from "../../lib/cn";
 
 export type AlertType = "error" | "success" | "warning" | "info";
 
@@ -7,6 +7,16 @@ export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
 	type: AlertType;
 	message: string;
 }
+
+const typeStyles: Record<AlertType, string> = {
+	error:
+		"bg-[var(--semantic-color-feedback-error-light)] text-[var(--semantic-color-feedback-error-text)] border-[var(--semantic-color-feedback-error-border)]",
+	success:
+		"bg-[var(--semantic-color-feedback-success-light)] text-[var(--semantic-color-feedback-success-text)] border-[var(--semantic-color-feedback-success-border)]",
+	warning:
+		"bg-[var(--semantic-color-feedback-warning-light)] text-[var(--semantic-color-feedback-warning-text)] border-[var(--semantic-color-feedback-warning-border)]",
+	info: "bg-[var(--semantic-color-feedback-info-light)] text-[var(--semantic-color-feedback-info-text)] border-[var(--semantic-color-feedback-info-border)]",
+};
 
 const icons: Record<AlertType, ReactNode> = {
 	error: (
@@ -53,10 +63,14 @@ export function Alert({ type, message, className, ...props }: AlertProps) {
 	return (
 		<div
 			role="alert"
-			className={[styles.alert, styles[type], className].filter(Boolean).join(" ")}
+			className={cn(
+				"flex items-center gap-2 px-4 py-3 rounded-md border font-sans text-sm shadow-sm",
+				typeStyles[type],
+				className,
+			)}
 			{...props}
 		>
-			<span className={styles.icon}>{icons[type]}</span>
+			<span className="shrink-0 flex">{icons[type]}</span>
 			<span>{message}</span>
 		</div>
 	);

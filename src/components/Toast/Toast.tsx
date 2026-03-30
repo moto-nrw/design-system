@@ -1,6 +1,6 @@
 import { type ReactNode, useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import styles from "./Toast.module.css";
+import { cn } from "../../lib/cn";
 
 export type ToastType = "success" | "error" | "warning" | "info";
 
@@ -10,6 +10,23 @@ export interface ToastProps {
 	duration?: number;
 	onClose: () => void;
 }
+
+const typeStyles: Record<ToastType, string> = {
+	success:
+		"border-l-[length:var(--toast-border-width)] border-l-[var(--semantic-color-feedback-success)]",
+	error:
+		"border-l-[length:var(--toast-border-width)] border-l-[var(--semantic-color-feedback-error)]",
+	warning:
+		"border-l-[length:var(--toast-border-width)] border-l-[var(--semantic-color-feedback-warning)]",
+	info: "border-l-[length:var(--toast-border-width)] border-l-[var(--semantic-color-feedback-info)]",
+};
+
+const iconColors: Record<ToastType, string> = {
+	success: "text-[var(--semantic-color-feedback-success)]",
+	error: "text-[var(--semantic-color-feedback-error)]",
+	warning: "text-[var(--semantic-color-feedback-warning)]",
+	info: "text-[var(--semantic-color-feedback-info)]",
+};
 
 const icons: Record<ToastType, ReactNode> = {
 	success: (
@@ -89,19 +106,24 @@ export function Toast({ type = "info", message, duration = 4000, onClose }: Toas
 	}, [duration, dismiss]);
 
 	const content = (
-		<div className={styles.container}>
+		<div className="fixed top-[var(--toast-position-top)] right-[var(--toast-position-right)] z-[var(--toast-z-index)] pointer-events-none">
 			<div
-				className={[
-					styles.toast,
-					styles[type],
-					isVisible && !isExiting ? styles.enter : styles.exit,
-				]
-					.filter(Boolean)
-					.join(" ")}
+				className={cn(
+					"flex items-center gap-2.5 px-[var(--toast-padding-x)] py-[var(--toast-padding-y)] rounded-[var(--toast-radius)] bg-[var(--semantic-color-bg-default)] border border-[var(--semantic-color-border-default)] shadow-[var(--toast-shadow)] font-sans text-[length:var(--toast-font-size)] text-[var(--semantic-color-text-default)] pointer-events-auto max-w-[var(--toast-max-width)]",
+					typeStyles[type],
+					isVisible && !isExiting
+						? "animate-[toastSlideIn_200ms_ease-out_both]"
+						: "animate-[toastSlideOut_200ms_ease-in_both]",
+				)}
 			>
-				<span className={styles.icon}>{icons[type]}</span>
-				<span className={styles.message}>{message}</span>
-				<button type="button" onClick={dismiss} className={styles.close} aria-label="Schließen">
+				<span className={cn("flex shrink-0", iconColors[type])}>{icons[type]}</span>
+				<span className="flex-1 leading-[1.4]">{message}</span>
+				<button
+					type="button"
+					onClick={dismiss}
+					className="flex shrink-0 p-0.5 border-none rounded-sm bg-transparent text-[var(--semantic-color-text-muted)] cursor-pointer transition-colors duration-[var(--duration-fast)] hover:text-[var(--semantic-color-text-default)]"
+					aria-label="Schließen"
+				>
 					<svg
 						width="14"
 						height="14"

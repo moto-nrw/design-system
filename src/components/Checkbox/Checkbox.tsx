@@ -1,5 +1,5 @@
 import type { InputHTMLAttributes } from "react";
-import styles from "./Checkbox.module.css";
+import { cn } from "../../lib/cn";
 
 export interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
 	label: string;
@@ -9,9 +9,23 @@ export function Checkbox({ label, id, name, className, ...props }: CheckboxProps
 	const inputId = id || name || label.toLowerCase().replace(/\s+/g, "-");
 
 	return (
-		<label htmlFor={inputId} className={[styles.wrapper, className].filter(Boolean).join(" ")}>
-			<input type="checkbox" id={inputId} name={name} className={styles.input} {...props} />
-			<span className={styles.label}>{label}</span>
+		<label
+			htmlFor={inputId}
+			className={cn(
+				"flex items-center gap-[var(--checkbox-gap)] px-2 py-1.5 rounded-md cursor-pointer transition-colors duration-[var(--duration-fast)] hover:bg-[var(--semantic-color-bg-subtle)]",
+				className,
+			)}
+		>
+			<input
+				type="checkbox"
+				id={inputId}
+				name={name}
+				className="size-[var(--checkbox-size)] rounded-sm border border-[var(--semantic-color-border-strong)] accent-[var(--semantic-color-text-default)] cursor-pointer disabled:opacity-[var(--disabled-opacity)] disabled:cursor-not-allowed"
+				{...props}
+			/>
+			<span className="font-sans text-sm text-[var(--semantic-color-text-default)] select-none">
+				{label}
+			</span>
 		</label>
 	);
 }

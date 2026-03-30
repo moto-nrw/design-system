@@ -33,6 +33,6 @@
 		}
 	},
 	"files": {
-		"includes": ["src/**", ".storybook/**"]
+		"includes": ["src/**", ".storybook/**", "!src/tokens/build"]
 	}
 }
