@@ -1,5 +1,13 @@
 # @moto-nrw/design-system
 
+## 0.5.0
+
+### Minor Changes
+
+- Add ListItem component for selectable list items
+
+  New `ListItem` component with `active` prop for highlighted state. Useful for tenant switchers, settings lists, and navigation menus.
+
 ## 0.4.0
 
 ### Minor Changes
