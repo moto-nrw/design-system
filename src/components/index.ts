@@ -20,6 +20,8 @@ export type { ActiveFilter, FilterChipsProps } from "./FilterChips";
 export { FilterChips } from "./FilterChips";
 export type { InputProps } from "./Input";
 export { Input } from "./Input";
+export type { ListItemProps } from "./ListItem";
+export { ListItem } from "./ListItem";
 export type { LogoProps } from "./Logo";
 export { Logo } from "./Logo";
 export type { ConfirmationModalProps, ModalProps } from "./Modal";
