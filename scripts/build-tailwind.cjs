@@ -16,12 +16,16 @@ const parts = [
 	fs.readFileSync(path.join(root, "src/tailwind-theme.css"), "utf8"),
 ];
 
-// Extract @keyframes blocks from src/tailwind.css
+// Append everything from src/tailwind.css except @import lines and the
+// leading comment block — the imported files are already read above.
 const tailwindSrc = fs.readFileSync(path.join(root, "src/tailwind.css"), "utf8");
-const keyframeBlocks = tailwindSrc.match(/@keyframes\s+\S+\s*\{[^}]*(?:\{[^}]*\}[^}]*)*\}/g);
+const extraRules = tailwindSrc
+	.replace(/\/\*[\s\S]*?\*\//g, "") // strip block comments
+	.replace(/@import\s+[^;]+;\s*/g, "") // strip @import statements
+	.trim();
 
-if (keyframeBlocks) {
-	parts.push(keyframeBlocks.join("\n\n"));
+if (extraRules) {
+	parts.push(extraRules);
 }
 
 fs.writeFileSync(path.join(root, "dist/tailwind.css"), parts.join("\n"));
