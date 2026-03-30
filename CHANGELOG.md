@@ -1,5 +1,11 @@
 # @moto-nrw/design-system
 
+## 0.5.2
+
+### Patch Changes
+
+- Use subtle background (steel-50) instead of brand color (sage-100) for active ListItem
+
 ## 0.5.1
 
 ### Patch Changes
