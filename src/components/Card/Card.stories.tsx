@@ -15,6 +15,7 @@ const meta: Meta<typeof Card> = {
 			options: ["none", "sm", "md", "lg"],
 		},
 		hoverable: { control: "boolean" },
+		selected: { control: "boolean" },
 	},
 	decorators: [
 		(Story) => (
@@ -90,6 +91,40 @@ export const HoverableCards: Story = {
 					</div>
 				</Card>
 			))}
+		</div>
+	),
+};
+
+export const Selected: Story = {
+	args: {
+		selected: true,
+		children: "Selected card with sage border and background",
+	},
+};
+
+export const SelectedHoverable: Story = {
+	args: {
+		selected: true,
+		hoverable: true,
+		children: "Selected + hoverable card",
+	},
+};
+
+export const SelectedVariants: Story = {
+	render: () => (
+		<div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+			<Card variant="default" selected style={{ width: 240 }}>
+				<strong>Default Selected</strong>
+				<p>Border variant + selected</p>
+			</Card>
+			<Card variant="elevated" selected style={{ width: 240 }}>
+				<strong>Elevated Selected</strong>
+				<p>Shadow variant + selected</p>
+			</Card>
+			<Card variant="glass" selected style={{ width: 240 }}>
+				<strong>Glass Selected</strong>
+				<p>Blur variant + selected</p>
+			</Card>
 		</div>
 	),
 };

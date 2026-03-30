@@ -5,6 +5,7 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
 	variant?: "default" | "elevated" | "glass";
 	padding?: "none" | "sm" | "md" | "lg";
 	hoverable?: boolean;
+	selected?: boolean;
 	children: ReactNode;
 }
 
@@ -23,10 +24,14 @@ const paddingStyles = {
 	lg: "p-[var(--card-padding-lg)]",
 } as const;
 
+const selectedStyles =
+	"border-2 border-[var(--semantic-color-brand-primary)] bg-[var(--semantic-color-feedback-success-light)]";
+
 export function Card({
 	variant = "default",
 	padding = "md",
 	hoverable = false,
+	selected = false,
 	className,
 	children,
 	...props
@@ -39,6 +44,7 @@ export function Card({
 					"cursor-pointer border border-black/5 bg-[var(--semantic-color-bg-default)]/90 shadow-[var(--card-shadow)] backdrop-blur-[var(--card-backdrop-blur)]",
 					"hover:translate-y-[var(--card-hover-lift)] hover:border-[var(--semantic-color-border-muted)]/50 hover:bg-[var(--semantic-color-bg-default)] hover:shadow-[var(--card-shadow-hover)]",
 					"active:scale-[var(--card-active-scale)]",
+					selected && selectedStyles,
 					className,
 				)}
 				{...props}
@@ -57,6 +63,7 @@ export function Card({
 			className={cn(
 				"relative overflow-hidden rounded-[var(--card-radius)] bg-[var(--semantic-color-bg-default)] transition-all duration-[var(--card-transition-duration)]",
 				variantStyles[variant],
+				selected && selectedStyles,
 				className,
 			)}
 			{...props}
