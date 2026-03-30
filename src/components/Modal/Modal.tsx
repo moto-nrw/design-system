@@ -50,6 +50,7 @@ export function Modal({ isOpen, onClose, title, children, footer }: ModalProps) 
 	if (!isOpen) return null;
 
 	const entering = isAnimating && !isExiting;
+	const idle = !isAnimating && !isExiting;
 
 	const modalContent = (
 		<div className="fixed inset-0 z-[var(--modal-z-index)] flex items-center justify-center">
@@ -65,9 +66,9 @@ export function Modal({ isOpen, onClose, title, children, footer }: ModalProps) 
 			<div
 				className={cn(
 					"relative w-[calc(100%-2rem)] max-w-[var(--modal-max-width)] max-h-[calc(100vh-4rem)] mx-4 overflow-hidden rounded-[var(--modal-radius)] border border-[var(--semantic-color-border-default)] bg-[image:var(--modal-bg)] backdrop-blur-[var(--modal-backdrop-blur)] shadow-[var(--modal-shadow)]",
-					entering
-						? "animate-[modalEnter_250ms_ease-out_both]"
-						: "animate-[modalExit_200ms_ease-in_both]",
+					idle && "opacity-0",
+					entering && "animate-[modalEnter_250ms_ease-out_both]",
+					isExiting && "animate-[modalExit_200ms_ease-in_both]",
 				)}
 				role="dialog"
 				aria-modal="true"
