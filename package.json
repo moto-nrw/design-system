@@ -51,7 +51,7 @@
     "lefthook": "^2.1.4",
     "publint": "^0.3.18",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4",
+    "react-dom": "^19.2.5",
     "storybook": "^10.3.3",
     "style-dictionary": "^5.4.0",
     "tailwindcss": "^4.2.2",
